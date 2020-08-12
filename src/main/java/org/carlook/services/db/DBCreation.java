@@ -40,10 +40,10 @@ public class DBCreation {
         JDBCConnection jdbc = JDBCConnection.getInstance();
         jdbc.openConnection();
         String sqlBefehl = "";
-        PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
         for (String tmp : listCreation) {
             sqlBefehl += tmp;
         }
+        PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
         try {
             statement.execute();
         } catch (SQLException e) {
@@ -59,10 +59,11 @@ public class DBCreation {
         JDBCConnection jdbc = JDBCConnection.getInstance();
         jdbc.openConnection();
         String sqlBefehl = "";
-        PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
         for (String tmp : tableNames) {
-            sqlBefehl += "DROP " + tmp + " CASCADE;";
+            sqlBefehl += "DROP TABLE " + tmp + " CASCADE;\n";
         }
+        PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
+        System.out.println(sqlBefehl);
         try {
             statement.execute();
         } catch (SQLException e) {

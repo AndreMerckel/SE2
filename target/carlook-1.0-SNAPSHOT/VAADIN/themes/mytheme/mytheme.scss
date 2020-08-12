@@ -34,5 +34,101 @@
 @mixin mytheme {
   @include valo;
 
-  // Insert your own theme rules here
+  &.mytheme.v-app {
+    background-color: transparent;
+  }
+
+  .v-ui {
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  // COMPONENT TEXTFIELDWITHICON STYLES - START
+
+  .v-slot-textfieldicon {
+    position: absolute;
+    left: 10px;
+  }
+
+
+  .v-slot-textfieldWithIcon {
+    position: relative;
+  }
+
+  .textfieldWithIcon {
+    width: 100%;
+  }
+
+  .v-caption-textfieldicon {
+    font-size: 31px;
+    color: lightgrey;
+  }
+
+  .textfieldplaceholder {
+    font-size: 25px;
+    color: dimgray;
+    position: absolute;
+    left: 60px;
+    top: 5px;
+    font-weight: lighter;
+    cursor: text;
+  }
+
+  .textfieldwidth, .textfieldwidth:focus, .v-slot-textfieldwidth, .searchLeft, .searchRigth, .v-slot-overLayout, .overLayout, .innerCenterWrapper, .v-slot-innerCenterWrapper {
+    width: 100%;
+    max-width: 1080px;
+    padding: 0;
+  }
+  // COMPONENT TEXTFIELDWITHICON STYLES - END
+
+  // HEADER - START
+
+  .header_main {
+    align-self: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    padding: 10px 10px 10px 10px;
+  }
+
+  .header_main_logo {
+    color: white;
+    padding: 0px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .header_main_menuBox {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .header_main_menuBox_headLabel {
+    color: rgba(0, 0, 0, 1);
+    font-weight: bold;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .v-slot-header_main_menuBox {
+    width: 100%;
+  }
+
+  .v-slot-header_main {
+    display: flex;
+    justify-content: center;
+  }
+
+  .v-slot-header_menuBox {
+    height: auto;
+  }
+
+  // HEADER - END
 }
