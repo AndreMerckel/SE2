@@ -4,7 +4,6 @@ public class UserDTO {
 
     String email, vorname, nachname, passsword;
 
-
     public String getEmail() {
         return email;
     }

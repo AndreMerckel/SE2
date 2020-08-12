@@ -1,8 +1,8 @@
 package org.carlook.model.dao;
 
-import org.mortys.process.control.LoginControl;
-import org.mortys.process.control.exception.DatabaseException;
-import org.mortys.services.db.JDBCConnection;
+import org.carlook.controller.LoginControl;
+import org.carlook.controller.exception.DatabaseException;
+import org.carlook.services.db.JDBCConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
