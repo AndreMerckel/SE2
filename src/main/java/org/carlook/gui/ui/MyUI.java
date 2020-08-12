@@ -8,12 +8,9 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 import org.carlook.services.util.Views;
+import org.carlook.gui.views.*;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -30,7 +27,6 @@ public class MyUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         Navigator navi = new Navigator(this, this);
 
-        navi.addView(Views.MAIN, LandingPage.class);
         navi.addView(Views.LOGIN, LoginView.class);
         navi.addView(Views.REGISTER, RegisterView.class);
         navi.addView(Views.USERSEARCHVIEW, UserSearchView.class);
