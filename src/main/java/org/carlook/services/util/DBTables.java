@@ -16,7 +16,7 @@ public class DBTables {
             "    CONSTRAINT PK_USER PRIMARY KEY (email)\n" +
             ");";
 
-    public static final String CREATE_TAB_VERTRIEBLER = "CREATE TABLE " + TAB_VERTRIEBLER + " ("\n" +
+    public static final String CREATE_TAB_VERTRIEBLER = "CREATE TABLE " + TAB_VERTRIEBLER + " (\n" +
             "    vertriebnummer SERIAL UNIQUE NOT NULL,\n" +
             "    email VARCHAR(255) UNIQUE NOT NULL,\n" +
             "    CONSTRAINT PK_VERTRIBELER PRIMARY KEY (vertriebnummer),\n" +
@@ -29,7 +29,6 @@ public class DBTables {
             "    CONSTRAINT PK_KUNDE PRIMARY KEY (kundennummer),\n" +
             "    CONSTRAINT FK_USER FOREIGN KEY(email) REFERENCES dbs_USER(email)\n" +
             ");";
-            );
 
     public static final String CREATE_TAB_FAHRZEUG = "CREATE TABLE " + TAB_FAHRZEUG + "(\n" +
             "    marke VARCHAR(255) NOT NULL,\n" +
