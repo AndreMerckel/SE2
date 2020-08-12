@@ -47,8 +47,8 @@ public class JDBCConnection {
         try {
 
             Properties props = new Properties();
-            props.setProperty("user", "mmuel72s");
-            props.setProperty("password", "mmuel72s");
+            props.setProperty("user", zugangsdaten);
+            props.setProperty("password", zugangsdaten);
 
             this.conn = DriverManager.getConnection(this.url, props);
 
