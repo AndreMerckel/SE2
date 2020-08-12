@@ -69,24 +69,12 @@ public class LoginView extends VerticalLayout implements View {
         passwortFieldLabel.setIcon(VaadinIcons.PASSWORD);
         TextFieldWithIcon passwortTextField = new TextFieldWithIcon("Passwort", passwortFieldLabel, true);
 
-        Button passwordVergessenLink = new Button("Passwort vergessen?");
-        passwordVergessenLink.setStyleName("login_passwortVergessen");
-
         Button loginButton = new Button("Login");
         loginButton.setStyleName("login_button");
         loginButton.setId("loginButton");
         rightPane.addComponent(emailTextField);
         rightPane.addComponent(passwortTextField);
-        rightPane.addComponent(passwordVergessenLink);
         rightPane.addComponent(loginButton);
-
-        Button sendCodeButton = new Button("Send Code");
-        sendCodeButton.setStyleName("login_sendCode");
-
-        Button checkCodeButton = new Button("Check code");
-        checkCodeButton.setStyleName("login_checkCode");
-
-
 
 
         body.addComponent(leftPage);
@@ -96,7 +84,7 @@ public class LoginView extends VerticalLayout implements View {
         this.addComponent(new Footer());
 
         //Component Logic
-
+/*
         loginButton.addClickListener(e ->{
             String email = emailTextField.getValue();
             String password = passwortTextField.getValue();
@@ -127,7 +115,7 @@ public class LoginView extends VerticalLayout implements View {
         sendCodeButton.addClickListener(e->{
             rightPane.removeComponent(sendCodeButton);
         });
-
+*/
     }
 
 
