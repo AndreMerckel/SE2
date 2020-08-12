@@ -4,6 +4,12 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
+import org.carlook.controller.LoginControl;
+import org.carlook.controller.exception.DatabaseException;
+import org.carlook.controller.exception.NoSuchUserOrPassword;
+import org.carlook.gui.components.*;
+import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
+
 
 public class LoginView extends VerticalLayout implements View {
 
@@ -53,17 +59,15 @@ public class LoginView extends VerticalLayout implements View {
         VerticalLayout rightPane = new VerticalLayout();
         rightPane.addStyleName("login_rightPane");
 
-        TextField emailField = new TextField();
-        emailField.setId("emailField");
+
         Label emailFieldLabel = new Label();
         emailFieldLabel.setIcon(VaadinIcons.USER);
-        TextFieldWithIcon emailTextField = new TextFieldWithIcon(emailField, "Email", emailFieldLabel);
+        TextFieldWithIcon emailTextField = new TextFieldWithIcon("Email", emailFieldLabel, false);
 
-        PasswordField passwortField = new PasswordField("");
-        passwortField.setId("passwordField");
+
         Label passwortFieldLabel = new Label();
         passwortFieldLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon passwortTextField = new TextFieldWithIcon(passwortField, "Passwort", passwortFieldLabel);
+        TextFieldWithIcon passwortTextField = new TextFieldWithIcon("Passwort", passwortFieldLabel, true);
 
         Button passwordVergessenLink = new Button("Passwort vergessen?");
         passwordVergessenLink.setStyleName("login_passwortVergessen");
@@ -94,19 +98,19 @@ public class LoginView extends VerticalLayout implements View {
         //Component Logic
 
         loginButton.addClickListener(e ->{
-            String email = emailField.getValue();
-            String password = passwortField.getValue();
+            String email = emailTextField.getValue();
+            String password = passwortTextField.getValue();
 
             try{
                 LoginControl.checkAuthentication(email,password);
             }catch(NoSuchUserOrPassword ex1){
                 Notification.show("Error", "Wrong Email or Password. Please try again.", Notification.Type.ERROR_MESSAGE);
-                emailField.setValue("");
-                passwortField.setValue("");            }
+                emailTextField.setValue("");
+                passwortTextField.setValue("");            }
             catch (DatabaseException ex2) {
                 Notification.show("DB-Fehler", ex2.getReason(), Notification.Type.ERROR_MESSAGE);
-                emailField.setValue("");
-                passwortField.setValue("");        }
+                emailTextField.setValue("");
+                passwortTextField.setValue("");        }
         });
 
         passwordVergessenLink.addClickListener(e->{

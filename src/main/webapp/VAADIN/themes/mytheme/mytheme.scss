@@ -35,4 +35,42 @@
   @include valo;
 
   // Insert your own theme rules here
+  // COMPONENT TEXTFIELDWITHICON STYLES - START
+
+  .v-slot-textfieldicon {
+    position: absolute;
+    left: 10px;
+  }
+
+
+  .v-slot-textfieldWithIcon {
+    position: relative;
+  }
+
+  .textfieldWithIcon {
+    width: 100%;
+  }
+
+  .v-caption-textfieldicon {
+    font-size: 31px;
+    color: lightgrey;
+  }
+
+  .textfieldplaceholder {
+    font-size: 25px;
+    color: dimgray;
+    position: absolute;
+    left: 60px;
+    top: 5px;
+    font-weight: lighter;
+    cursor: text;
+  }
+
+  .textfieldwidth, .textfieldwidth:focus, .v-slot-textfieldwidth, .searchLeft, .searchRigth, .v-slot-overLayout, .overLayout, .innerCenterWrapper, .v-slot-innerCenterWrapper {
+    width: 100%;
+    max-width: 1080px;
+    padding: 0;
+  }
+
+  // COMPONENT TEXTFIELDWITHICON STYLES - END
 }

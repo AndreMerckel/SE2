@@ -3,19 +3,17 @@ package org.carlook.gui.components;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.*;
-import org.mortys.model.objects.dto.Student;
-import org.mortys.model.objects.dto.Unternehmer;
-import org.mortys.model.objects.dto.User;
-import org.mortys.process.control.LoginControl;
-import org.mortys.process.control.ToggleControl;
-import org.mortys.services.util.Roles;
-import org.mortys.services.util.Views;
+import org.carlook.controller.LoginControl;
+import org.carlook.model.dto.CustomerDTO;
+import org.carlook.model.dto.SalesmenDTO;
+import org.carlook.model.dto.UserDTO;
+import org.carlook.services.util.Roles;
+import org.carlook.services.util.Views;
 
 public class Header extends HorizontalLayout {
 
     //Style
-
-    User user = null;
+    UserDTO user = null;
     public Header(boolean logo){
         this.setStyleName("header_main");
      Image headLogo = new Image(null, new ThemeResource("img/logo_Mortys.png"));
@@ -28,19 +26,17 @@ public class Header extends HorizontalLayout {
     header_menuBox.setStyleName("header_main_menuBox");
 
         // USER FETCHING
-        User user = (User) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER);
+        UserDTO user = (UserDTO) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER);
 
-            Label headLabel = new Label("Logged in as: " + (user instanceof Student ? "Student: " + ((Student) user).getMatrikelnr() + " " + user.getVorname() + ", "+ user.getNachname() : user instanceof Unternehmer ? "Unternehmer: " + ((Unternehmer) user).getFirmenname() + " " + user.getVorname() + ", " + user.getNachname() : "Admin"));
+            Label headLabel = new Label("Logged in as: " + (user instanceof SalesmenDTO ? "Vertriebler: " + ((SalesmenDTO) user).getVorname() + " " + user.getNachname() + ", "+ user.getNachname() : user instanceof CustomerDTO ? "Kunde: " + user.getVorname() + ", " + user.getNachname() : ""));
             headLabel.addStyleName("header_main_menuBox_headLabel");
-            CheckBoxFeature c = new CheckBoxFeature();
-
-            c.setFeature("func-set-bewerbungen");
-            c.setCaption("Bewerbungen deaktivieren");
-            ToggleControl.addToggle(c);
-            ToggleControl.setValue(c);
 
         headLogo.addClickListener(e ->{
-           UI.getCurrent().getNavigator().navigateTo(Views.MAIN);
+            if(user instanceof SalesmenDTO){
+                UI.getCurrent().getNavigator().navigateTo(Views.SALESVIEW);
+            } else {
+                UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
+            }
         });
 
 
@@ -57,31 +53,17 @@ public class Header extends HorizontalLayout {
         });
 
 
-        item1.addItem("Profil", VaadinIcons.USER, new MenuBar.Command() {
-            @Override
-            public void menuSelected(MenuBar.MenuItem menuItem) {
-                UI.getCurrent().getNavigator().navigateTo(Views.PROFILE);
-            }
-        });
-
-
         item1.addItem("Suche", VaadinIcons.SEARCH, new MenuBar.Command() {
             @Override
             public void menuSelected(MenuBar.MenuItem menuItem) {
-                UI.getCurrent().getNavigator().navigateTo(Views.SEARCH);
+                if(user instanceof SalesmenDTO){
+                    UI.getCurrent().getNavigator().navigateTo(Views.SALESVIEW);
+                } else {
+                    UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
+                }
             }
         });
 
-
-
-
-            if(user != null){
-                header_menuBox.addComponent(headLabel);
-                if (user.getEmail().equals("admin@admin.de")) {
-                    header_menuBox.addComponent(c);
-                }
-                header_menuBox.addComponent(bar);
-            }
         this.addComponent(header_menuBox);
 
     }
