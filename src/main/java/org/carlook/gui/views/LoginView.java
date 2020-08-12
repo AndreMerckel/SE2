@@ -25,7 +25,7 @@ public class LoginView extends VerticalLayout implements View {
             UI.getCurrent().getNavigator().navigateTo(Views.MAIN);
         };
         */
-
+    this.setUp();
 
     }
 

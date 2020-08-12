@@ -15418,3 +15418,119 @@ div.v-layout.v-horizontal.v-widget {
 	width: 19px;
 	overflow: hidden;
 }
+
+.mytheme.v-app {
+	background-color: transparent;
+}
+
+.mytheme .v-ui {
+	content: "";
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.mytheme .v-textfield {
+	width: 200px;
+	height: 55px;
+	border-top: 0;
+	font-size: 24px;
+	color: rgba(0, 0, 0, 0.5);
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+	box-shadow: none;
+	border-radius: 0;
+	outline: none;
+}
+
+.mytheme .v-textfield:focus {
+	width: 200px;
+	height: 55px;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 2px solid blue;
+	outline: none;
+	box-shadow: none;
+	border-radius: 0;
+}
+
+.mytheme .v-slot-textfieldicon {
+	position: absolute;
+	left: 10px;
+}
+
+.mytheme .v-slot-textfieldWithIcon {
+	position: relative;
+}
+
+.mytheme .textfieldWithIcon {
+	width: 100%;
+}
+
+.mytheme .v-caption-textfieldicon {
+	font-size: 31px;
+	color: lightgrey;
+}
+
+.mytheme .textfieldplaceholder {
+	font-size: 25px;
+	color: dimgray;
+	position: absolute;
+	left: 60px;
+	top: 5px;
+	font-weight: lighter;
+	cursor: text;
+}
+
+.mytheme .textfieldwidth, .mytheme .textfieldwidth:focus, .mytheme .v-slot-textfieldwidth, .mytheme .searchLeft, .mytheme .searchRigth, .mytheme .v-slot-overLayout, .mytheme .overLayout, .mytheme .innerCenterWrapper, .mytheme .v-slot-innerCenterWrapper {
+	width: 100%;
+	max-width: 1080px;
+	padding: 0;
+}
+
+.mytheme .header_main {
+	align-self: center;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+	position: relative;
+	padding: 10px 10px 10px 10px;
+}
+
+.mytheme .header_main_logo {
+	color: white;
+	padding: 0px;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.mytheme .header_main_menuBox {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+
+.mytheme .header_main_menuBox_headLabel {
+	color: black;
+	font-weight: bold;
+	padding: 10px;
+	font-size: 12px;
+}
+
+.mytheme .v-slot-header_main_menuBox {
+	width: 100%;
+}
+
+.mytheme .v-slot-header_main {
+	display: flex;
+	justify-content: center;
+}
+
+.mytheme .v-slot-header_menuBox {
+	height: auto;
+}

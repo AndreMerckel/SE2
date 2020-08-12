@@ -46,6 +46,32 @@
     right: 0;
   }
 
+  .v-textfield {
+    width: 200px;
+    height: 55px;
+    border-top: 0;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.5);
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: none;
+    border-radius: 0;
+    outline: none;
+  }
+
+  .v-textfield:focus {
+    width: 200px;
+    height: 55px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px solid blue;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
   // COMPONENT TEXTFIELDWITHICON STYLES - START
 
   .v-slot-textfieldicon {

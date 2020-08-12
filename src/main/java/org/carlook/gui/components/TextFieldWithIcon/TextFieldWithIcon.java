@@ -14,8 +14,8 @@ public class TextFieldWithIcon<T extends String> extends HorizontalLayout {
     HorizontalLayout overLayout;
 
     public TextFieldWithIcon(T placeholder, Label label, Boolean pw) {
-        this.textField = pw ? new PasswordField("") : new TextField("");
-        this.textField.setWidth("8%");
+        this.textField = pw ? new PasswordField() : new TextField();
+        this.textField.setWidth("20rem");
         this.textField.setId(placeholder);
         this.setWidth("" + textField.getWidth());
         this.placeholder = placeholder;
