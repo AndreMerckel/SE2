@@ -3,7 +3,8 @@ package org.carlook.controller;
 import org.carlook.controller.exception.DatabaseException;
 
 import java.util.List;
-public class SearchControl implements SearchInstance {
+public class SearchControl /* implements SearchInstance */{
+    /*
     private static SearchControl searchControl;
 
     public static SearchControl getInstance(){
@@ -19,5 +20,5 @@ public class SearchControl implements SearchInstance {
     }
 
 
-
+*/
 }

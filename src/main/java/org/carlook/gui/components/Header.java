@@ -48,7 +48,7 @@ public class Header extends HorizontalLayout {
         item1.addItem("Logout", VaadinIcons.SIGN_OUT, new MenuBar.Command() {
             @Override
             public void menuSelected(MenuBar.MenuItem menuItem) {
-                LoginControl.logoutUser();
+                /*LoginControl.logoutUser()*/;
             }
         });
 

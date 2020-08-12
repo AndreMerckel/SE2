@@ -17,13 +17,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LoginControl {
-
+/*
     public static void checkAuthentication(String email, String password) throws NoSuchUserOrPassword, DatabaseException {
 
         UserDTO user = null;
         boolean correct = false;
         try {
-//            correct = UserDAO.getInstance().isPasswordCorrect(email, password);
+            correct = UserDAO.getInstance().isPasswordCorrect(email, password);
         }
         catch (DatabaseException ex) {
             Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,13 +53,15 @@ public class LoginControl {
         UI.getCurrent().getSession().close();
         UI.getCurrent().getPage().setLocation(Views.LOGIN);
     }
-
+*/
     /**
      * Methode, zum reseten des Passwortes
      * @param email
      * @return
      * @throws UserNotFoundException
      */
+
+    /*
     public static boolean sendResetCode(String email) throws UserNotFoundException {
 
         MailSenderConnection mailConnection = MailSenderConnection.getInstance();
@@ -143,5 +145,5 @@ public class LoginControl {
         }
         return nullValue + random;
     }
-
+*/
 }
