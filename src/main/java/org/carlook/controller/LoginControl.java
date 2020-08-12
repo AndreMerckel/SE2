@@ -6,6 +6,7 @@ import org.carlook.model.dao.UserDAO;
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.NoSuchUserOrPassword;
 import org.carlook.controller.exception.UserNotFoundException;
+import org.carlook.model.dto.UserDTO;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.Roles;
 import org.carlook.services.util.Views;
@@ -19,13 +20,13 @@ public class LoginControl {
 
     public static void checkAuthentication(String email, String password) throws NoSuchUserOrPassword, DatabaseException {
 
-        User user = null;
+        UserDTO user = null;
         boolean correct = false;
         try {
-            correct = UserDAO.getInstance().isPasswordCorrect(email, password);
+//            correct = UserDAO.getInstance().isPasswordCorrect(email, password);
         }
         catch (DatabaseException ex) {
-            Logger.getLogger(JDBCConnection.class.getlName()).log(Leve.SEVERE, null, ex);
+            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
             try {
                 if (correct) {
@@ -50,7 +51,7 @@ public class LoginControl {
 
     public static void logoutUser() {
         UI.getCurrent().getSession().close();
-        UI.getCurrent().getPage().setLocation(Views.MAIN);
+        UI.getCurrent().getPage().setLocation(Views.LOGIN);
     }
 
     /**
