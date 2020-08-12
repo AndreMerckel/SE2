@@ -18,11 +18,14 @@ CREATE TABLE dbs_KUNDE(
 
 CREATE TABLE dbs_FAHRZEUG(
     marke VARCHAR(255) NOT NULL,
+    beschreibung VARCHAR(255) NOT NULL,
     kraftstoff VARCHAR(255) NOT NULL,
+    baujahr NUMERIC(4) NOT NULL,
     modell VARCHAR(255) NOT NULL,
     fahrgestellnummer VARCHAR(255) NOT NULL,
     kennzeichen VARCHAR(255) NOT NULL UNIQUE,
     vertriebler VARCHAR(255) NOT NULL UNIQUE,
+    location VARCHAR(255) NOT NULL UNIQUE,
     CONSTRAINT PK_FAHRZEUG PRIMARY KEY (kennzeichen),
     CONSTRAINT FK_VERTRIBELER FOREIGN KEY (vertriebler) REFERENCES dbs_VERTRIEBLER(vertriebnummer)
 );

@@ -34,7 +34,7 @@ public class LoginControl {
             correct = UserDAO.getInstance().isPasswordCorrect(email, password);
         }
         catch (DatabaseException ex) {
-            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JDBCConnection.class.getlName()).log(Leve.SEVERE, null, ex);
         }
             try {
                 if (correct) {

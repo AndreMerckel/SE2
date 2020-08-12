@@ -1,9 +1,11 @@
-package org.carlook;
+package org.carlook.gui.ui;
 
 import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
@@ -11,6 +13,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import org.carlook.services.util.Views;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -20,24 +23,20 @@ import com.vaadin.ui.VerticalLayout;
  * overridden to add component to the user interface and initialize non-component functionality.
  */
 @Theme("mytheme")
+@Title("Carlook Car Finder")
 public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        final VerticalLayout layout = new VerticalLayout();
-        
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
+        Navigator navi = new Navigator(this, this);
 
-        Button button = new Button("Click Me");
-        button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
-        });
-        
-        layout.addComponents(name, button);
-        
-        setContent(layout);
+        navi.addView(Views.MAIN, LandingPage.class);
+        navi.addView(Views.LOGIN, LoginView.class);
+        navi.addView(Views.REGISTER, RegisterView.class);
+        navi.addView(Views.USERSEARCHVIEW, UserSearchView.class);
+        navi.addView(Views.SALESVIEW, SalesView.class);
+
+        UI.getCurrent().getNavigator().navigateTo(Views.LOGIN);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
