@@ -1,7 +1,8 @@
 package org.carlook.services.db;
 
 
-import org.mortys.process.control.exception.DatabaseException;
+import org.carlook.controller.exception.DatabaseException;
+import org.carlook.services.util.ZugangsdatenDB;
 
 import java.sql.*;
 import java.util.Properties;
@@ -10,14 +11,16 @@ import java.util.logging.Logger;
 
 public class JDBCConnection {
 
+    private String zugangsdaten = ZugangsdatenDB.ZUGANG_DB;
+
 
 
     private static JDBCConnection connection = null;
-    private String url = "jdbc:postgresql://dumbo.inf.h-brs.de/mmuel72s";
+    private String url = "jdbc:postgresql://dumbo.inf.h-brs.de/" + zugangsdaten;
     private Connection conn;
 
-    private String login = "anmerck2s";
-    private String password = "anmerck2s";
+    private String login = zugangsdaten;
+    private String password = zugangsdaten;
 
     public static JDBCConnection getInstance() throws DatabaseException {
         if(connection == null){
