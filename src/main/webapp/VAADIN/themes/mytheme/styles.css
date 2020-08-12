@@ -15431,6 +15431,32 @@ div.v-layout.v-horizontal.v-widget {
 	right: 0;
 }
 
+.mytheme .v-textfield {
+	width: 200px;
+	height: 55px;
+	border-top: 0;
+	font-size: 24px;
+	color: rgba(0, 0, 0, 0.5);
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+	box-shadow: none;
+	border-radius: 0;
+	outline: none;
+}
+
+.mytheme .v-textfield:focus {
+	width: 200px;
+	height: 55px;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 2px solid blue;
+	outline: none;
+	box-shadow: none;
+	border-radius: 0;
+}
+
 .mytheme .v-slot-textfieldicon {
 	position: absolute;
 	left: 10px;
