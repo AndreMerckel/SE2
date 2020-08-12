@@ -1,4 +1,4 @@
-package org.mortys.process.control.exception;
+package org.carlook.controller.exception;
 
 public class RegisterFailException extends Exception {
     private String reason;

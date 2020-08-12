@@ -1,10 +1,6 @@
-package org.carlook.control;
+package org.carlook.controller;
 
-import org.mortys.model.objects.dto.StellenAnzeige;
-import org.mortys.model.objects.dto.Student;
-import org.mortys.process.control.exception.DatabaseException;
-import org.mortys.process.control.proxy.SearchInstance;
-import org.mortys.process.control.proxy.SearchProxy;
+import org.carlook.controller.exception.DatabaseException;
 
 import java.util.List;
 public class SearchControl implements SearchInstance {
@@ -15,8 +11,7 @@ public class SearchControl implements SearchInstance {
         return searchControl;
     }
 
-    public  List<StellenAnzeige> searchStellenAnzeigen(String stellenanzeige , String ort) throws DatabaseException {
-        return SearchProxy.getInstance().searchStellenAnzeigen(stellenanzeige , ort);
+    public List<Fahrzeuge> searchFahrzeuge(String stellenanzeige, String ort) throws DatabaseException {
     }
 
     public  List<Student> searchStellenStudenten(String student , String ort, String beschaeftigung, String faehigkteiten) throws DatabaseException {

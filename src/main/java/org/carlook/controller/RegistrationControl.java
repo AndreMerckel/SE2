@@ -1,4 +1,4 @@
-package org.carlook.control;
+package org.carlook.controller;
 
 import org.mortys.model.dao.StudentDAO;
 import org.mortys.model.dao.UnternehmerDAO;
