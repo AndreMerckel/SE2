@@ -8,12 +8,32 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/database/createTables.sql">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/database/deleteTables.sql">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/controller/LoginControl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/gui/ui/MyUI.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/services/util/Views.java">
           <value>
             <set />
           </value>
