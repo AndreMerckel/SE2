@@ -1,4 +1,4 @@
-package org.carlook.control;
+package org.carlook.controller;
 
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.UI;
