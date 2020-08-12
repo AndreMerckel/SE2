@@ -7,12 +7,11 @@ public class FahrzeugControl {
     private static FahrzeugControl fahrzeugControl;
 
     private FahrzeugControl() {}
-    }
 
     /**
      * Realisierung Singleton-Pattern
      */
-    public static synchronized getInstance() {
+    public static synchronized FahrzeugControl getInstance() {
         if (fahrzeugControl == null)
             fahrzeugControl =  new FahrzeugControl();
         return fahrzeugControl;
