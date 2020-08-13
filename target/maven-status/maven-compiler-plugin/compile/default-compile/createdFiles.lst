@@ -18,6 +18,7 @@ org/carlook/gui/ui/MyUI.class
 org/carlook/model/dto/UserDTO.class
 org/carlook/model/dao/CustomerDAO.class
 org/carlook/controller/exception/UserNotFoundException.class
+org/carlook/factories/DTOFactories.class
 org/carlook/controller/FahrzeugControl.class
 org/carlook/gui/ui/MyUI$MyUIServlet.class
 org/carlook/gui/views/LoginView.class
@@ -26,6 +27,7 @@ org/carlook/gui/views/SalesView.class
 org/carlook/model/dao/SalesmenDAO.class
 org/carlook/services/util/ZugangsdatenDB.class
 org/carlook/services/db/JDBCConnection.class
+org/carlook/services/util/StatusUser.class
 org/carlook/controller/LoginControl.class
 org/carlook/services/util/Roles.class
 org/carlook/services/util/Views.class
