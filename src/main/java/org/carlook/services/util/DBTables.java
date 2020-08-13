@@ -4,14 +4,16 @@ import java.util.Scanner;
 
 public class DBTables {
 
-    public static final String SCHEMA = "carlook.";
-    public static final String PRAEFIX_TAB = "dbs_";
+    public static final String SCHEMA = "carlook";
 
-    public static final String TAB_USER = SCHEMA + PRAEFIX_TAB + "user";
-    public static final String TAB_KUNDE = SCHEMA + PRAEFIX_TAB + "kunde";
-    public static final String TAB_VERTRIEBLER = SCHEMA + PRAEFIX_TAB + "vertriebler";
-    public static final String TAB_FAHRZEUG = SCHEMA + PRAEFIX_TAB + "fahrzeug";
-    public static final String TAB_KUNDE_RESERVIERRT_FAHRZEUG = SCHEMA + PRAEFIX_TAB + "kunde_reserviert_fahrzeug";
+    private static final String connector = ".";
+    public static final String PRAEFIX_TAB = "dbs_tab_";
+
+    public static final String TAB_USER = SCHEMA + connector + PRAEFIX_TAB + "user";
+    public static final String TAB_KUNDE = SCHEMA + connector + PRAEFIX_TAB + "kunde";
+    public static final String TAB_VERTRIEBLER = SCHEMA + connector + PRAEFIX_TAB + "vertriebler";
+    public static final String TAB_FAHRZEUG = SCHEMA + connector + PRAEFIX_TAB + "fahrzeug";
+    public static final String TAB_KUNDE_RESERVIERRT_FAHRZEUG = SCHEMA + connector + PRAEFIX_TAB + "kunde_reserviert_fahrzeug";
 
     public static final String CREATE_TAB_USER = "CREATE TABLE " + TAB_USER + " (\n" +
             "    email VARCHAR(255) UNIQUE NOT NULL,\n" +
@@ -44,7 +46,7 @@ public class DBTables {
             "    fahrgestellnummer VARCHAR(255) NOT NULL,\n" +
             "    kennzeichen VARCHAR(255) NOT NULL UNIQUE,\n" +
             "    vertriebler INTEGER NOT NULL UNIQUE,\n" +
-            "    location VARCHAR(255) NOT NULL UNIQUE,\n" +
+            "    location VARCHAR(255) NOT NULL,\n" +
             "    CONSTRAINT pk_fahrzeug PRIMARY KEY (kennzeichen),\n" +
             "    CONSTRAINT fk_vertriebler FOREIGN KEY (vertriebler) REFERENCES " + TAB_VERTRIEBLER + " (vertriebnummer)\n" +
             ");\n";

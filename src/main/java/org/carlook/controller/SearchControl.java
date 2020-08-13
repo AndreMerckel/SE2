@@ -12,7 +12,7 @@ public class SearchControl /* implements SearchInstance */{
         return searchControl;
     }
 
-    public List<Fahrzeuge> searchFahrzeuge(String stellenanzeige, String ort) throws DatabaseException {
+    public List<Fahrzeug> searchFahrzeuge(String stellenanzeige, String ort) throws DatabaseException {
     }
 
     public  List<Student> searchStellenStudenten(String student , String ort, String beschaeftigung, String faehigkteiten) throws DatabaseException {

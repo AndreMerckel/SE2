@@ -46,31 +46,42 @@ public class DBCreation {
         PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
         try {
             statement.execute();
+            System.out.println("Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich hinzugefuegt!");
         } catch (SQLException e) {
             Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, null, e);
-            System.out.println(sqlBefehl);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
     }
 
     public static void dropAllTables() throws DatabaseException {
-        List<String> tableNames = loadTableNames();
+        //List<String> tableNames = loadTableNames();
         JDBCConnection jdbc = JDBCConnection.getInstance();
         jdbc.openConnection();
-        String sqlBefehl = "";
-        for (String tmp : tableNames) {
+        String sqlBefehl = "DROP SCHEMA " + DBTables.SCHEMA + " CASCADE; CREATE SCHEMA " + DBTables.SCHEMA + ";";
+        /*for (String tmp : tableNames) {
             sqlBefehl += "DROP TABLE " + tmp + " CASCADE;\n";
         }
+
+         */
         PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
-        System.out.println(sqlBefehl);
         try {
             statement.execute();
+            System.out.println("Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich entfernt!");
         } catch (SQLException e) {
             Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, null, e);
-            System.out.println(sqlBefehl);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
     }
+
+    public static void refreshTables() {
+        try {
+            dropAllTables();
+            executeCreate();
+        } catch (DatabaseException e) {
+            Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
 }

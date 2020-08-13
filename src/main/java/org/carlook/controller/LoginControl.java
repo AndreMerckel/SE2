@@ -1,20 +1,7 @@
 package org.carlook.controller;
 
-import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.UI;
-import org.carlook.model.dao.UserDAO;
-import org.carlook.controller.exception.DatabaseException;
-import org.carlook.controller.exception.NoSuchUserOrPassword;
 import org.carlook.controller.exception.UserNotFoundException;
-import org.carlook.model.dto.UserDTO;
-import org.carlook.services.db.JDBCConnection;
-import org.carlook.services.util.Roles;
-import org.carlook.services.util.Views;
-
-import java.io.UnsupportedEncodingException;
-import java.security.SecureRandom;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.carlook.model.objects.dto.UserDTO;
 
 public class LoginControl {
 /*

@@ -1,6 +1,6 @@
 package org.carlook.controller;
 
-import org.carlook.model.dto.FahrzeugDTO;
+import org.carlook.model.objects.dto.FahrzeugDTO;
 
 public class FahrzeugControl {
 
