@@ -1,4 +1,4 @@
-package org.carlook.services.db.exampleData;
+package org.carlook.services.exampleData;
 
 import org.carlook.services.util.DBTables;
 
