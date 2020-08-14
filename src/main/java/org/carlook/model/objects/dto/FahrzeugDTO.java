@@ -1,19 +1,12 @@
 package org.carlook.model.objects.dto;
 
-import org.carlook.model.dao.FahrzeugDAO;
-
 public class FahrzeugDTO {
-    String marke, modell, beschreibung, kraftstoff, location, fahrgestellnummer, kennzeichen;
+    String marke, modell, kraftstoff, location;
     VertrieblerDTO vertrieblerDTO;
     int baujahr;
 
     public FahrzeugDTO setMarke(String marks) {
         this.marke = marke;
-        return this;
-    }
-
-    public FahrzeugDTO setBeschreibung(String beschreibung) {
-        this.beschreibung = beschreibung;
         return this;
     }
 
@@ -36,10 +29,6 @@ public class FahrzeugDTO {
         return marke;
     }
 
-    public String getBeschreibung() {
-        return beschreibung;
-    }
-
     public String getModell() {
         return modell;
     }
@@ -59,24 +48,6 @@ public class FahrzeugDTO {
 
     public FahrzeugDTO setModell(String modell) {
         this.modell = modell;
-        return this;
-    }
-
-    public String getFahrgestellnummer() {
-        return fahrgestellnummer;
-    }
-
-    public FahrzeugDTO setFahrgestellnummer(String fahrgestellnummer) {
-        this.fahrgestellnummer = fahrgestellnummer;
-        return this;
-    }
-
-    public String getKennzeichen() {
-        return kennzeichen;
-    }
-
-    public FahrzeugDTO setKennzeichen(String kennzeichen) {
-        this.kennzeichen = kennzeichen;
         return this;
     }
 

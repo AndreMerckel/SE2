@@ -31,11 +31,11 @@ public class UserDTO {
         return this;
     }
 
-    public String getPasssword() {
+    public String getPassword() {
         return passsword;
     }
 
-    public UserDTO setPasssword(String passsword) {
+    public UserDTO setPassword(String passsword) {
         this.passsword = passsword;
         return this;
     }
