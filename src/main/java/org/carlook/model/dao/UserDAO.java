@@ -1,13 +1,19 @@
 package org.carlook.model.dao;
 
 import org.carlook.controller.exception.DatabaseException;
+import org.carlook.model.objects.dto.ReservationDTO;
 import org.carlook.model.objects.dto.UserDTO;
+import org.carlook.model.objects.entities.User;
+import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.DBTables;
 import org.carlook.services.util.StatusUser;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,6 +63,138 @@ public class UserDAO extends AbstractDAO {
             JDBCConnection.getInstance().closeConnection();
         }
     }
+
+    public int getVertrieblerNummer(String email) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+        String sqlBefehl;
+
+        sqlBefehl = "SELECT " + DBTables.Vertriebler.COL_VERTRIEBLERNUMMER + " FROM " + table + ", " + DBTables.Vertriebler.TAB +
+                " WHERE " + table + "." + DBTables.User.COL_EMAIL + " = " + DBTables.Vertriebler.TAB + "." + DBTables.User.COL_EMAIL +
+                " AND " + table +  "." + DBTables.User.COL_EMAIL + " = " + "?;";
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
+        ResultSet resultSet = null;
+        int res = 0;
+        try {
+            preparedStatement.setString(1,email);
+            resultSet = preparedStatement.executeQuery();
+
+            assert resultSet != null;
+            resultSet.next();
+
+            res = resultSet.getInt(DBTables.Vertriebler.COL_VERTRIEBLERNUMMER);
+
+        } catch (SQLException throwables) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return res;
+    }
+
+    public int getKundenNummer(String email) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+        String sqlBefehl;
+
+        sqlBefehl = "SELECT " + DBTables.Kunde.COL_KUNDENNUMMER + " FROM " + table + ", " + DBTables.Kunde.TAB +
+                " WHERE " + table + "." + DBTables.User.COL_EMAIL + " = " + DBTables.Kunde.TAB + "." + DBTables.User.COL_EMAIL +
+                " AND " + table +  "." + DBTables.User.COL_EMAIL + " = " + "?;";
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
+        ResultSet resultSet = null;
+        int res = 0;
+        try {
+            preparedStatement.setString(1,email);
+            resultSet = preparedStatement.executeQuery();
+
+            assert resultSet != null;
+            resultSet.next();
+
+            res = resultSet.getInt(DBTables.Kunde.COL_KUNDENNUMMER);
+
+        } catch (SQLException throwables) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return res;
+    }
+
+    public boolean isPasswordCorrect(String email, String password) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+        ResultSet resultSet = null;
+
+        String sqlBefehl = "SELECT email  FROM " + table + " WHERE email = ? AND password = ?;";
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
+
+        boolean result = false;
+        try {
+            preparedStatement.setString(1,email);
+            preparedStatement.setString(2,password);
+
+            resultSet = preparedStatement.executeQuery();
+
+            assert resultSet != null;
+
+            result = resultSet.next();
+        } catch (SQLException throwables) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return result;
+    }
+
+    public StatusUser getStatus(String email) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+        ResultSet resultSet = null;
+
+        String sqlBefehl = "SELECT * FROM " + DBTables.Vertriebler.TAB + " WHERE " + DBTables.User.COL_EMAIL + " = ?;";
+
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
+        boolean result = false;
+
+        try {
+            preparedStatement.setString(1, email);
+
+            resultSet = preparedStatement.executeQuery();
+
+            assert resultSet != null;
+
+            result = resultSet.next();
+        } catch (SQLException throwables) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return (result ? StatusUser.VERTRIEBLER : StatusUser.KUNDE);
+    }
+
+    public boolean isRegistered(String email) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+        ResultSet resultSet = null;
+
+        String sqlBefehl = "SELECT * FROM " + table + " WHERE " + DBTables.User.COL_EMAIL + " = ?;";
+
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
+        boolean result = false;
+
+        try {
+            preparedStatement.setString(1, email);
+
+            resultSet = preparedStatement.executeQuery();
+
+            assert resultSet != null;
+
+            result = resultSet.next();
+        } catch (SQLException throwables) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return result;
+
+    }
+
+
 
 
 }

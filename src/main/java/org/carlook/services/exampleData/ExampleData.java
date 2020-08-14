@@ -4,9 +4,7 @@ import org.carlook.controller.FahrzeugControl;
 import org.carlook.controller.Register;
 import org.carlook.controller.UserControl;
 import org.carlook.controller.exception.DatabaseException;
-import org.carlook.services.exampleData.UserData.ListSupplier;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

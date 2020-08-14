@@ -106,8 +106,8 @@ public class DBTables {
         public static final String TAB = SCHEMA + connector + PRAEFIX_TAB + NAME;
 
         public static final String CREATE_TAB  = "CREATE TABLE " + TAB + " (" +
-                Kunde.COL_KUNDENNUMMER + " INTEGER UNIQUE NOT NULL," +
-                Fahrzeug.COL_KENNZEICHEN + " VARCHAR(255) UNIQUE NOT NULL," +
+                Kunde.COL_KUNDENNUMMER + " INTEGER NOT NULL," +
+                Fahrzeug.COL_KENNZEICHEN + " VARCHAR(255) NOT NULL," +
                 " CONSTRAINT pk_" + NAME + " PRIMARY KEY (" + Kunde.COL_KUNDENNUMMER + "," + Fahrzeug.COL_KENNZEICHEN + ")," +
                 " CONSTRAINT fk_" + Fahrzeug.NAME + " FOREIGN KEY (" + Fahrzeug.COL_KENNZEICHEN + ") REFERENCES " + Fahrzeug.TAB + " (" + Fahrzeug.COL_KENNZEICHEN + ")," +
                 " CONSTRAINT fk_" + Kunde.NAME + " FOREIGN KEY (" + Kunde.COL_KUNDENNUMMER + ") REFERENCES " + Kunde.TAB + " (" + Kunde.COL_KUNDENNUMMER + ")" +

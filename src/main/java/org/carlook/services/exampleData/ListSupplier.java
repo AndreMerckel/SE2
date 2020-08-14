@@ -1,4 +1,4 @@
-package org.carlook.services.exampleData.UserData;
+package org.carlook.services.exampleData;
 
 import org.carlook.factories.Factories;
 import org.carlook.model.objects.dto.UserDTO;

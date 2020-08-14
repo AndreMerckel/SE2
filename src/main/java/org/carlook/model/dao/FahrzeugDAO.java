@@ -74,12 +74,11 @@ public class FahrzeugDAO extends AbstractDAO {
                 Logger.getLogger(FahrzeugDAO.class.getName()).log(Level.SEVERE, null, exc);
             }
         }
-        return fetchFahrzeuge(fahrzeugeList, resultSet);
+        return fetchFahrzeuge(resultSet);
     }
 
     public List<Fahrzeug> getFahrzeugByValue(FahrzeugSearchDTO fahrzeugSearchDTO) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
-        List<Fahrzeug> fahrzeugeList = new ArrayList<>();
 
         boolean hasWHERE = false;
 
@@ -179,24 +178,25 @@ public class FahrzeugDAO extends AbstractDAO {
                 Logger.getLogger(FahrzeugDAO.class.getName()).log(Level.SEVERE, null, exc);
             }
         }
-        return fetchFahrzeuge(fahrzeugeList, resultSet);
+        return fetchFahrzeuge(resultSet);
     }
 
 
 
-    public List<Fahrzeug> fetchFahrzeuge(List<Fahrzeug> fahrzeugList, ResultSet resultSet) throws DatabaseException {
+    public List<Fahrzeug> fetchFahrzeuge(ResultSet resultSet) throws DatabaseException {
+        List<Fahrzeug> fahrzeugList = new ArrayList<>();
         try {
             while (resultSet.next()) {
                 Fahrzeug fahrzeug = new Fahrzeug()
-                        .setHersteller(resultSet.getString("marke"))
-                        .setModell(resultSet.getString("modell"))
-                        .setBeschreibung(resultSet.getString("beschreibung"))
-                        .setKraftstoff(resultSet.getString("kraftstoff"))
-                        .setLocation(resultSet.getString("location"))
-                        .setFahrgestellnummer(resultSet.getString("fahrgestellnummer"))
-                        .setKennzeichen(resultSet.getString("kennzeichen"))
-                        .setVertriebler(resultSet.getInt("vertriebler"))
-                        .setBaujahr(resultSet.getInt("baujahr"));
+                        .setHersteller(resultSet.getString(DBTables.Fahrzeug.COL_HERSTELLER))
+                        .setModell(resultSet.getString(DBTables.Fahrzeug.COL_MODELL))
+                        .setBeschreibung(resultSet.getString(DBTables.Fahrzeug.COL_BESCHREIBUNG))
+                        .setKraftstoff(resultSet.getString(DBTables.Fahrzeug.COL_KRAFTSTOFF))
+                        .setLocation(resultSet.getString(DBTables.Fahrzeug.COL_LOCATION))
+                        .setFahrgestellnummer(resultSet.getString(DBTables.Fahrzeug.COL_FAHRGESTELLNUMMER))
+                        .setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN))
+                        .setVertriebler(resultSet.getInt(DBTables.Fahrzeug.COL_VERTRIEBLER))
+                        .setBaujahr(resultSet.getInt(DBTables.Fahrzeug.COL_BAUJAHR));
 
                 fahrzeugList.add(fahrzeug);
             }
