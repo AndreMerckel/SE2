@@ -1,8 +1,12 @@
 package org.carlook.controller;
 
+import org.carlook.controller.exception.DatabaseException;
+import org.carlook.model.dao.FahrzeugDAO;
 import org.carlook.model.objects.dto.FahrzeugDTO;
+import org.carlook.model.objects.dto.FahrzeugSearchDTO;
+import org.carlook.model.objects.entities.Fahrzeug;
 
-public class FahrzeugControl {
+public class FahrzeugControl implements Register<Fahrzeug> {
 
     private static FahrzeugControl fahrzeugControl;
 
@@ -22,15 +26,16 @@ public class FahrzeugControl {
      * Erstellung von einem Fahrzeug durch einen Vertriebsmitarbeiter
      * @param fahrzeug
      */
-    public void insert(FahrzeugDTO fahrzeug)  {
-
+    @Override
+    public void register (Fahrzeug fahrzeug) throws DatabaseException {
+        FahrzeugDAO.getInstance().register(fahrzeug);
     }
 
     /**
      * Reservierung eines Fahrzeuges druch einen Kunden
      * @param fahrzeug
      */
-    public void reserve(FahrzeugControl fahrzeug) {
+    public void reserve(FahrzeugDTO fahrzeug) {
 
     }
 
@@ -38,7 +43,7 @@ public class FahrzeugControl {
      * Entfernt ein Fahrzeug aus der Datenbank (nur Backend-Methode)
      * @param fahrzeugControl
      */
-    public void delete(FahrzeugControl fahrzeugControl) {
+    public void delete(Fahrzeug fahrzeugControl) {
 
     }
 

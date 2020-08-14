@@ -1,12 +1,20 @@
 package org.carlook.model.objects.dto;
 
+/**
+ * DTO-Klasse als Transfer von Erstellung zu DB
+ */
 public class FahrzeugDTO {
-    String marke, modell, kraftstoff, location;
-    VertrieblerDTO vertrieblerDTO;
-    int baujahr;
+
+    String marke, modell, beschreibung, kraftstoff, location, fahrgestellnummer, kennzeichen;
+    int vertriebler, baujahr;
 
     public FahrzeugDTO setMarke(String marks) {
         this.marke = marke;
+        return this;
+    }
+
+    public FahrzeugDTO setBeschreibung(String beschreibung) {
+        this.beschreibung = beschreibung;
         return this;
     }
 
@@ -27,6 +35,10 @@ public class FahrzeugDTO {
 
     public String getMarke() {
         return marke;
+    }
+
+    public String getBeschreibung() {
+        return beschreibung;
     }
 
     public String getModell() {
@@ -51,12 +63,30 @@ public class FahrzeugDTO {
         return this;
     }
 
-    public VertrieblerDTO getVertrieblerDTO() {
-        return vertrieblerDTO;
+    public String getFahrgestellnummer() {
+        return fahrgestellnummer;
     }
 
-    public FahrzeugDTO setVertrieblerDTO(VertrieblerDTO vertrieblerDTO) {
-        this.vertrieblerDTO = vertrieblerDTO;
+    public FahrzeugDTO setFahrgestellnummer(String fahrgestellnummer) {
+        this.fahrgestellnummer = fahrgestellnummer;
+        return this;
+    }
+
+    public String getKennzeichen() {
+        return kennzeichen;
+    }
+
+    public FahrzeugDTO setKennzeichen(String kennzeichen) {
+        this.kennzeichen = kennzeichen;
+        return this;
+    }
+
+    public int getVertriebler() {
+        return vertriebler;
+    }
+
+    public FahrzeugDTO setVertriebler(int vertriebler) {
+        this.vertriebler = vertriebler;
         return this;
     }
 }

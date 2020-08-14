@@ -72,7 +72,7 @@ public class DBTables {
 
         public static final String NAME = "fahrzeug";
 
-        public static final String COL_MARKE = "marke";
+        public static final String COL_HERSTELLER = "hersteller";
         public static final String COL_BESCHREIBUNG = "beschreibung";
         public static final String COL_KRAFTSTOFF = "kraftstoff";
         public static final String COL_BAUJAHR = "baujahr";
@@ -85,14 +85,14 @@ public class DBTables {
         public static final String TAB = SCHEMA + connector + PRAEFIX_TAB + NAME;
 
         public static final String CREATE_TAB = "CREATE TABLE " + TAB + " (" +
-                COL_MARKE + " VARCHAR(255) NOT NULL," +
+                COL_HERSTELLER + " VARCHAR(255) NOT NULL," +
                 COL_BESCHREIBUNG + " VARCHAR(255) NOT NULL," +
                 COL_KRAFTSTOFF + " VARCHAR(255) NOT NULL," +
                 COL_BAUJAHR + " NUMERIC(4) NOT NULL," +
                 COL_MODELL + " VARCHAR(255) NOT NULL," +
                 COL_FAHRGESTELLNUMMER + " VARCHAR(255) NOT NULL," +
                 COL_KENNZEICHEN + " VARCHAR(255) NOT NULL UNIQUE," +
-                COL_VERTRIEBLER + " INTEGER NOT NULL UNIQUE," +
+                COL_VERTRIEBLER + " INTEGER NOT NULL," +
                 COL_LOCATION + " VARCHAR(255) NOT NULL," +
                 "CONSTRAINT pk_" + NAME + " PRIMARY KEY (" + COL_KENNZEICHEN +")," +
                 "CONSTRAINT fk_" + Vertriebler.NAME + " FOREIGN KEY (" + Vertriebler.NAME + ") REFERENCES " + Vertriebler.TAB + " (" + Vertriebler.COL_VERTRIEBLERNUMMER + ")" +

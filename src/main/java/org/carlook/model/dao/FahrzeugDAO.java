@@ -1,7 +1,7 @@
 package org.carlook.model.dao;
 
 import org.carlook.controller.exception.DatabaseException;
-import org.carlook.model.objects.dto.FahrzeugDTO;
+import org.carlook.model.objects.dto.FahrzeugSearchDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
@@ -32,10 +32,10 @@ public class FahrzeugDAO extends AbstractDAO {
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
 
-        sqlBefehl = "INSERT INTO " + table + " ("+DBTables.Fahrzeug.COL_MARKE+","+DBTables.Fahrzeug.COL_BESCHREIBUNG+","+DBTables.Fahrzeug.COL_KRAFTSTOFF+","+DBTables.Fahrzeug.COL_BAUJAHR+","+DBTables.Fahrzeug.COL_MODELL+","+DBTables.Fahrzeug.COL_FAHRGESTELLNUMMER+","+DBTables.Fahrzeug.COL_KENNZEICHEN+","+DBTables.Fahrzeug.COL_VERTRIEBLER+","+DBTables.Fahrzeug.COL_LOCATION+") VALUES (?,?,?,?,?,?,?,?,?)";
+        sqlBefehl = "INSERT INTO " + table + " ("+DBTables.Fahrzeug.COL_HERSTELLER +","+DBTables.Fahrzeug.COL_BESCHREIBUNG+","+DBTables.Fahrzeug.COL_KRAFTSTOFF+","+DBTables.Fahrzeug.COL_BAUJAHR+","+DBTables.Fahrzeug.COL_MODELL+","+DBTables.Fahrzeug.COL_FAHRGESTELLNUMMER+","+DBTables.Fahrzeug.COL_KENNZEICHEN+","+DBTables.Fahrzeug.COL_VERTRIEBLER+","+DBTables.Fahrzeug.COL_LOCATION+") VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
         try {
-            preparedStatement.setString(1, fahrzeug.getMarke());
+            preparedStatement.setString(1, fahrzeug.getHersteller());
             preparedStatement.setString(2, fahrzeug.getBeschreibung());
             preparedStatement.setString(3, fahrzeug.getKraftstoff());
             preparedStatement.setInt(4, fahrzeug.getBaujahr());
@@ -47,7 +47,7 @@ public class FahrzeugDAO extends AbstractDAO {
 
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
@@ -77,7 +77,7 @@ public class FahrzeugDAO extends AbstractDAO {
         return fetchFahrzeuge(fahrzeugeList, resultSet);
     }
 
-    public List<Fahrzeug> getFahrzeugByValue(FahrzeugDTO fahrzeugDTO) throws DatabaseException {
+    public List<Fahrzeug> getFahrzeugByValue(FahrzeugSearchDTO fahrzeugSearchDTO) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         List<Fahrzeug> fahrzeugeList = new ArrayList<>();
 
@@ -86,12 +86,12 @@ public class FahrzeugDAO extends AbstractDAO {
         String marke, modell, kraftstoff, location;
         int baujahr, columnCounter;
 
-        marke = fahrzeugDTO.getMarke().trim();
-        modell = fahrzeugDTO.getModell().trim();
-        kraftstoff = fahrzeugDTO.getKraftstoff().trim();
-        location = fahrzeugDTO.getLocation().trim();
+        marke = fahrzeugSearchDTO.getMarke().trim();
+        modell = fahrzeugSearchDTO.getModell().trim();
+        kraftstoff = fahrzeugSearchDTO.getKraftstoff().trim();
+        location = fahrzeugSearchDTO.getLocation().trim();
         //TODO - baujahr ist 0 falls keine Eingabe erfolgt ist
-        baujahr = fahrzeugDTO.getBaujahr();
+        baujahr = fahrzeugSearchDTO.getBaujahr();
 
         columnCounter = 0;
 
@@ -111,7 +111,7 @@ public class FahrzeugDAO extends AbstractDAO {
                 } else {
                     sqlBefehl += "AND ";
                 }
-                sqlBefehl += DBTables.Fahrzeug.COL_MARKE + " = ?";
+                sqlBefehl += DBTables.Fahrzeug.COL_HERSTELLER + " = ?";
                 preparedStatement.setString(++columnCounter, marke);
             }
 
@@ -188,7 +188,7 @@ public class FahrzeugDAO extends AbstractDAO {
         try {
             while (resultSet.next()) {
                 Fahrzeug fahrzeug = new Fahrzeug()
-                        .setMarke(resultSet.getString("marke"))
+                        .setHersteller(resultSet.getString("marke"))
                         .setModell(resultSet.getString("modell"))
                         .setBeschreibung(resultSet.getString("beschreibung"))
                         .setKraftstoff(resultSet.getString("kraftstoff"))

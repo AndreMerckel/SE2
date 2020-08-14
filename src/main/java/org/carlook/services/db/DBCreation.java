@@ -1,6 +1,7 @@
 package org.carlook.services.db;
 
 import org.carlook.controller.exception.DatabaseException;
+import org.carlook.services.exampleData.ExampleData;
 import org.carlook.services.util.DBTables;
 
 import java.sql.PreparedStatement;
@@ -36,10 +37,9 @@ public class DBCreation {
         PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
         try {
             statement.execute();
-            System.out.println("Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich hinzugefuegt!");
+            Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, "Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich hinzugefuegt!\n");
         } catch (SQLException e) {
             Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, null, e);
-            System.out.println(DBTables.CREATE_ALL_TABLES);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
@@ -58,7 +58,7 @@ public class DBCreation {
         PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
         try {
             statement.execute();
-            System.out.println("Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich entfernt!");
+            Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, "Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich entfernt!\n");
         } catch (SQLException e) {
             Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, null, e);
         } finally {

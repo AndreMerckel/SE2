@@ -1,11 +1,11 @@
 package org.carlook.model.objects.entities;
 
 public class Fahrzeug {
-    String marke, modell, beschreibung, kraftstoff, location, fahrgestellnummer, kennzeichen;
+    String hersteller, modell, beschreibung, kraftstoff, location, fahrgestellnummer, kennzeichen;
     int vertriebler, baujahr;
 
-    public Fahrzeug setMarke(String marks) {
-        this.marke = marke;
+    public Fahrzeug setHersteller(String hersteller) {
+        this.hersteller = hersteller;
         return this;
     }
 
@@ -29,8 +29,8 @@ public class Fahrzeug {
         return this;
     }
 
-    public String getMarke() {
-        return marke;
+    public String getHersteller() {
+        return hersteller;
     }
 
     public String getBeschreibung() {
