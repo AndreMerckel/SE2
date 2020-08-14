@@ -17,22 +17,12 @@ public class DBCreation {
 
     private static List<String> loadTablesToList() {
         List<String> tableCreation = new ArrayList<>();
-        tableCreation.add(DBTables.CREATE_TAB_USER);
-        tableCreation.add(DBTables.CREATE_TAB_KUNDE);
-        tableCreation.add(DBTables.CREATE_TAB_VERTRIEBLER);
-        tableCreation.add(DBTables.CREATE_TAB_FAHRZEUG);
-        tableCreation.add(DBTables.CREATE_TAB_KUNDE_RESERVIERRT_FAHRZEUG);
+        tableCreation.add(DBTables.User.CREATE_TAB);
+        tableCreation.add(DBTables.Kunde.CREATE_TAB);
+        tableCreation.add(DBTables.Vertriebler.CREATE_TAB);
+        tableCreation.add(DBTables.Fahrzeug.CREATE_TAB);
+        tableCreation.add(DBTables.KundeReserviertFahrzeug.CREATE_TAB);
         return tableCreation;
-    }
-
-    private static List<String> loadTableNames() {
-        List<String> tableNames = new ArrayList<>();
-        tableNames.add(DBTables.TAB_USER);
-        tableNames.add(DBTables.TAB_KUNDE);
-        tableNames.add(DBTables.TAB_VERTRIEBLER);
-        tableNames.add(DBTables.TAB_FAHRZEUG);
-        tableNames.add(DBTables.TAB_KUNDE_RESERVIERRT_FAHRZEUG);
-        return tableNames;
     }
 
     public static void executeCreate() throws DatabaseException {
@@ -49,6 +39,7 @@ public class DBCreation {
             System.out.println("Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich hinzugefuegt!");
         } catch (SQLException e) {
             Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(DBTables.CREATE_ALL_TABLES);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
