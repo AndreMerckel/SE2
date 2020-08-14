@@ -1,18 +1,27 @@
 package org.carlook.controller;
 
-import org.carlook.model.dao.FahrzeugDAO;
 import org.carlook.model.dao.UserDAO;
 import org.carlook.model.objects.dto.UserDTO;
 import org.carlook.controller.exception.DatabaseException;
-import org.carlook.controller.exception.RegisterFailException;
 import org.carlook.services.util.StatusUser;
 
 
-public class RegistrationControl {
+public class UserControl implements Register<UserDTO> {
+
+    private static UserControl userControl;
+
+    private UserControl() {}
+
+    public static synchronized UserControl getInstance() {
+
+        if (userControl == null) userControl = new UserControl();
+
+        return userControl;
+    }
 
 
-
-    public static void register(UserDTO userDTO) throws DatabaseException {
+    @Override
+    public void register(UserDTO userDTO) throws DatabaseException {
         //TODO - check if user is alreader registered
 
         //TODO - check role of user
