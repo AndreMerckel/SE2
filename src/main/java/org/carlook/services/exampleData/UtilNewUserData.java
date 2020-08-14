@@ -1,4 +1,4 @@
-package org.carlook.services.exampleData.UserData;
+package org.carlook.services.exampleData;
 
 import java.util.ArrayList;
 import java.util.Iterator;

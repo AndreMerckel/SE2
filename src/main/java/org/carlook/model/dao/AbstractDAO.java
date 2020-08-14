@@ -2,10 +2,14 @@ package org.carlook.model.dao;
 
 import org.carlook.controller.LoginControl;
 import org.carlook.controller.exception.DatabaseException;
+import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.services.db.JDBCConnection;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

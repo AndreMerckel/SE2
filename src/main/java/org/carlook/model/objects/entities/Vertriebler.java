@@ -1,6 +1,6 @@
 package org.carlook.model.objects.entities;
 
-public class Vertriebler {
+public class Vertriebler extends User {
     int vertriebnummer;
 
     public int getVertriebnummer() {
