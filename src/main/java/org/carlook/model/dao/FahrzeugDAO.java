@@ -128,7 +128,7 @@ public class FahrzeugDAO extends AbstractDAO {
                 preparedStatement.setString(++columnCounter, modell);
             }
 
-            if (!kraftstoff.isEmpty()) { //Modell
+            if (!kraftstoff.isEmpty()) { //Kraftstoff
                 if (!hasWHERE) {
                     hasWHERE = true;
                     sqlBefehl += "WHERE ";
@@ -140,7 +140,7 @@ public class FahrzeugDAO extends AbstractDAO {
                 preparedStatement.setString(++columnCounter, kraftstoff);
             }
 
-            if (!location.isEmpty()) { //Modell
+            if (!location.isEmpty()) { //Location
                 if (!hasWHERE) {
                     hasWHERE = true;
                     sqlBefehl += "WHERE ";
@@ -152,7 +152,7 @@ public class FahrzeugDAO extends AbstractDAO {
                 preparedStatement.setString(++columnCounter, location);
             }
 
-            if (baujahr == 0) { //Modell
+            if (baujahr == 0) { //Baujahr
                 if (!hasWHERE) {
                     hasWHERE = true;
                     sqlBefehl += "WHERE ";
