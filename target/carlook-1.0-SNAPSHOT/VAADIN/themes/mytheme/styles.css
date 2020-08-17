@@ -15534,3 +15534,94 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .v-slot-header_menuBox {
 	height: auto;
 }
+
+.mytheme .panel {
+	padding: 1rem;
+}
+
+.mytheme .loginButton {
+	background-color: blue;
+}
+
+.mytheme .v-button:hover:after {
+	box-shadow: none;
+}
+
+.mytheme .v-button {
+	width: 200px;
+	height: 47px;
+	border: none;
+	outline: none;
+	color: white;
+	box-shadow: none;
+	background-image: none;
+}
+
+.mytheme .v-button:focus:after {
+	outline: none;
+	box-shadow: none;
+}
+
+.mytheme .v-button:active {
+	opacity: 50%;
+}
+
+.mytheme .header_main {
+	align-self: center;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+	position: relative;
+	padding: 10px 10px 10px 10px;
+}
+
+.mytheme .header_main_logo {
+	color: white;
+	padding: 0px;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.mytheme .header_main_menuBox {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+
+.mytheme .header_main_menuBox_headLabel {
+	color: black;
+	font-weight: bold;
+	padding: 10px;
+	font-size: 12px;
+}
+
+.mytheme .v-slot-header_main_menuBox {
+	width: 100%;
+}
+
+.mytheme .v-slot-header_main {
+	display: flex;
+	justify-content: center;
+}
+
+.mytheme .v-slot-header_menuBox {
+	height: auto;
+}
+
+.mytheme .v-slot-footer_main {
+	margin-top: auto;
+	width: 100%;
+}
+
+.mytheme .footer_main {
+	display: flex;
+	align-self: center;
+	justify-content: center;
+	padding: 10px;
+}
+
+.mytheme .footer_main_container {
+	border-top: 1px solid rgba(0, 0, 0, 0.5);
+}

@@ -1,5 +1,6 @@
 package org.carlook.gui.components;
 
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 
@@ -14,10 +15,8 @@ public class Footer extends HorizontalLayout{
 
 
         Label copyRight = new Label("- Carlook, coded by: André Merkel, Martin Müller -");
-        copyRight.addStyleName("footer_main_container_copyRight");
-
         hlayout.addComponent(copyRight);
+        hlayout.setComponentAlignment(copyRight, Alignment.MIDDLE_CENTER);
         this.addComponent(hlayout);
-
     }
 }

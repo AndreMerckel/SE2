@@ -9,6 +9,9 @@ import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.NoSuchUserOrPassword;
 import org.carlook.gui.components.*;
 import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
+import org.carlook.model.objects.entities.User;
+import org.carlook.services.util.Roles;
+import org.carlook.services.util.Views;
 
 
 public class LoginView extends VerticalLayout implements View {
@@ -16,48 +19,31 @@ public class LoginView extends VerticalLayout implements View {
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
 
-        /*
+
         User user = (User) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER);
 
         if(user == null) {
             this.setUp();
         } else {
-            UI.getCurrent().getNavigator().navigateTo(Views.MAIN);
+            UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
         };
-        */
-    this.setUp();
-
     }
 
     public LoginView(){};
 
     public void setUp() {
+        this.setSizeFull();
         addComponent(new Header(false));
 
-        // this is a unique build of the login view. It should not be excluded within its own file!
-        this.setStyleName("layout_loginRegister");
-        HorizontalLayout body = new HorizontalLayout();
-        body.addStyleName("login_container");
-        // this is a unique build of the login view. It should not be excluded within its own file!
+        VerticalLayout layout = new VerticalLayout();
 
-        VerticalLayout leftPage = new VerticalLayout();
-        leftPage.setStyleName("login_leftPane");
-        Label pageLogo = new Label();
-        pageLogo.setStyleName("login_pageLogo");
-        leftPage.addComponent(pageLogo);
-        Label title = new Label("Login");
-        title.setStyleName("login_title");
-        leftPage.addComponent(title);
-        // this is a unique build of the login view. It should not be excluded within its own file!
-
-        Label icon = new Label("");
-        icon.setIcon(VaadinIcons.SIGN_IN);
-        icon.setStyleName("login_icon");
-        leftPage.addComponent(icon);
-
-
-        VerticalLayout rightPane = new VerticalLayout();
-        rightPane.addStyleName("login_rightPane");
+        Panel panel = new Panel("Bitte einloggen:");
+        this.addComponent(panel);
+        this.setComponentAlignment(panel, Alignment.MIDDLE_CENTER);
+        panel.addStyleName("login");
+        panel.setContent(layout);
+        panel.setStyleName("panel");
+        panel.setSizeUndefined();
 
 
         Label emailFieldLabel = new Label();
@@ -70,21 +56,23 @@ public class LoginView extends VerticalLayout implements View {
         TextFieldWithIcon passwortTextField = new TextFieldWithIcon("Passwort", passwortFieldLabel, true);
 
         Button loginButton = new Button("Login");
-        loginButton.setStyleName("login_button");
-        loginButton.setId("loginButton");
-        rightPane.addComponent(emailTextField);
-        rightPane.addComponent(passwortTextField);
-        rightPane.addComponent(loginButton);
+        loginButton.setStyleName("loginButton");
 
+        Button switchRegister = new Button("Switch to Register");
+        switchRegister.setStyleName("switchRegisterButton");
 
-        body.addComponent(leftPage);
-        body.addComponent(rightPane);
+        layout.addComponent(emailTextField);
+        layout.addComponent(passwortTextField);
+        HorizontalLayout buttonBar = new HorizontalLayout();
+        buttonBar.addComponent(switchRegister);
+        buttonBar.addComponent(loginButton);
+        layout.addComponent(buttonBar);
 
-        this.addComponent(body);
-        this.addComponent(new Footer());
+        addComponent(new Footer());
+
 
         //Component Logic
-/*
+
         loginButton.addClickListener(e ->{
             String email = emailTextField.getValue();
             String password = passwortTextField.getValue();
@@ -101,21 +89,9 @@ public class LoginView extends VerticalLayout implements View {
                 passwortTextField.setValue("");        }
         });
 
-        passwordVergessenLink.addClickListener(e->{
-            //this.removeComponent(body);
-            // body.removeComponent(rightPane);
-            rightPane.removeComponent(passwortTextField);
-            rightPane.removeComponent(loginButton);
-            rightPane.removeComponent(passwordVergessenLink);
-            rightPane.addComponent(sendCodeButton);
-            // body.addComponent(rightPane);
-            // this.addComponent(body);
+        switchRegister.addClickListener(e ->{
+            UI.getCurrent().getNavigator().navigateTo(Views.REGISTER);
         });
-
-        sendCodeButton.addClickListener(e->{
-            rightPane.removeComponent(sendCodeButton);
-        });
-*/
     }
 
 

@@ -1,6 +1,8 @@
 package org.carlook.model.objects.entities;
 
-public class Fahrzeug {
+import org.carlook.services.util.GridProps;
+
+public class Fahrzeug implements GridProps<String, Integer> {
     String hersteller, modell, beschreibung, kraftstoff, location, fahrgestellnummer, kennzeichen;
     int vertriebler, baujahr;
 
@@ -49,7 +51,7 @@ public class Fahrzeug {
         return location;
     }
 
-    public int getBaujahr() {
+    public Integer getBaujahr() {
         return baujahr;
     }
 
@@ -77,7 +79,7 @@ public class Fahrzeug {
         return this;
     }
 
-    public int getVertriebler() {
+    public Integer getVertriebler() {
         return vertriebler;
     }
 
