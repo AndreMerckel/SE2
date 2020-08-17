@@ -13,6 +13,7 @@ import org.carlook.gui.components.Footer;
 import org.carlook.gui.components.Header;
 import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
 import org.carlook.model.dao.FahrzeugDAO;
+import org.carlook.model.objects.dto.VertrieblerDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.User;
 import org.carlook.model.objects.entities.Vertriebler;
@@ -73,9 +74,9 @@ public class SalesView extends VerticalLayout implements View {
 
     public List<Fahrzeug> fetchFahrzeugeVonVertriebler(Vertriebler vertriebler){
         List<Fahrzeug> fahrzeuglist = new ArrayList<>();
-
+        
         try{
-            fahrzeuglist = FahrzeugDAO.getInstance().getFahrzeugeCreatedByVertriebler(vertriebler);
+            fahrzeuglist = FahrzeugDAO.getInstance().getFahrzeugeByVertriebler(vertriebler);
         } catch(Error | DatabaseException ex) {
             Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
