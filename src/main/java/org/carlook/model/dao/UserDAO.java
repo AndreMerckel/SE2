@@ -31,7 +31,7 @@ public class UserDAO extends AbstractDAO {
         return userDAO;
     }
 
-    public void register(UserDTO userDTO, StatusUser statusUser) throws DatabaseException {
+    public UserDTO register(UserDTO userDTO, StatusUser statusUser) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String email, sqlBefehl;
 
@@ -55,13 +55,13 @@ public class UserDAO extends AbstractDAO {
             preparedStatement.setString(5,email);
 
 
-
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
+        return userDTO;
     }
 
     public int getVertrieblerNummer(String email) throws DatabaseException {
@@ -118,11 +118,12 @@ public class UserDAO extends AbstractDAO {
         return res;
     }
 
-    public boolean isPasswordCorrect(String email, String password) throws DatabaseException {
+    public UserDTO isPasswordCorrect(String email, String password) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         ResultSet resultSet = null;
+        UserDTO user = new UserDTO();
 
-        String sqlBefehl = "SELECT email  FROM " + table + " WHERE email = ? AND password = ?;";
+        String sqlBefehl = "SELECT *  FROM " + table + " WHERE email = ? AND password = ?;";
         PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
 
         boolean result = false;
@@ -132,16 +133,22 @@ public class UserDAO extends AbstractDAO {
 
             resultSet = preparedStatement.executeQuery();
 
-            assert resultSet != null;
 
-            result = resultSet.next();
+
+            if(resultSet.next()) {
+                user.setEmail(resultSet.getString("email"));
+                user.setVorname(resultSet.getString("vorname"));
+                user.setNachname(resultSet.getString("nachname"));
+            }
         } catch (SQLException throwables) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
-        return result;
+        return user;
     }
+
+
 
     public StatusUser getStatus(String email) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();

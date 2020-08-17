@@ -1,6 +1,6 @@
 package org.carlook.model.objects.dto;
 
-public class VertrieblerDTO {
+public class VertrieblerDTO extends UserDTO{
 
     int vertriebnummer;
 

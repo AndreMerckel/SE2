@@ -1,6 +1,6 @@
 package org.carlook.model.objects.dto;
 
-public class KundeDTO {
+public class KundeDTO extends UserDTO{
 
     private int kundennummer;
 
