@@ -10,12 +10,12 @@ public class UtilNewUserData {
     public static String getFormat(String s, List<String> attList) {
 
 
-        String res = "list = new ArrayList<>();";
+        String res = "";
         int usrCounter = 0;
         Scanner sc = new Scanner(s);
         while (sc.hasNext()) {
             Iterator<String> it = attList.iterator();
-            res += "\nlist.add(Factories.createNewFahrzeug().set" + it.next() + "(";
+            res += "\nlist.add(DTOFactory.createNewUserDTO().set" + it.next() + "(";
             String tmpLine = sc.nextLine().trim();
             String tmpArg = "";
             for (int i = 0; i < (tmpLine.length()); ++i) {
@@ -161,18 +161,66 @@ public class UtilNewUserData {
 
     public static void printUserData() {
         List<String> list = new ArrayList<>();
-        list.add("Hersteller");
-        list.add("Beschreibung");
-        list.add("Kraftstoff");
-        list.add("Baujahr");
-        list.add("Modell");
-        list.add("Fahrgestellnummer");
-        list.add("Kennzeichen");
-        list.add("Vertriebler");
-        list.add("Location");
+        list.add("Vorname");
+        list.add("Nachname");
+        list.add("Email");
+        list.add("Password");
+
+        String s = "Rafaelita,Snartt,rafaelita.snartt@carlook.de,463xtqPiOE\n" +
+                "Philly,Warratt,philly.warratt@carlook.de,3aeVurH\n" +
+                "Gerry,Burgne,gerry.burgne@carlook.de,LTE9H0\n" +
+                "Yorker,Lauks,yorker.lauks@carlook.de,UeUIoe8K\n" +
+                "Cozmo,Cotman,cozmo.cotman@carlook.de,77h7jRNgMK8d\n" +
+                "Dallis,Swinn,dallis.swinn@carlook.de,c4XuioOy1\n" +
+                "Elenore,Armer,elenore.armer@carlook.de,hlnb72hER\n" +
+                "Dorie,Flukes,dorie.flukes@carlook.de,If862GQVp737\n" +
+                "Gabriela,Trimming,gabriela.trimming@carlook.de,RrB8GBOsnK\n" +
+                "Carson,Ellse,carson.ellse@carlook.de,zOQYJhUb\n" +
+                "Jessy,Defty,jessy.defty@carlook.de,l0RViAFIG\n" +
+                "Chickie,Margetts,chickie.margetts@carlook.de,ZCTN2mz3\n" +
+                "Hershel,Champneys,hershel.champneys@carlook.de,699IRccKn\n" +
+                "Susana,Kubacek,susana.kubacek@carlook.de,C6P523m\n" +
+                "Victoria,McVittie,victoria.mcvittie@carlook.de,BPuZxt0zz\n" +
+                "Claudian,Rubert,claudian.rubert@carlook.de,el2bqE8rAV\n" +
+                "Erie,Bare,erie.bare@carlook.de,ZSYDNsgAWfmS\n" +
+                "Lira,Penreth,lira.penreth@carlook.de,T1moWVJ\n" +
+                "Orlando,Luck,orlando.luck@carlook.de,W6CasQK1O\n" +
+                "Mickey,Shoubridge,mickey.shoubridge@carlook.de,ecFyMMmGg6\n" +
+                "Isak,Pilger,isak.pilger@carlook.de,flfcbC\n" +
+                "Xaviera,Gellibrand,xaviera.gellibrand@carlook.de,bLTYdYVyP3\n" +
+                "Tim,Koubek,tim.koubek@carlook.de,7RIQexxVy\n" +
+                "Eryn,Autin,eryn.autin@carlook.de,2Vi1uSsZ5N\n" +
+                "Saxon,Fanner,saxon.fanner@carlook.de,bIa6PKbf\n" +
+                "Mireielle,Rafferty,mireielle.rafferty@carlook.de,sDLMJh5xe4\n" +
+                "Berkly,Titterton,berkly.titterton@carlook.de,vXR8Ipwud\n" +
+                "Menard,Ruilton,menard.ruilton@carlook.de,tvP7AtROFIb\n" +
+                "Kim,Danbye,kim.danbye@carlook.de,jAM8qz4\n" +
+                "Vinny,Quelch,vinny.quelch@carlook.de,9LB81X\n" +
+                "Northrop,Fryers,northrop.fryers@carlook.de,o95H3uJuKRR\n" +
+                "Niko,Bulle,niko.bulle@carlook.de,AH1jOfOXB\n" +
+                "Marylin,Orteaux,marylin.orteaux@carlook.de,Bo93i4Cmdv\n" +
+                "Jasen,Chinnick,jasen.chinnick@carlook.de,xbCw3P4J\n" +
+                "Susy,Trunkfield,susy.trunkfield@carlook.de,EzH9nH\n" +
+                "Deerdre,Prendiville,deerdre.prendiville@carlook.de,sOnOjut\n" +
+                "Cortney,Currell,cortney.currell@carlook.de,Uw3lomHlHKVd\n" +
+                "Terence,Koschek,terence.koschek@carlook.de,CWDNEzQiSW\n" +
+                "Noelani,Ferreiro,noelani.ferreiro@carlook.de,bZmaS6bImv\n" +
+                "Stephana,Pattini,stephana.pattini@carlook.de,rSC8hr\n" +
+                "Zita,MacKeogh,zita.mackeogh@carlook.de,iIeRwI\n" +
+                "Minda,Clardge,minda.clardge@carlook.de,g6SM2g2X5\n" +
+                "Melisent,Moyse,melisent.moyse@carlook.de,ettzpK1f\n" +
+                "Cornell,Stanyon,cornell.stanyon@carlook.de,JyCLjSIu9\n" +
+                "Eveleen,Temporal,eveleen.temporal@carlook.de,fuaqgvdY\n" +
+                "Eward,Breem,eward.breem@carlook.de,3dXGPumsqzgg\n" +
+                "Hermy,Richford,hermy.richford@carlook.de,ADIlP1Y0TDd\n" +
+                "Todd,Bluett,todd.bluett@carlook.de,8dQm6V\n" +
+                "Christiano,Nuzzetti,christiano.nuzzetti@carlook.de,xCoIz31\n" +
+                "Fritz,Borris,fritz.borris@carlook.de,9YZV63";
+
+        System.out.println(getFormat(s,list));
     }
 
     public static void main(String[] args) {
-        printFahrzeugData();
+        printUserData();
     }
 }
