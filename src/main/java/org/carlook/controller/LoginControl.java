@@ -5,17 +5,16 @@ import com.vaadin.ui.UI;
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.NoSuchUserOrPassword;
 import org.carlook.model.dao.UserDAO;
+import org.carlook.model.objects.dto.ReservationDTO;
 import org.carlook.model.objects.dto.UserDTO;
 import org.carlook.model.objects.entities.Kunde;
-import org.carlook.model.objects.entities.User;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
+import org.carlook.services.util.Parameter;
 import org.carlook.services.util.Roles;
 import org.carlook.services.util.StatusUser;
 import org.carlook.services.util.Views;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -106,9 +105,25 @@ public class LoginControl {
 
     }
 
+    public static void register(UserDTO userDTO) throws DatabaseException {
+        register(userDTO.getEmail(), userDTO.getPassword(), userDTO.getVorname(), userDTO.getNachname());
+    }
+
     public static void logoutUser() {
         UI.getCurrent().getSession().close();
         UI.getCurrent().getPage().setLocation(Views.LOGIN);
+    }
+
+    public static void registerAdmin(UserDTO userDTO) {
+
+        StatusUser statusUser = userDTO.getEmail().trim().equals((userDTO.getVorname() + "." + userDTO.getNachname() + Parameter.COMPANY_MAIL_ADDRESS).toLowerCase()) ? StatusUser.VERTRIEBLER : StatusUser.KUNDE;
+        try {
+            UserDAO.getInstance().register(userDTO, statusUser);
+        }
+        catch (DatabaseException ex) {
+            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     //Helper

@@ -191,12 +191,75 @@ public class UserDAO extends AbstractDAO {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
         } finally {
             JDBCConnection.getInstance().closeConnection();
+
         }
         return result;
 
     }
 
+    public int size() throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
 
+        String sqlBefehl = "SELECT Count(*) FROM " + table + ";";
 
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
 
+        ResultSet resultSet = null;
+        int res = 0;
+        try {
+            resultSet = preparedStatement.executeQuery();
+
+            resultSet.next();
+            res = resultSet.getInt(1);
+        } catch (SQLException throwables) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return res;
+    }
+
+    public int sizeKunde() throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+
+        String sqlBefehl = "SELECT Count(*) FROM " + DBTables.Kunde.TAB + ";";
+
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
+
+        ResultSet resultSet = null;
+        int res = 0;
+        try {
+            resultSet = preparedStatement.executeQuery();
+
+            resultSet.next();
+            res = resultSet.getInt(1);
+        } catch (SQLException throwables) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return res;
+    }
+
+    public int sizeVertriebler() throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+
+        String sqlBefehl = "SELECT Count(*) FROM " + DBTables.Vertriebler.TAB + ";";
+
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
+
+        ResultSet resultSet = null;
+        int res = 0;
+        try {
+            resultSet = preparedStatement.executeQuery();
+
+            resultSet.next();
+            res = resultSet.getInt(1);
+        } catch (SQLException throwables) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return res;
+    }
 }
