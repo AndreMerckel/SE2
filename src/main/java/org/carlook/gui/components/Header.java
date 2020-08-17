@@ -27,8 +27,9 @@ public class Header extends HorizontalLayout {
         // USER FETCHING
         UserDTO user = (UserDTO) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER);
 
-            Label headLabel = new Label("Logged in as: " + (user instanceof VertrieblerDTO ? Roles.VERTRIEBLER + ": " + ((VertrieblerDTO) user).getVorname() + " " + user.getNachname() + ", "+ user.getNachname() : user instanceof CustomerDTO ? Roles.KUNDE + ": " + user.getVorname() + ", " + user.getNachname() : ""));
-            headLabel.addStyleName("header_main_menuBox_headLabel");
+        //TODO - Rolle anhand einer Datanbank abfrage erfragen
+        Label headLabel = new Label("Logged in as: " + (user instanceof VertrieblerDTO ? Roles.VERTRIEBLER + ": " + ((VertrieblerDTO) user).getVorname() + " " + user.getNachname() + ", "+ user.getNachname() : user instanceof CustomerDTO ? Roles.KUNDE + ": " + user.getVorname() + ", " + user.getNachname() : ""));
+        headLabel.addStyleName("header_main_menuBox_headLabel");
 
         headLogo.addClickListener(e ->{
             if(user instanceof VertrieblerDTO){

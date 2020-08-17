@@ -2,7 +2,7 @@ package org.carlook.services.util;
 
 public class DBTables {
 
-    public static final String SCHEMA = Paramter.COMPANY_NAME.toLowerCase();
+    public static final String SCHEMA = Paramter.COMPANY_NAME.toLowerCase().trim();
 
     private static final String connector = ".";
     public static final String PRAEFIX_TAB = "dbs_tab_";
