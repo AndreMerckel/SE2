@@ -1,10 +1,10 @@
 package org.carlook.model.dao;
 
 import org.carlook.controller.exception.DatabaseException;
+import org.carlook.factories.DTOFactory;
 import org.carlook.model.objects.dto.FahrzeugDTO;
 import org.carlook.model.objects.dto.KundeDTO;
 import org.carlook.model.objects.dto.ReservationDTO;
-import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.DBTables;
 
@@ -19,9 +19,12 @@ import java.util.logging.Logger;
 public class ReservationDAO extends AbstractDAO {
 
     private static ReservationDAO reservationDAO;
+
     private String table = DBTables.KundeReserviertFahrzeug.TAB;
 
-    private ReservationDAO() {}
+    private ReservationDAO() {
+
+    }
 
     public static synchronized ReservationDAO getInstance() {
 
@@ -29,7 +32,8 @@ public class ReservationDAO extends AbstractDAO {
         return reservationDAO;
     }
 
-    public void create(ReservationDTO reservationDTO) throws DatabaseException {
+    public void insert(ReservationDTO reservationDTO) throws DatabaseException {
+
         JDBCConnection.getInstance().openConnection();
         String email, sqlBefehl;
 
@@ -39,8 +43,8 @@ public class ReservationDAO extends AbstractDAO {
         PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
 
         try {
-            preparedStatement.setInt(1,reservationDTO.getKundennummer());
-            preparedStatement.setString(2,reservationDTO.getKennzeichen());
+            preparedStatement.setInt(1,reservationDTO.getKundeDTO().getKundennummer());
+            preparedStatement.setString(2,reservationDTO.getFahrzeugDTO().getKennzeichen());
 
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
@@ -99,10 +103,10 @@ public class ReservationDAO extends AbstractDAO {
         List<ReservationDTO> reservationList = new ArrayList<>();
         try {
             while (resultSet.next()) {
-                ReservationDTO reservationDTO = new ReservationDTO()
-                        .setKundennummer(resultSet.getInt(DBTables.Kunde.COL_KUNDENNUMMER))
-                        .setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN));
-                reservationList.add(reservationDTO);
+                KundeDTO kundeDTO = DTOFactory.createNewKundeDTO().setKundennummer(resultSet.getInt(DBTables.Kunde.COL_KUNDENNUMMER));
+                FahrzeugDTO fahrzeugDTO = DTOFactory.createNewFahrzeugDTO().setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN));
+
+                reservationList.add(DTOFactory.createNewReservationDTO().setFahrzeugDTO(fahrzeugDTO).setKundeDTO(kundeDTO));
             }
 
         } catch (SQLException e) {

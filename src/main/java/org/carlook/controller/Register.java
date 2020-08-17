@@ -13,6 +13,12 @@ public interface Register<T> {
      * @param obj
      * @throws DatabaseException
      */
-    public void register(T obj) throws DatabaseException;
+    default void register(T obj) throws DatabaseException {
+        throw new UnsupportedOperationException();
+    }
+
+    default <G> void register(T obj, G obj2) throws DatabaseException {
+        throw new UnsupportedOperationException();
+    }
 
 }

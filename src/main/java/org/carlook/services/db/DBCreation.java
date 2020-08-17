@@ -39,7 +39,8 @@ public class DBCreation {
             statement.execute();
             Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, "Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich hinzugefuegt!\n");
         } catch (SQLException e) {
-            Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, sqlBefehl, e);
+            return;
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
@@ -72,6 +73,7 @@ public class DBCreation {
             executeCreate();
         } catch (DatabaseException e) {
             Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, null, e);
+            return;
         }
     }
 

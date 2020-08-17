@@ -1,6 +1,6 @@
 package org.carlook.services.util;
 
-public class Paramter {
+public class Parameter {
 
     public static final String COMPANY_NAME = "CarLook";
     public static final String COMPANY_LEGAL_FORM = "Ltd.";
