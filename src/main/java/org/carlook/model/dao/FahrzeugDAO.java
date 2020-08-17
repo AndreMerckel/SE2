@@ -201,7 +201,7 @@ public class FahrzeugDAO extends AbstractDAO implements FetchFahrzeugInterface {
         return list;
     }
 
-    public List<Fahrzeug> getFahrzeugeByVertriebler(VertrieblerDTO vertrieblerDTO) throws DatabaseException {
+    public List<Fahrzeug> getFahrzeugeByVertriebler(Vertriebler vertriebler) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         List<Fahrzeug> fahrzeugeList = new ArrayList<>();
 
@@ -210,7 +210,7 @@ public class FahrzeugDAO extends AbstractDAO implements FetchFahrzeugInterface {
         ResultSet resultSet = null;
 
         try {
-            statement.setInt(1,vertrieblerDTO.getVertriebnummer());
+            statement.setInt(1,vertriebler.getVertriebnummer());
             resultSet = statement.executeQuery();
         } catch (SQLException throwables) {
             Logger.getLogger(FahrzeugDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
