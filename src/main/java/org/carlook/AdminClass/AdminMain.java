@@ -8,7 +8,7 @@ public class AdminMain {
     public static void main (String[] args) {
 
         DBCreation.refreshTables();
-        ExampleData.insertAllExamples();
+        ExampleData.initAllExamples();
 
 
 

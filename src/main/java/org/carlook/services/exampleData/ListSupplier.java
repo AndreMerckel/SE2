@@ -1,11 +1,21 @@
 package org.carlook.services.exampleData;
 
+import org.carlook.controller.exception.DatabaseException;
+import org.carlook.factories.DTOFactory;
 import org.carlook.factories.Factories;
+import org.carlook.model.dao.FahrzeugDAO;
+import org.carlook.model.dao.KundeReserviertFahrzeugDAO;
+import org.carlook.model.objects.dto.FahrzeugDTO;
+import org.carlook.model.objects.dto.KundeDTO;
+import org.carlook.model.objects.dto.ReservationDTO;
 import org.carlook.model.objects.dto.UserDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ListSupplier {
 
@@ -17,109 +27,109 @@ public class ListSupplier {
             List<UserDTO> list = dataList;
             if (dataList == null) {
                 list = new ArrayList<>();
-                list.add(Factories.createNewUserDTO().setVorname("Kata").setNachname("Cadge").setEmail("kcadge0@blogtalkradio.com").setPassword("yWOW3U2"));
-                list.add(Factories.createNewUserDTO().setVorname("Calley").setNachname("Fernier").setEmail("cfernier1@nba.com").setPassword("Fk5rA1J8kfV"));
-                list.add(Factories.createNewUserDTO().setVorname("Trey").setNachname("Yendle").setEmail("tyendle2@macromedia.com").setPassword("UMq8X"));
-                list.add(Factories.createNewUserDTO().setVorname("Sabina").setNachname("Moubray").setEmail("smoubray3@archive.org").setPassword("Wmjpa2SSo"));
-                list.add(Factories.createNewUserDTO().setVorname("Linn").setNachname("Instock").setEmail("linstock4@apache.org").setPassword("nB4QYEnmvo"));
-                list.add(Factories.createNewUserDTO().setVorname("Ives").setNachname("Embling").setEmail("iembling5@nps.gov").setPassword("SUIiWHV"));
-                list.add(Factories.createNewUserDTO().setVorname("Edgard").setNachname("Bussetti").setEmail("ebussetti6@mapy.cz").setPassword("4JPZFwg"));
-                list.add(Factories.createNewUserDTO().setVorname("Mei").setNachname("Carus").setEmail("mcarus7@whitehouse.gov").setPassword("h5dSnuEhKF"));
-                list.add(Factories.createNewUserDTO().setVorname("Kittie").setNachname("Bentjens").setEmail("kbentjens8@soup.io").setPassword("I6Qar6Dgl"));
-                list.add(Factories.createNewUserDTO().setVorname("Mildrid").setNachname("Daubney").setEmail("mdaubney9@infoseek.co.jp").setPassword("kRXdROC9467"));
-                list.add(Factories.createNewUserDTO().setVorname("Neall").setNachname("Wahlberg").setEmail("nwahlberga@mediafire.com").setPassword("G5GLG"));
-                list.add(Factories.createNewUserDTO().setVorname("Anica").setNachname("Jewers").setEmail("ajewersb@weather.com").setPassword("XfrEY4dJz"));
-                list.add(Factories.createNewUserDTO().setVorname("Francyne").setNachname("Kristufek").setEmail("fkristufekc@tiny.cc").setPassword("nWREOYyYmt"));
-                list.add(Factories.createNewUserDTO().setVorname("Rochelle").setNachname("Poure").setEmail("rpoured@loc.gov").setPassword("FMyfTx"));
-                list.add(Factories.createNewUserDTO().setVorname("Truda").setNachname("Boulsher").setEmail("tboulshere@infoseek.co.jp").setPassword("BSrhnKz"));
-                list.add(Factories.createNewUserDTO().setVorname("Puff").setNachname("Sanja").setEmail("psanjaf@mapy.cz").setPassword("h7bnMU"));
-                list.add(Factories.createNewUserDTO().setVorname("Crawford").setNachname("Jancik").setEmail("cjancikg@istockphoto.com").setPassword("2SUzfJoK"));
-                list.add(Factories.createNewUserDTO().setVorname("Julie").setNachname("Van Hesteren").setEmail("jvanhesterenh@blogs.com").setPassword("utqUSCYRzC0"));
-                list.add(Factories.createNewUserDTO().setVorname("Ninon").setNachname("Giacopini").setEmail("ngiacopinii@columbia.edu").setPassword("7RfpY6ty"));
-                list.add(Factories.createNewUserDTO().setVorname("Katie").setNachname("Willavize").setEmail("kwillavizej@japanpost.jp").setPassword("ASYFOfOpX"));
-                list.add(Factories.createNewUserDTO().setVorname("Pooh").setNachname("Dryden").setEmail("pdrydenk@smh.com.au").setPassword("f05RCQxE"));
-                list.add(Factories.createNewUserDTO().setVorname("Northrup").setNachname("Mogenot").setEmail("nmogenotl@behance.net").setPassword("FQKiL9fA"));
-                list.add(Factories.createNewUserDTO().setVorname("Nan").setNachname("Durrad").setEmail("ndurradm@google.com.au").setPassword("31qz4yYH"));
-                list.add(Factories.createNewUserDTO().setVorname("Ivor").setNachname("Trowell").setEmail("itrowelln@cyberchimps.com").setPassword("5Q3nvBw"));
-                list.add(Factories.createNewUserDTO().setVorname("Timofei").setNachname("Aspland").setEmail("tasplando@howstuffworks.com").setPassword("Eob8szsQJwO"));
-                list.add(Factories.createNewUserDTO().setVorname("Breena").setNachname("Stairs").setEmail("bstairsp@github.io").setPassword("OBa8YfZ"));
-                list.add(Factories.createNewUserDTO().setVorname("Kikelia").setNachname("Gallandre").setEmail("kgallandreq@joomla.org").setPassword("pHo9lL"));
-                list.add(Factories.createNewUserDTO().setVorname("Orrin").setNachname("Royle").setEmail("oroyler@admin.ch").setPassword("kgTAEkx21"));
-                list.add(Factories.createNewUserDTO().setVorname("Lanette").setNachname("Lammie").setEmail("llammies@amazon.co.uk").setPassword("WELPAgKEK4a"));
-                list.add(Factories.createNewUserDTO().setVorname("Amandy").setNachname("Andree").setEmail("aandreet@istockphoto.com").setPassword("HidbL"));
-                list.add(Factories.createNewUserDTO().setVorname("Ellsworth").setNachname("Fosberry").setEmail("efosberryu@github.com").setPassword("vKcg2trd45i"));
-                list.add(Factories.createNewUserDTO().setVorname("Lars").setNachname("Rubbert").setEmail("lrubbertv@cloudflare.com").setPassword("taxLa"));
-                list.add(Factories.createNewUserDTO().setVorname("Ricoriki").setNachname("Vuittet").setEmail("rvuittetw@businessweek.com").setPassword("7ATcA8tzF6"));
-                list.add(Factories.createNewUserDTO().setVorname("Solomon").setNachname("Cowdray").setEmail("scowdrayx@bloomberg.com").setPassword("keSfxQJ"));
-                list.add(Factories.createNewUserDTO().setVorname("Niall").setNachname("Portlock").setEmail("nportlocky@g.co").setPassword("RNVPG"));
-                list.add(Factories.createNewUserDTO().setVorname("Heindrick").setNachname("Rickcord").setEmail("hrickcordz@blogs.com").setPassword("SuTbmEEDF"));
-                list.add(Factories.createNewUserDTO().setVorname("Cooper").setNachname("Zanre").setEmail("czanre10@arizona.edu").setPassword("cZQfx92CbI"));
-                list.add(Factories.createNewUserDTO().setVorname("Merralee").setNachname("Gibben").setEmail("mgibben11@rambler.ru").setPassword("IDGINndFowb"));
-                list.add(Factories.createNewUserDTO().setVorname("Roderick").setNachname("Doyland").setEmail("rdoyland12@posterous.com").setPassword("c0B3mZf236j"));
-                list.add(Factories.createNewUserDTO().setVorname("Ham").setNachname("Huckle").setEmail("hhuckle13@chicagotribune.com").setPassword("Fj3Mf"));
-                list.add(Factories.createNewUserDTO().setVorname("Olivia").setNachname("Wade").setEmail("owade14@scribd.com").setPassword("a1azKOPLv6"));
-                list.add(Factories.createNewUserDTO().setVorname("Ginelle").setNachname("Vain").setEmail("gvain15@ocn.ne.jp").setPassword("3q9Wg"));
-                list.add(Factories.createNewUserDTO().setVorname("Laurella").setNachname("Bischop").setEmail("lbischop16@tripadvisor.com").setPassword("xcHvKZdlzD"));
-                list.add(Factories.createNewUserDTO().setVorname("Suzann").setNachname("Coe").setEmail("scoe17@auda.org.au").setPassword("FpKirI25kN"));
-                list.add(Factories.createNewUserDTO().setVorname("Jameson").setNachname("Walaron").setEmail("jwalaron18@51.la").setPassword("vtI7jF93ODY"));
-                list.add(Factories.createNewUserDTO().setVorname("Adena").setNachname("Cancelier").setEmail("acancelier19@apple.com").setPassword("esIrv2E2y1"));
-                list.add(Factories.createNewUserDTO().setVorname("Darnall").setNachname("Lafaye").setEmail("dlafaye1a@wordpress.org").setPassword("E1jhOa"));
-                list.add(Factories.createNewUserDTO().setVorname("Costa").setNachname("Paulig").setEmail("cpaulig1b@cyberchimps.com").setPassword("0GoxQX"));
-                list.add(Factories.createNewUserDTO().setVorname("Vivianna").setNachname("Mardlin").setEmail("vmardlin1c@cam.ac.uk").setPassword("paxvbl"));
-                list.add(Factories.createNewUserDTO().setVorname("Archy").setNachname("Ellsbury").setEmail("aellsbury1d@bizjournals.com").setPassword("LVvqhK1gP"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Kata").setNachname("Cadge").setEmail("kcadge0@blogtalkradio.com").setPassword("yWOW3U2"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Calley").setNachname("Fernier").setEmail("cfernier1@nba.com").setPassword("Fk5rA1J8kfV"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Trey").setNachname("Yendle").setEmail("tyendle2@macromedia.com").setPassword("UMq8X"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Sabina").setNachname("Moubray").setEmail("smoubray3@archive.org").setPassword("Wmjpa2SSo"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Linn").setNachname("Instock").setEmail("linstock4@apache.org").setPassword("nB4QYEnmvo"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Ives").setNachname("Embling").setEmail("iembling5@nps.gov").setPassword("SUIiWHV"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Edgard").setNachname("Bussetti").setEmail("ebussetti6@mapy.cz").setPassword("4JPZFwg"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Mei").setNachname("Carus").setEmail("mcarus7@whitehouse.gov").setPassword("h5dSnuEhKF"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Kittie").setNachname("Bentjens").setEmail("kbentjens8@soup.io").setPassword("I6Qar6Dgl"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Mildrid").setNachname("Daubney").setEmail("mdaubney9@infoseek.co.jp").setPassword("kRXdROC9467"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Neall").setNachname("Wahlberg").setEmail("nwahlberga@mediafire.com").setPassword("G5GLG"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Anica").setNachname("Jewers").setEmail("ajewersb@weather.com").setPassword("XfrEY4dJz"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Francyne").setNachname("Kristufek").setEmail("fkristufekc@tiny.cc").setPassword("nWREOYyYmt"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Rochelle").setNachname("Poure").setEmail("rpoured@loc.gov").setPassword("FMyfTx"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Truda").setNachname("Boulsher").setEmail("tboulshere@infoseek.co.jp").setPassword("BSrhnKz"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Puff").setNachname("Sanja").setEmail("psanjaf@mapy.cz").setPassword("h7bnMU"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Crawford").setNachname("Jancik").setEmail("cjancikg@istockphoto.com").setPassword("2SUzfJoK"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Julie").setNachname("Van Hesteren").setEmail("jvanhesterenh@blogs.com").setPassword("utqUSCYRzC0"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Ninon").setNachname("Giacopini").setEmail("ngiacopinii@columbia.edu").setPassword("7RfpY6ty"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Katie").setNachname("Willavize").setEmail("kwillavizej@japanpost.jp").setPassword("ASYFOfOpX"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Pooh").setNachname("Dryden").setEmail("pdrydenk@smh.com.au").setPassword("f05RCQxE"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Northrup").setNachname("Mogenot").setEmail("nmogenotl@behance.net").setPassword("FQKiL9fA"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Nan").setNachname("Durrad").setEmail("ndurradm@google.com.au").setPassword("31qz4yYH"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Ivor").setNachname("Trowell").setEmail("itrowelln@cyberchimps.com").setPassword("5Q3nvBw"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Timofei").setNachname("Aspland").setEmail("tasplando@howstuffworks.com").setPassword("Eob8szsQJwO"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Breena").setNachname("Stairs").setEmail("bstairsp@github.io").setPassword("OBa8YfZ"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Kikelia").setNachname("Gallandre").setEmail("kgallandreq@joomla.org").setPassword("pHo9lL"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Orrin").setNachname("Royle").setEmail("oroyler@admin.ch").setPassword("kgTAEkx21"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Lanette").setNachname("Lammie").setEmail("llammies@amazon.co.uk").setPassword("WELPAgKEK4a"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Amandy").setNachname("Andree").setEmail("aandreet@istockphoto.com").setPassword("HidbL"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Ellsworth").setNachname("Fosberry").setEmail("efosberryu@github.com").setPassword("vKcg2trd45i"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Lars").setNachname("Rubbert").setEmail("lrubbertv@cloudflare.com").setPassword("taxLa"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Ricoriki").setNachname("Vuittet").setEmail("rvuittetw@businessweek.com").setPassword("7ATcA8tzF6"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Solomon").setNachname("Cowdray").setEmail("scowdrayx@bloomberg.com").setPassword("keSfxQJ"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Niall").setNachname("Portlock").setEmail("nportlocky@g.co").setPassword("RNVPG"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Heindrick").setNachname("Rickcord").setEmail("hrickcordz@blogs.com").setPassword("SuTbmEEDF"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Cooper").setNachname("Zanre").setEmail("czanre10@arizona.edu").setPassword("cZQfx92CbI"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Merralee").setNachname("Gibben").setEmail("mgibben11@rambler.ru").setPassword("IDGINndFowb"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Roderick").setNachname("Doyland").setEmail("rdoyland12@posterous.com").setPassword("c0B3mZf236j"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Ham").setNachname("Huckle").setEmail("hhuckle13@chicagotribune.com").setPassword("Fj3Mf"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Olivia").setNachname("Wade").setEmail("owade14@scribd.com").setPassword("a1azKOPLv6"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Ginelle").setNachname("Vain").setEmail("gvain15@ocn.ne.jp").setPassword("3q9Wg"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Laurella").setNachname("Bischop").setEmail("lbischop16@tripadvisor.com").setPassword("xcHvKZdlzD"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Suzann").setNachname("Coe").setEmail("scoe17@auda.org.au").setPassword("FpKirI25kN"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Jameson").setNachname("Walaron").setEmail("jwalaron18@51.la").setPassword("vtI7jF93ODY"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Adena").setNachname("Cancelier").setEmail("acancelier19@apple.com").setPassword("esIrv2E2y1"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Darnall").setNachname("Lafaye").setEmail("dlafaye1a@wordpress.org").setPassword("E1jhOa"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Costa").setNachname("Paulig").setEmail("cpaulig1b@cyberchimps.com").setPassword("0GoxQX"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Vivianna").setNachname("Mardlin").setEmail("vmardlin1c@cam.ac.uk").setPassword("paxvbl"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Archy").setNachname("Ellsbury").setEmail("aellsbury1d@bizjournals.com").setPassword("LVvqhK1gP"));
 
                 // Vertriebler
 
-                list.add(Factories.createNewUserDTO().setVorname("Richie").setNachname("Wainscot").setEmail("rwainscot0@carlook.de").setPassword("kz9gZs"));
-                list.add(Factories.createNewUserDTO().setVorname("Kimball").setNachname("Chessun").setEmail("kchessun1@carlook.de").setPassword("3COw0c"));
-                list.add(Factories.createNewUserDTO().setVorname("Nichole").setNachname("Nann").setEmail("nnann2@carlook.de").setPassword("xKrezzhY0"));
-                list.add(Factories.createNewUserDTO().setVorname("Hetty").setNachname("Pesik").setEmail("hpesik3@carlook.de").setPassword("VU3kLqw"));
-                list.add(Factories.createNewUserDTO().setVorname("Bernice").setNachname("Chalice").setEmail("bchalice4@carlook.de").setPassword("NXrPh"));
-                list.add(Factories.createNewUserDTO().setVorname("Janela").setNachname("Nuschke").setEmail("jnuschke5@carlook.de").setPassword("mqhvgLeHKB"));
-                list.add(Factories.createNewUserDTO().setVorname("Donia").setNachname("Garnam").setEmail("dgarnam6@carlook.de").setPassword("gE0FY"));
-                list.add(Factories.createNewUserDTO().setVorname("Nariko").setNachname("Western").setEmail("nwestern7@carlook.de").setPassword("OafvUGsemQ"));
-                list.add(Factories.createNewUserDTO().setVorname("Cullin").setNachname("Monketon").setEmail("cmonketon8@carlook.de").setPassword("IQs9Nob9Ldo"));
-                list.add(Factories.createNewUserDTO().setVorname("Jaquelyn").setNachname("Del Castello").setEmail("jdelcastello9@carlook.de").setPassword("HqWZwo2rXl"));
-                list.add(Factories.createNewUserDTO().setVorname("Sean").setNachname("Garber").setEmail("sgarbera@carlook.de").setPassword("WuP9aMAEv8"));
-                list.add(Factories.createNewUserDTO().setVorname("Cornela").setNachname("Iddens").setEmail("ciddensb@carlook.de").setPassword("SMcvlG"));
-                list.add(Factories.createNewUserDTO().setVorname("Claretta").setNachname("Watton").setEmail("cwattonc@carlook.de").setPassword("r4HdeojAq8"));
-                list.add(Factories.createNewUserDTO().setVorname("Quintina").setNachname("Jellett").setEmail("qjellettd@carlook.de").setPassword("mA0qErG8"));
-                list.add(Factories.createNewUserDTO().setVorname("Moina").setNachname("Skene").setEmail("mskenee@carlook.de").setPassword("kb1RvQQDa"));
-                list.add(Factories.createNewUserDTO().setVorname("Read").setNachname("Master").setEmail("rmasterf@carlook.de").setPassword("Fv5hpGBSE"));
-                list.add(Factories.createNewUserDTO().setVorname("Filberte").setNachname("Prue").setEmail("fprueg@carlook.de").setPassword("mPt3ffpx"));
-                list.add(Factories.createNewUserDTO().setVorname("Garvin").setNachname("Brithman").setEmail("gbrithmanh@carlook.de").setPassword("BvrIqj"));
-                list.add(Factories.createNewUserDTO().setVorname("Emmery").setNachname("Matz").setEmail("ematzi@carlook.de").setPassword("OUpIdEdDB"));
-                list.add(Factories.createNewUserDTO().setVorname("Yetty").setNachname("Jagoe").setEmail("yjagoej@carlook.de").setPassword("kU4vXdXQx"));
-                list.add(Factories.createNewUserDTO().setVorname("Burt").setNachname("Batchley").setEmail("bbatchleyk@carlook.de").setPassword("nkvk6k"));
-                list.add(Factories.createNewUserDTO().setVorname("Trisha").setNachname("Mullender").setEmail("tmullenderl@carlook.de").setPassword("RREkoLBy"));
-                list.add(Factories.createNewUserDTO().setVorname("Toma").setNachname("Kassidy").setEmail("tkassidym@carlook.de").setPassword("6yp3Slo7X"));
-                list.add(Factories.createNewUserDTO().setVorname("Cathlene").setNachname("Billany").setEmail("cbillanyn@carlook.de").setPassword("uloxLSzSf9H"));
-                list.add(Factories.createNewUserDTO().setVorname("Lucille").setNachname("Brightling").setEmail("lbrightlingo@carlook.de").setPassword("fH8Z7fBH"));
-                list.add(Factories.createNewUserDTO().setVorname("Guillemette").setNachname("Hallowell").setEmail("ghallowellp@carlook.de").setPassword("0hI8BkLs7"));
-                list.add(Factories.createNewUserDTO().setVorname("Killian").setNachname("Shearsby").setEmail("kshearsbyq@carlook.de").setPassword("V0BLZOokuQd"));
-                list.add(Factories.createNewUserDTO().setVorname("Wynn").setNachname("Epps").setEmail("weppsr@carlook.de").setPassword("BGxB2Hw2Y"));
-                list.add(Factories.createNewUserDTO().setVorname("Ethelyn").setNachname("Pennino").setEmail("epenninos@carlook.de").setPassword("Wq8sJ5"));
-                list.add(Factories.createNewUserDTO().setVorname("Reider").setNachname("Lacotte").setEmail("rlacottet@carlook.de").setPassword("UNZsX5aF7Lw"));
-                list.add(Factories.createNewUserDTO().setVorname("Brandy").setNachname("Ormonde").setEmail("bormondeu@carlook.de").setPassword("H09f56rTynM"));
-                list.add(Factories.createNewUserDTO().setVorname("Barney").setNachname("Pethybridge").setEmail("bpethybridgev@carlook.de").setPassword("gMwBJQ0ML6"));
-                list.add(Factories.createNewUserDTO().setVorname("Billie").setNachname("D'Antoni").setEmail("bdantoniw@carlook.de").setPassword("nmeltFqZZx"));
-                list.add(Factories.createNewUserDTO().setVorname("Elie").setNachname("Trudgian").setEmail("etrudgianx@carlook.de").setPassword("eoodCd2we"));
-                list.add(Factories.createNewUserDTO().setVorname("Pippy").setNachname("Korneichik").setEmail("pkorneichiky@carlook.de").setPassword("V9wXhF"));
-                list.add(Factories.createNewUserDTO().setVorname("Sigrid").setNachname("Heam").setEmail("sheamz@carlook.de").setPassword("aHIf9SV5yUr"));
-                list.add(Factories.createNewUserDTO().setVorname("Rawley").setNachname("Sheahan").setEmail("rsheahan10@carlook.de").setPassword("8AKk8RBPA"));
-                list.add(Factories.createNewUserDTO().setVorname("Tuck").setNachname("Shrimpling").setEmail("tshrimpling11@carlook.de").setPassword("buhGVmvHjq2"));
-                list.add(Factories.createNewUserDTO().setVorname("Brade").setNachname("Starmer").setEmail("bstarmer12@carlook.de").setPassword("jXpsuve"));
-                list.add(Factories.createNewUserDTO().setVorname("Tyson").setNachname("Haresnape").setEmail("tharesnape13@carlook.de").setPassword("EYZP4l2"));
-                list.add(Factories.createNewUserDTO().setVorname("Zonda").setNachname("Bullas").setEmail("zbullas14@carlook.de").setPassword("tXDJ37KjD"));
-                list.add(Factories.createNewUserDTO().setVorname("Nicki").setNachname("Prayer").setEmail("nprayer15@carlook.de").setPassword("oYaOp"));
-                list.add(Factories.createNewUserDTO().setVorname("Harald").setNachname("Lever").setEmail("hlever16@carlook.de").setPassword("Y2EtMM6D"));
-                list.add(Factories.createNewUserDTO().setVorname("Esmeralda").setNachname("Batchellor").setEmail("ebatchellor17@carlook.de").setPassword("iXFuzg"));
-                list.add(Factories.createNewUserDTO().setVorname("Bendix").setNachname("Moloney").setEmail("bmoloney18@carlook.de").setPassword("r0Giy"));
-                list.add(Factories.createNewUserDTO().setVorname("Catherine").setNachname("Satterly").setEmail("csatterly19@carlook.de").setPassword("73L4qw6s1"));
-                list.add(Factories.createNewUserDTO().setVorname("Emmye").setNachname("Ossulton").setEmail("eossulton1a@carlook.de").setPassword("mEoJvfyW"));
-                list.add(Factories.createNewUserDTO().setVorname("Tova").setNachname("Lamond").setEmail("tlamond1b@carlook.de").setPassword("P1EHyGQiX"));
-                list.add(Factories.createNewUserDTO().setVorname("Paola").setNachname("Castles").setEmail("pcastles1c@carlook.de").setPassword("fNOSW1UlM"));
-                list.add(Factories.createNewUserDTO().setVorname("Mile").setNachname("McDonnell").setEmail("mmcdonnell1d@carlook.de").setPassword("TuKtBDiaVUn"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Richie").setNachname("Wainscot").setEmail("rwainscot0@carlook.de").setPassword("kz9gZs"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Kimball").setNachname("Chessun").setEmail("kchessun1@carlook.de").setPassword("3COw0c"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Nichole").setNachname("Nann").setEmail("nnann2@carlook.de").setPassword("xKrezzhY0"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Hetty").setNachname("Pesik").setEmail("hpesik3@carlook.de").setPassword("VU3kLqw"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Bernice").setNachname("Chalice").setEmail("bchalice4@carlook.de").setPassword("NXrPh"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Janela").setNachname("Nuschke").setEmail("jnuschke5@carlook.de").setPassword("mqhvgLeHKB"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Donia").setNachname("Garnam").setEmail("dgarnam6@carlook.de").setPassword("gE0FY"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Nariko").setNachname("Western").setEmail("nwestern7@carlook.de").setPassword("OafvUGsemQ"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Cullin").setNachname("Monketon").setEmail("cmonketon8@carlook.de").setPassword("IQs9Nob9Ldo"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Jaquelyn").setNachname("Del Castello").setEmail("jdelcastello9@carlook.de").setPassword("HqWZwo2rXl"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Sean").setNachname("Garber").setEmail("sgarbera@carlook.de").setPassword("WuP9aMAEv8"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Cornela").setNachname("Iddens").setEmail("ciddensb@carlook.de").setPassword("SMcvlG"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Claretta").setNachname("Watton").setEmail("cwattonc@carlook.de").setPassword("r4HdeojAq8"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Quintina").setNachname("Jellett").setEmail("qjellettd@carlook.de").setPassword("mA0qErG8"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Moina").setNachname("Skene").setEmail("mskenee@carlook.de").setPassword("kb1RvQQDa"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Read").setNachname("Master").setEmail("rmasterf@carlook.de").setPassword("Fv5hpGBSE"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Filberte").setNachname("Prue").setEmail("fprueg@carlook.de").setPassword("mPt3ffpx"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Garvin").setNachname("Brithman").setEmail("gbrithmanh@carlook.de").setPassword("BvrIqj"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Emmery").setNachname("Matz").setEmail("ematzi@carlook.de").setPassword("OUpIdEdDB"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Yetty").setNachname("Jagoe").setEmail("yjagoej@carlook.de").setPassword("kU4vXdXQx"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Burt").setNachname("Batchley").setEmail("bbatchleyk@carlook.de").setPassword("nkvk6k"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Trisha").setNachname("Mullender").setEmail("tmullenderl@carlook.de").setPassword("RREkoLBy"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Toma").setNachname("Kassidy").setEmail("tkassidym@carlook.de").setPassword("6yp3Slo7X"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Cathlene").setNachname("Billany").setEmail("cbillanyn@carlook.de").setPassword("uloxLSzSf9H"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Lucille").setNachname("Brightling").setEmail("lbrightlingo@carlook.de").setPassword("fH8Z7fBH"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Guillemette").setNachname("Hallowell").setEmail("ghallowellp@carlook.de").setPassword("0hI8BkLs7"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Killian").setNachname("Shearsby").setEmail("kshearsbyq@carlook.de").setPassword("V0BLZOokuQd"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Wynn").setNachname("Epps").setEmail("weppsr@carlook.de").setPassword("BGxB2Hw2Y"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Ethelyn").setNachname("Pennino").setEmail("epenninos@carlook.de").setPassword("Wq8sJ5"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Reider").setNachname("Lacotte").setEmail("rlacottet@carlook.de").setPassword("UNZsX5aF7Lw"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Brandy").setNachname("Ormonde").setEmail("bormondeu@carlook.de").setPassword("H09f56rTynM"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Barney").setNachname("Pethybridge").setEmail("bpethybridgev@carlook.de").setPassword("gMwBJQ0ML6"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Billie").setNachname("D'Antoni").setEmail("bdantoniw@carlook.de").setPassword("nmeltFqZZx"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Elie").setNachname("Trudgian").setEmail("etrudgianx@carlook.de").setPassword("eoodCd2we"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Pippy").setNachname("Korneichik").setEmail("pkorneichiky@carlook.de").setPassword("V9wXhF"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Sigrid").setNachname("Heam").setEmail("sheamz@carlook.de").setPassword("aHIf9SV5yUr"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Rawley").setNachname("Sheahan").setEmail("rsheahan10@carlook.de").setPassword("8AKk8RBPA"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Tuck").setNachname("Shrimpling").setEmail("tshrimpling11@carlook.de").setPassword("buhGVmvHjq2"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Brade").setNachname("Starmer").setEmail("bstarmer12@carlook.de").setPassword("jXpsuve"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Tyson").setNachname("Haresnape").setEmail("tharesnape13@carlook.de").setPassword("EYZP4l2"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Zonda").setNachname("Bullas").setEmail("zbullas14@carlook.de").setPassword("tXDJ37KjD"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Nicki").setNachname("Prayer").setEmail("nprayer15@carlook.de").setPassword("oYaOp"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Harald").setNachname("Lever").setEmail("hlever16@carlook.de").setPassword("Y2EtMM6D"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Esmeralda").setNachname("Batchellor").setEmail("ebatchellor17@carlook.de").setPassword("iXFuzg"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Bendix").setNachname("Moloney").setEmail("bmoloney18@carlook.de").setPassword("r0Giy"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Catherine").setNachname("Satterly").setEmail("csatterly19@carlook.de").setPassword("73L4qw6s1"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Emmye").setNachname("Ossulton").setEmail("eossulton1a@carlook.de").setPassword("mEoJvfyW"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Tova").setNachname("Lamond").setEmail("tlamond1b@carlook.de").setPassword("P1EHyGQiX"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Paola").setNachname("Castles").setEmail("pcastles1c@carlook.de").setPassword("fNOSW1UlM"));
+                list.add(DTOFactory.createNewUserDTO().setVorname("Mile").setNachname("McDonnell").setEmail("mmcdonnell1d@carlook.de").setPassword("TuKtBDiaVUn"));
             }
 
             return list;
@@ -190,6 +200,7 @@ public class ListSupplier {
                 list.add(Factories.createNewFahrzeug().setHersteller("Volkswagen").setBeschreibung("Shalcras").setKraftstoff("Elektro").setBaujahr(2020).setModell("Edix").setFahrgestellnummer("2T1BU4EE5BC902466").setKennzeichen("SU-CL-7159").setVertriebler(46).setLocation("Sankt Augustin"));
                 list.add(Factories.createNewFahrzeug().setHersteller("Lexus").setBeschreibung("Low").setKraftstoff("Gas").setBaujahr(2017).setModell("Logo").setFahrgestellnummer("5GALRBED1AJ865583").setKennzeichen("SU-CL-0172").setVertriebler(18).setLocation("Bonn"));
                 list.add(Factories.createNewFahrzeug().setHersteller("GMC").setBeschreibung("Eldon").setKraftstoff("Gas").setBaujahr(2019).setModell("Civic").setFahrgestellnummer("WAUWFAFHXBN883202").setKennzeichen("SU-CL-6933").setVertriebler(9).setLocation("Bonn"));
+
                 list.add(Factories.createNewFahrzeug().setHersteller("Mercedes-Benz").setBeschreibung("Jelly").setKraftstoff("Gas").setBaujahr(2017).setModell("Insight").setFahrgestellnummer("WBAFR1C56BC806145").setKennzeichen("SU-CL-0132").setVertriebler(21).setLocation("Sankt Augustin"));
                 list.add(Factories.createNewFahrzeug().setHersteller("MINI").setBeschreibung("Saltsberger").setKraftstoff("Gas").setBaujahr(2020).setModell("Rafaga").setFahrgestellnummer("2G61W5S85F9312884").setKennzeichen("SU-CL-2748").setVertriebler(27).setLocation("München"));
                 list.add(Factories.createNewFahrzeug().setHersteller("Buick").setBeschreibung("Shimwall").setKraftstoff("Benzin").setBaujahr(2019).setModell("Rafaga").setFahrgestellnummer("W04GT5GCXB1724496").setKennzeichen("SU-CL-8355").setVertriebler(39).setLocation("Hamburg"));
@@ -239,5 +250,30 @@ public class ListSupplier {
         }
     }
 
+    public static class KundeResFahrzg {
+        private static List<ReservationDTO> dataList = null;
 
+        public static List<ReservationDTO> getList() {
+            if (dataList == null) {
+                List<String> listSign = null;
+                try {
+                    listSign = FahrzeugDAO.getInstance().getKennzeichenRandRows();
+                } catch (DatabaseException e) {
+                    Logger.getLogger(ExampleData.class.getName()).log(Level.SEVERE, null, e);
+                }
+
+                List<ReservationDTO> newDataList = new ArrayList<>();
+
+                for (String tmp : listSign) {
+
+                    KundeDTO kundeDTO = DTOFactory.createNewKundeDTO().setKundennummer(new Random().nextInt(49) + 1);
+                    FahrzeugDTO fahrzeugDTO = DTOFactory.createNewFahrzeugDTO().setKennzeichen(tmp);
+
+                    newDataList.add(DTOFactory.createNewReservationDTO().setFahrzeugDTO(fahrzeugDTO).setKundeDTO(kundeDTO));
+                }
+                dataList = newDataList;
+            }
+            return dataList;
+        }
+    }
 }

@@ -1,12 +1,16 @@
 package org.carlook.controller;
 
+import com.vaadin.server.VaadinSession;
 import org.carlook.controller.exception.DatabaseException;
+import org.carlook.controller.exception.RegisterFailedException;
+import org.carlook.factories.DTOFactory;
 import org.carlook.model.dao.FahrzeugDAO;
 import org.carlook.model.objects.dto.FahrzeugDTO;
-import org.carlook.model.objects.dto.FahrzeugSearchDTO;
+import org.carlook.model.objects.dto.VertrieblerDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
+import org.carlook.model.objects.entities.Vertriebler;
 
-public class FahrzeugControl implements Register<Fahrzeug> {
+public class FahrzeugControl {
 
     private static FahrzeugControl fahrzeugControl;
 
@@ -24,11 +28,10 @@ public class FahrzeugControl implements Register<Fahrzeug> {
 
     /**
      * Erstellung von einem Fahrzeug durch einen Vertriebsmitarbeiter
-     * @param fahrzeug
+     * @param fahrzeug, vertrieblerDTO
      */
-    @Override
-    public void register (Fahrzeug fahrzeug) throws DatabaseException {
-        FahrzeugDAO.getInstance().register(fahrzeug);
+    public void register(Fahrzeug fahrzeug, VertrieblerDTO vertrieblerDTO) throws DatabaseException, RegisterFailedException {
+        FahrzeugDAO.getInstance().register(fahrzeug, vertrieblerDTO);
     }
 
     /**
@@ -54,5 +57,6 @@ public class FahrzeugControl implements Register<Fahrzeug> {
     public void update(String fahrgestellnummer, String Kategorie, String newVal) {
 
     }
+
 
 }

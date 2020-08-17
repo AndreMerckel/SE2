@@ -1,10 +1,7 @@
 package org.carlook.model.dao;
 
 import org.carlook.controller.exception.DatabaseException;
-import org.carlook.model.objects.dto.ReservationDTO;
 import org.carlook.model.objects.dto.UserDTO;
-import org.carlook.model.objects.entities.User;
-import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.DBTables;
 import org.carlook.services.util.StatusUser;
@@ -12,8 +9,6 @@ import org.carlook.services.util.StatusUser;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

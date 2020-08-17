@@ -2,26 +2,24 @@ package org.carlook.model.objects.dto;
 
 public class ReservationDTO {
 
-    int kundennummer;
+    public KundeDTO kundeDTO;
+    public FahrzeugDTO fahrzeugDTO;
 
-    String kennzeichen;
-
-
-    public String getKennzeichen() {
-        return kennzeichen;
+    public KundeDTO getKundeDTO() {
+        return kundeDTO;
     }
 
-    public ReservationDTO setKennzeichen(String kennzeichen) {
-        this.kennzeichen = kennzeichen;
+    public ReservationDTO setKundeDTO(KundeDTO kundeDTO) {
+        this.kundeDTO = kundeDTO;
         return this;
     }
 
-    public int getKundennummer() {
-        return kundennummer;
+    public FahrzeugDTO getFahrzeugDTO() {
+        return fahrzeugDTO;
     }
 
-    public ReservationDTO setKundennummer(int kundennummer) {
-        this.kundennummer = kundennummer;
+    public ReservationDTO setFahrzeugDTO(FahrzeugDTO fahrzeugDTO) {
+        this.fahrzeugDTO = fahrzeugDTO;
         return this;
     }
 }

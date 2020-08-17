@@ -8,7 +8,8 @@ public class KundeDTO extends UserDTO{
         return kundennummer;
     }
 
-    public void setKundennummer(int kundennummer) {
+    public KundeDTO setKundennummer(int kundennummer) {
         this.kundennummer = kundennummer;
+        return this;
     }
 }

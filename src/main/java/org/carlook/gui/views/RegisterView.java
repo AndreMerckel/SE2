@@ -6,7 +6,6 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
 import org.carlook.controller.LoginControl;
 import org.carlook.controller.exception.DatabaseException;
-import org.carlook.controller.exception.RegisterFailException;
 import org.carlook.gui.components.Footer;
 import org.carlook.gui.components.Header;
 import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
