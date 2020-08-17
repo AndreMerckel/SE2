@@ -2,7 +2,7 @@ package org.carlook.services.util;
 
 public class DBTables {
 
-    public static final String SCHEMA = "carlook";
+    public static final String SCHEMA = Paramter.COMPANY_NAME.toLowerCase();
 
     private static final String connector = ".";
     public static final String PRAEFIX_TAB = "dbs_tab_";
@@ -14,7 +14,7 @@ public class DBTables {
             Fahrzeug.CREATE_TAB + "\n" +
             KundeReserviertFahrzeug.CREATE_TAB;
 
-    public class User {
+    public static class User {
 
         public static final String NAME = "user";
 
@@ -35,7 +35,7 @@ public class DBTables {
 
     }
 
-    public class Kunde {
+    public static class Kunde {
 
         public static final String NAME = "kunde";
 
@@ -52,7 +52,7 @@ public class DBTables {
 
     }
 
-    public class Vertriebler {
+    public static class Vertriebler {
 
         public static final String NAME = "vertriebler";
 
@@ -68,7 +68,7 @@ public class DBTables {
                 ");";
     }
 
-    public class Fahrzeug {
+    public static class Fahrzeug {
 
         public static final String NAME = "fahrzeug";
 
@@ -99,7 +99,7 @@ public class DBTables {
                 ");";
     }
 
-    public class KundeReserviertFahrzeug {
+    public static class KundeReserviertFahrzeug {
 
         public static final String NAME = Kunde.NAME + "_reserviert_" + Fahrzeug.NAME;
 
