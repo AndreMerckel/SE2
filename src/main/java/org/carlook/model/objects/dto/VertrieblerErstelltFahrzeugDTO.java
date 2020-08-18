@@ -1,5 +1,7 @@
 package org.carlook.model.objects.dto;
 
+import org.carlook.model.objects.entities.Vertriebler;
+
 public class VertrieblerErstelltFahrzeugDTO {
 
     public VertrieblerDTO vertrieblerDTO ;
@@ -9,7 +11,7 @@ public class VertrieblerErstelltFahrzeugDTO {
         return vertrieblerDTO;
     }
 
-    public VertrieblerErstelltFahrzeugDTO setVertrieblerDTO(VertrieblerDTO vertrieblerDTO) {
+    public VertrieblerErstelltFahrzeugDTO setVertrieblerDTO(Vertriebler vertriebler) {
         this.vertrieblerDTO = vertrieblerDTO;
         return this;
     }

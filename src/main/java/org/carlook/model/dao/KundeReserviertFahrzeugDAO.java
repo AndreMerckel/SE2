@@ -58,6 +58,21 @@ public class KundeReserviertFahrzeugDAO extends AbstractDAO implements FetchFahr
         try {
             statement.setInt(1,kundeDTO.getKundennummer());
             resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Fahrzeug fahrzeug = new Fahrzeug()
+                        .setHersteller(resultSet.getString(DBTables.Fahrzeug.COL_HERSTELLER))
+                        .setModell(resultSet.getString(DBTables.Fahrzeug.COL_MODELL))
+                        .setBeschreibung(resultSet.getString(DBTables.Fahrzeug.COL_BESCHREIBUNG))
+                        .setKraftstoff(resultSet.getString(DBTables.Fahrzeug.COL_KRAFTSTOFF))
+                        .setLocation(resultSet.getString(DBTables.Fahrzeug.COL_LOCATION))
+                        .setFahrgestellnummer(resultSet.getString(DBTables.Fahrzeug.COL_FAHRGESTELLNUMMER))
+                        .setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN))
+                        .setBaujahr(resultSet.getInt(DBTables.Fahrzeug.COL_BAUJAHR));
+
+                fahrzeugeList.add(fahrzeug);
+            }
+
         } catch (SQLException throwables) {
             Logger.getLogger(FahrzeugDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
         } finally {
@@ -68,7 +83,7 @@ public class KundeReserviertFahrzeugDAO extends AbstractDAO implements FetchFahr
                 Logger.getLogger(KundeReserviertFahrzeugDAO.class.getName()).log(Level.SEVERE, sqlBefehl, exc);
             }
         }
-        return fetchFahrzeuge(resultSet);
+        return fahrzeugeList;
     }
 
     public int getKundennummerByFahrzeug(FahrzeugDTO fahrzeugDTO) throws DatabaseException {

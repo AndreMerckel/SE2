@@ -15494,6 +15494,7 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .header_main {
 	align-self: center;
 	width: 100%;
+	height: 4rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -15524,6 +15525,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .mytheme .v-slot-header_main_menuBox {
 	width: 100%;
+	height: 100%;
 }
 
 .mytheme .v-slot-header_main {
@@ -15624,4 +15626,12 @@ div.v-layout.v-horizontal.v-widget {
 
 .mytheme .footer_main_container {
 	border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.mytheme .v-gridlayout {
+	margin: 1rem;
+}
+
+.mytheme .confirmButton, .mytheme .addCarButton {
+	background-color: blue;
 }

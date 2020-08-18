@@ -1,6 +1,7 @@
 package org.carlook.model.dao;
 
 import org.carlook.controller.exception.DatabaseException;
+import org.carlook.controller.exception.NoSuchUserOrPassword;
 import org.carlook.model.objects.dto.UserDTO;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.DBTables;
@@ -113,7 +114,7 @@ public class UserDAO extends AbstractDAO {
         return res;
     }
 
-    public UserDTO isPasswordCorrect(String email, String password) throws DatabaseException {
+    public UserDTO isPasswordCorrect(String email, String password) throws DatabaseException, NoSuchUserOrPassword {
         JDBCConnection.getInstance().openConnection();
         ResultSet resultSet = null;
         UserDTO user = new UserDTO();
@@ -128,12 +129,13 @@ public class UserDAO extends AbstractDAO {
 
             resultSet = preparedStatement.executeQuery();
 
-
-
             if(resultSet.next()) {
                 user.setEmail(resultSet.getString("email"));
                 user.setVorname(resultSet.getString("vorname"));
                 user.setNachname(resultSet.getString("nachname"));
+            } else{
+                throw new NoSuchUserOrPassword("Wrong credentials");
+
             }
         } catch (SQLException throwables) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);

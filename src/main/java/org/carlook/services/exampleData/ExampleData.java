@@ -11,6 +11,7 @@ import org.carlook.model.objects.dto.ReservationDTO;
 import org.carlook.model.objects.dto.UserDTO;
 import org.carlook.model.objects.dto.VertrieblerDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
+import org.carlook.model.objects.entities.Vertriebler;
 
 import java.util.List;
 import java.util.Random;
@@ -44,10 +45,10 @@ public class ExampleData {
         } catch (DatabaseException e) {
             Logger.getLogger(ExampleData.class.getName()).log(Level.SEVERE, null,e);
         }
-        VertrieblerDTO vertrieblerDTO = DTOFactory.createNewVertrieblerDTO().setVertriebnummer(new Random().nextInt(sizeVertriebler-1)+1);
+        Vertriebler vertriebler = DTOFactory.createNewVertrieblerDTO().setVertriebnummer(new Random().nextInt(sizeVertriebler-1)+1);
         for (Fahrzeug tmp : list) {
             try {
-                FahrzeugControl.register(tmp,vertrieblerDTO);
+                FahrzeugControl.register(tmp,vertriebler);
             } catch (DatabaseException | RegisterFailedException e) {
                 Logger.getLogger(ExampleData.class.getName()).log(Level.SEVERE, null, e);
                 return;

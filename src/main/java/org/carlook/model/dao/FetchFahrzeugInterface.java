@@ -6,6 +6,7 @@ import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.DBTables;
 
+import java.awt.image.DataBufferShort;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,8 +17,9 @@ import java.util.logging.Logger;
 
 public interface FetchFahrzeugInterface {
 
-    default List<Fahrzeug> fetchFahrzeuge(ResultSet resultSet) throws DatabaseException {
+    default List<Fahrzeug> fetchFahrzeuge(ResultSet resultSet) throws DatabaseException, SQLException {
         List<Fahrzeug> fahrzeugList = new ArrayList<>();
+        System.out.println(resultSet.getString("Hersteller"));
         try {
             while (resultSet.next()) {
                 Fahrzeug fahrzeug = new Fahrzeug()
