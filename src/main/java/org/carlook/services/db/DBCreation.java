@@ -50,18 +50,14 @@ public class DBCreation {
         //List<String> tableNames = loadTableNames();
         JDBCConnection jdbc = JDBCConnection.getInstance();
         jdbc.openConnection();
-        String sqlBefehl = "DROP SCHEMA " + DBTables.SCHEMA + " CASCADE; CREATE SCHEMA " + DBTables.SCHEMA + ";";
-        /*for (String tmp : tableNames) {
-            sqlBefehl += "DROP TABLE " + tmp + " CASCADE;\n";
-        }
-
-         */
+        String sqlBefehl = "DROP SCHEMA IF EXISTS " + DBTables.SCHEMA + " CASCADE;\n" +
+                "CREATE SCHEMA IF NOR EXISTS " + DBTables.SCHEMA + ";";
         PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
         try {
             statement.execute();
             Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, "Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich entfernt!\n");
         } catch (SQLException e) {
-            Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, sqlBefehl, e);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
