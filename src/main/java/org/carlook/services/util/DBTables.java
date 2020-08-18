@@ -39,7 +39,7 @@ public class DBTables {
 
         public static final String NAME = "kunde";
 
-        public static final String COL_KUNDENNUMMER = "kundennummer";
+        public static final String COL_KUNDENNUMMER = "k_nr";
 
         public static final String TAB = getTAB(NAME);
 
@@ -56,7 +56,7 @@ public class DBTables {
 
         public static final String NAME = "vertriebler";
 
-        public static final String COL_VERTRIEBLERNUMMER = "vertrieblernr";
+        public static final String COL_VERTRIEBLERNUMMER = "v_nr";
 
         public static final String TAB = getTAB(NAME);
 
@@ -77,7 +77,7 @@ public class DBTables {
         public static final String COL_KRAFTSTOFF = "kraftstoff";
         public static final String COL_BAUJAHR = "baujahr";
         public static final String COL_MODELL = "modell";
-        public static final String COL_FAHRGESTELLNUMMER = "fahrgestellnummer";
+        public static final String COL_FAHRGESTELLNUMMER = "fgest_nr";
         public static final String COL_KENNZEICHEN = "kennzeichen";
         public static final String COL_VERTRIEBLER = Vertriebler.COL_VERTRIEBLERNUMMER;
         public static final String COL_LOCATION = "location";
