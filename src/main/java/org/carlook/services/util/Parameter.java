@@ -2,6 +2,8 @@ package org.carlook.services.util;
 
 public class Parameter {
 
+    public static final String COPY_RIGHT = "- " + Parameter.COMPANY + ", coded by: André Merckel, Martin Müller -";
+
     public static final String COMPANY_NAME = "CarLook";
     public static final String COMPANY_LEGAL_FORM = "Ltd.";
     public static final String COMPANY = COMPANY_NAME + " " + COMPANY_LEGAL_FORM;
