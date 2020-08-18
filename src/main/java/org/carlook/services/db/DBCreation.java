@@ -51,7 +51,7 @@ public class DBCreation {
         JDBCConnection jdbc = JDBCConnection.getInstance();
         jdbc.openConnection();
         String sqlBefehl = "DROP SCHEMA IF EXISTS " + DBTables.SCHEMA + " CASCADE;\n" +
-                "CREATE SCHEMA IF NOR EXISTS " + DBTables.SCHEMA + ";";
+                "CREATE SCHEMA IF NOT EXISTS " + DBTables.SCHEMA + ";";
         PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
         try {
             statement.execute();
