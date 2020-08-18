@@ -19,7 +19,6 @@ public class TextFieldWithIcon<T extends String> extends HorizontalLayout {
         this.textField.setId(placeholder);
         this.setWidth("" + textField.getWidth());
         this.placeholder = placeholder;
-
         this.SetUpComponent(placeholder, label);
     }
 

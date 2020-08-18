@@ -56,7 +56,7 @@ public class DBTables {
 
         public static final String NAME = "vertriebler";
 
-        public static final String COL_VERTRIEBLERNUMMER = "Vertrieblernr";
+        public static final String COL_VERTRIEBLERNUMMER = "vertrieblernr";
 
         public static final String TAB = getTAB(NAME);
 

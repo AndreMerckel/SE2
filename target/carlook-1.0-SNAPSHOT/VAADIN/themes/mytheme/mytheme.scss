@@ -115,6 +115,7 @@
   .header_main {
     align-self: center;
     width: 100%;
+    height:4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -145,6 +146,7 @@
 
   .v-slot-header_main_menuBox {
     width: 100%;
+    height:100%;
   }
 
   .v-slot-header_main {
@@ -265,5 +267,16 @@
   }
 
   // FOOTER - END
+
+  // GRID LAYOUT - START
+  .v-gridlayout{
+    margin: 1rem;
+  }
+
+  .confirmButton,
+  .addCarButton{
+    background-color: blue;
+  }
+  //GRID LAYOUT - END
 
 }

@@ -1,6 +1,7 @@
 package org.carlook.factories;
 
 import org.carlook.model.objects.dto.*;
+import org.carlook.model.objects.entities.Vertriebler;
 
 public class DTOFactory {
 
@@ -8,8 +9,8 @@ public class DTOFactory {
         return new UserDTO();
     }
 
-    public static VertrieblerDTO createNewVertrieblerDTO() {
-        return new VertrieblerDTO();
+    public static Vertriebler createNewVertrieblerDTO() {
+        return new Vertriebler();
     }
 
     public static KundeDTO createNewKundeDTO() {

@@ -5,11 +5,11 @@ package org.carlook.model.objects.dto;
  */
 public class FahrzeugDTO {
 
-    String marke, modell, beschreibung, kraftstoff, location, fahrgestellnummer, kennzeichen;
+    String hersteller, modell, beschreibung, kraftstoff, location, fahrgestellnummer, kennzeichen;
     int vertriebler, baujahr;
 
-    public FahrzeugDTO setMarke(String marks) {
-        this.marke = marke;
+    public FahrzeugDTO setHersteller(String marks) {
+        this.hersteller = hersteller;
         return this;
     }
 
@@ -33,8 +33,8 @@ public class FahrzeugDTO {
         return this;
     }
 
-    public String getMarke() {
-        return marke;
+    public String getHersteller() {
+        return hersteller;
     }
 
     public String getBeschreibung() {

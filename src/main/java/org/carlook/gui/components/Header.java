@@ -3,7 +3,11 @@ package org.carlook.gui.components;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.*;
+import com.vaadin.ui.Image;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.MenuBar;
 import org.carlook.controller.LoginControl;
+import org.carlook.gui.windows.CreateFahrzeug;
 import org.carlook.model.objects.dto.CustomerDTO;
 import org.carlook.model.objects.dto.UserDTO;
 import org.carlook.model.objects.dto.VertrieblerDTO;
@@ -11,6 +15,8 @@ import org.carlook.model.objects.entities.User;
 import org.carlook.services.util.Roles;
 import org.carlook.services.util.StatusUser;
 import org.carlook.services.util.Views;
+
+import java.awt.*;
 
 public class Header extends HorizontalLayout {
 
@@ -24,7 +30,6 @@ public class Header extends HorizontalLayout {
      if(logo) {
          this.addComponent(headLogo);
      }
-     System.out.println("ok");
 
     HorizontalLayout header_menuBox = new HorizontalLayout();
     header_menuBox.setStyleName("header_main_menuBox");
@@ -33,7 +38,6 @@ public class Header extends HorizontalLayout {
         User user = (User) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER);
         StatusUser statusUser = (StatusUser) UI.getCurrent().getSession().getAttribute(Roles.STATUS);
 
-        //TODO - Rolle anhand einer Datanbank abfrage erfragen
             Label headLabel = new Label(user != null ? "Logged in as: " + ((statusUser == StatusUser.VERTRIEBLER ? Roles.VERTRIEBLER : Roles.KUNDE) + ": " + user.getVorname() + " " + user.getNachname() + ", " + user.getNachname()): "");
             headLabel.addStyleName("header_main_menuBox_headLabel");
 
@@ -69,6 +73,15 @@ public class Header extends HorizontalLayout {
                 }
             }
         });
+        if(statusUser == StatusUser.VERTRIEBLER) {
+            item1.addItem("Fahrzeug hinzufügen", VaadinIcons.CAR, new MenuBar.Command() {
+                @Override
+                public void menuSelected(MenuBar.MenuItem selectedItem) {
+                    UI.getCurrent().addWindow(new CreateFahrzeug());
+                }
+            });
+        }
+
 
             if(user != null) {
                 header_menuBox.addComponent(headLabel);

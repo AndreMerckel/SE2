@@ -33,8 +33,8 @@ public class FahrzeugDAO extends AbstractDAO implements FetchFahrzeugInterface {
         return fahrzeugDAO;
     }
 
-    public void register(Fahrzeug fahrzeug, VertrieblerDTO vertrieblerDTO) throws DatabaseException, RegisterFailedException {
-        if (fahrzeug == null || vertrieblerDTO == null) {
+    public void register(Fahrzeug fahrzeug, Vertriebler vertriebler) throws DatabaseException, RegisterFailedException {
+        if (fahrzeug == null || vertriebler == null) {
             String err;
             if (fahrzeug == null)
                 err = DBTables.Fahrzeug.NAME + "DTO == null";
@@ -46,7 +46,7 @@ public class FahrzeugDAO extends AbstractDAO implements FetchFahrzeugInterface {
 
         FahrzeugDTO fahrzeugDTO = DTOFactory.createNewFahrzeugDTO().setKennzeichen(fahrzeug.getKennzeichen());
 
-        VertrieblerErstelltFahrzeugDTO vertrieblerErstelltFahrzeugDTO = DTOFactory.createNewVertrieblerErstelltFahrzeugDTO().setFahrzeugDTO(fahrzeugDTO).setVertrieblerDTO(vertrieblerDTO);
+        VertrieblerErstelltFahrzeugDTO vertrieblerErstelltFahrzeugDTO = DTOFactory.createNewVertrieblerErstelltFahrzeugDTO().setFahrzeugDTO(fahrzeugDTO).setVertrieblerDTO(vertriebler);
 
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
@@ -63,7 +63,7 @@ public class FahrzeugDAO extends AbstractDAO implements FetchFahrzeugInterface {
             preparedStatement.setString(6, fahrzeug.getFahrgestellnummer());
             preparedStatement.setString(7, fahrzeug.getKennzeichen());
             preparedStatement.setString(8, fahrzeug.getLocation());
-            preparedStatement.setInt(9, vertrieblerDTO.getVertriebnummer());
+            preparedStatement.setInt(9, vertriebler.getVertriebnummer());
 
             preparedStatement.executeUpdate();
 
@@ -74,7 +74,7 @@ public class FahrzeugDAO extends AbstractDAO implements FetchFahrzeugInterface {
         }
     }
 
-    public List<Fahrzeug> getFahrzeugByValue(FahrzeugSearchDTO fahrzeugSearchDTO) throws DatabaseException {
+    public List<Fahrzeug> getFahrzeugByValue(FahrzeugSearchDTO fahrzeugSearchDTO) throws DatabaseException, SQLException {
         JDBCConnection.getInstance().openConnection();
 
         boolean hasWHERE = false;
@@ -205,13 +205,28 @@ public class FahrzeugDAO extends AbstractDAO implements FetchFahrzeugInterface {
         JDBCConnection.getInstance().openConnection();
         List<Fahrzeug> fahrzeugeList = new ArrayList<>();
 
-        String sqlBefehl = "Select * FROM " + table + ", " + DBTables.Fahrzeug.TAB + " WHERE " + table + "." + DBTables.Fahrzeug.COL_KENNZEICHEN + " = " + DBTables.Fahrzeug.TAB + "." + DBTables.Fahrzeug.COL_KENNZEICHEN + " AND " + table + "." + DBTables.Vertriebler.COL_VERTRIEBLERNUMMER + " = ?;";
+        String sqlBefehl = "Select * FROM " + table + " WHERE " + table + "." + DBTables.Fahrzeug.COL_KENNZEICHEN + " = " + DBTables.Fahrzeug.TAB + "." + DBTables.Fahrzeug.COL_KENNZEICHEN + " AND " + table + "." + DBTables.Vertriebler.COL_VERTRIEBLERNUMMER + " = ?;";
         PreparedStatement statement = getPreparedStatement(sqlBefehl);
         ResultSet resultSet = null;
 
         try {
             statement.setInt(1,vertriebler.getVertriebnummer());
             resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Fahrzeug fahrzeug = new Fahrzeug()
+                        .setHersteller(resultSet.getString(DBTables.Fahrzeug.COL_HERSTELLER))
+                        .setModell(resultSet.getString(DBTables.Fahrzeug.COL_MODELL))
+                        .setBeschreibung(resultSet.getString(DBTables.Fahrzeug.COL_BESCHREIBUNG))
+                        .setKraftstoff(resultSet.getString(DBTables.Fahrzeug.COL_KRAFTSTOFF))
+                        .setLocation(resultSet.getString(DBTables.Fahrzeug.COL_LOCATION))
+                        .setFahrgestellnummer(resultSet.getString(DBTables.Fahrzeug.COL_FAHRGESTELLNUMMER))
+                        .setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN))
+                        .setBaujahr(resultSet.getInt(DBTables.Fahrzeug.COL_BAUJAHR))
+                        .setVertriebler(vertriebler.getVertriebnummer());
+
+
+                fahrzeugeList.add(fahrzeug);
+            }
         } catch (SQLException throwables) {
             Logger.getLogger(FahrzeugDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
         } finally {
@@ -222,7 +237,26 @@ public class FahrzeugDAO extends AbstractDAO implements FetchFahrzeugInterface {
                 Logger.getLogger(FahrzeugDAO.class.getName()).log(Level.SEVERE, null, exc);
             }
         }
-        return fetchFahrzeuge(resultSet);
+        return fahrzeugeList;
+    }
+
+    public void deleteFahrzeugByKeys(Fahrzeug fahrzeug, int vertrieblernummer) throws DatabaseException{
+        JDBCConnection.getInstance().openConnection();
+
+        String sqlBefehl = "DELETE FROM " + table + " WHERE " + DBTables.Fahrzeug.COL_KENNZEICHEN + " = ? AND " + DBTables.Fahrzeug.COL_FAHRGESTELLNUMMER + " = ? AND " + DBTables.Fahrzeug.COL_VERTRIEBLER + " = ?;";
+        PreparedStatement statement = getPreparedStatement(sqlBefehl);
+        ResultSet resultSet = null;
+        try {
+            statement.setString(1,fahrzeug.getKennzeichen());
+            statement.setString(2,fahrzeug.getFahrgestellnummer());
+            statement.setInt(3,vertrieblernummer);
+
+            statement.execute();
+        } catch (SQLException throwables) {
+            Logger.getLogger(FahrzeugDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
     }
 
 }
