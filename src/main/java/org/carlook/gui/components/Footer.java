@@ -15,7 +15,7 @@ public class Footer extends HorizontalLayout{
         //    User user = (User) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER);
 
 
-        Label copyRight = new Label("- " + Parameter.COMPANY + ", coded by: André Merckel, Martin Müller -");
+        Label copyRight = new Label(Parameter.COPY_RIGHT);
         hlayout.addComponent(copyRight);
         hlayout.setComponentAlignment(copyRight, Alignment.MIDDLE_CENTER);
         this.addComponent(hlayout);
