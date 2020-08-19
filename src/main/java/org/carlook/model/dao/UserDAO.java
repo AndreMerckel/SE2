@@ -264,4 +264,33 @@ public class UserDAO extends AbstractDAO {
         }
         return res;
     }
+/*
+    public Vertrie getVertrieblerbyID(String email) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+        String sqlBefehl;
+
+        sqlBefehl = "SELECT " + DBTables.Vertriebler.COL_VERTRIEBLERNUMMER + " FROM " + table + ", " + DBTables.Vertriebler.TAB +
+                " WHERE " + table + "." + DBTables.User.COL_EMAIL + " = " + DBTables.Vertriebler.TAB + "." + DBTables.User.COL_EMAIL +
+                " AND " + table +  "." + DBTables.User.COL_EMAIL + " = " + "?;";
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
+        ResultSet resultSet = null;
+        int res = 0;
+        try {
+            preparedStatement.setString(1,email);
+            resultSet = preparedStatement.executeQuery();
+
+            assert resultSet != null;
+            resultSet.next();
+
+            res = resultSet.getInt(DBTables.Vertriebler.COL_VERTRIEBLERNUMMER);
+
+        } catch (SQLException throwables) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return res;
+    }
+
+ */
 }
