@@ -10,10 +10,6 @@ public class AdminMain {
         DBCreation.refreshTables();
         ExampleData.initAllExamples();
 
-
-
-
-
     }
 
 }
