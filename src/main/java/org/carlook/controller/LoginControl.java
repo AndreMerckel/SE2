@@ -4,6 +4,7 @@ import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.UI;
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.NoSuchUserOrPassword;
+import org.carlook.model.dao.ReservationDAO;
 import org.carlook.model.dao.UserDAO;
 import org.carlook.model.objects.dto.UserDTO;
 import org.carlook.model.objects.entities.Kunde;
@@ -51,6 +52,7 @@ public class LoginControl {
             kd.setVorname(userTemp.getVorname());
 
             session.setAttribute(Roles.CURRENT_USER, kd);
+            session.setAttribute(Roles.RESERVATIONS, ReservationDAO.getInstance().reservierungen(kd.getKundennummer()));
             UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
         } else {
             Vertriebler vt = new Vertriebler();

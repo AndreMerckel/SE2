@@ -180,6 +180,36 @@ public class ReservationDAO extends AbstractDAO {
         return res;
     }
 
+    public List<String> reservierungen(int kundennummer) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+        List<String> fahrzeugeList = new ArrayList<>();
+
+        String sqlBefehl = "Select * FROM " + table + " WHERE " + DBTables.Kunde.COL_KUNDENNUMMER + " = ?;";
+        PreparedStatement statement = getPreparedStatement(sqlBefehl);
+        ResultSet resultSet = null;
+        boolean res = false;
+
+        try {
+            statement.setInt(1, kundennummer);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                fahrzeugeList.add(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN));
+            }
+
+        } catch (SQLException throwables) {
+            Logger.getLogger(ReservationDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+            try {
+                if (resultSet != null)
+                    resultSet.close();
+            } catch (Exception exc) {
+                Logger.getLogger(ReservationDAO.class.getName()).log(Level.SEVERE, sqlBefehl, exc);
+            }
+        }
+        return fahrzeugeList;
+    }
+
     public void deleteReservation(ReservationDTO reservationDTO) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
