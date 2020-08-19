@@ -264,33 +264,32 @@ public class UserDAO extends AbstractDAO {
         }
         return res;
     }
-/*
-    public Vertrie getVertrieblerbyID(String email) throws DatabaseException {
+
+    public String getVertrieblerbyID(int id) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
 
-        sqlBefehl = "SELECT " + DBTables.Vertriebler.COL_VERTRIEBLERNUMMER + " FROM " + table + ", " + DBTables.Vertriebler.TAB +
-                " WHERE " + table + "." + DBTables.User.COL_EMAIL + " = " + DBTables.Vertriebler.TAB + "." + DBTables.User.COL_EMAIL +
-                " AND " + table +  "." + DBTables.User.COL_EMAIL + " = " + "?;";
+        sqlBefehl = "SELECT " + DBTables.User.TAB + "." + DBTables.User.COL_NACHNAME + " FROM " + table + "," + DBTables.Vertriebler.TAB + " WHERE " + table + "." + DBTables.User.COL_EMAIL + " = " + DBTables.Vertriebler.TAB + "." + DBTables.User.COL_EMAIL +
+                " AND " + DBTables.Vertriebler.TAB + "." + DBTables.Vertriebler.COL_VERTRIEBLERNUMMER + " = ?;";
         PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
         ResultSet resultSet = null;
-        int res = 0;
+        String res = "";
         try {
-            preparedStatement.setString(1,email);
+            preparedStatement.setInt(1,id);
             resultSet = preparedStatement.executeQuery();
 
             assert resultSet != null;
             resultSet.next();
 
-            res = resultSet.getInt(DBTables.Vertriebler.COL_VERTRIEBLERNUMMER);
+            res = resultSet.getString(DBTables.User.COL_NACHNAME);
 
+            resultSet.close();
         } catch (SQLException throwables) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
         return res;
     }
 
- */
 }
