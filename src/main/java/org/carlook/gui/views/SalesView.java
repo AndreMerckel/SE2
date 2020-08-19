@@ -54,7 +54,7 @@ public class SalesView extends VerticalLayout implements View {
         grid.setHeightByRows(salesFahrzeuge.size());
         grid.setItems(salesFahrzeuge);
 
-        grid.addColumn(fahrzeug -> "Reservieren", new ButtonRenderer<>(clickEvent->{
+        grid.addColumn(fahrzeug -> "Delete", new ButtonRenderer<>(clickEvent->{
             Fahrzeug f = new Fahrzeug();
             f.setFahrgestellnummer(clickEvent.getItem().getFahrgestellnummer());
             f.setKennzeichen(clickEvent.getItem().getKennzeichen());
