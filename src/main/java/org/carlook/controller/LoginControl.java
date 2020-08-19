@@ -73,7 +73,7 @@ public class LoginControl {
         userTemp.setVorname(vorname);
         userTemp.setPassword(password);
 
-        StatusUser statusUser = email.equals(vorname + "." + nachname + "@" + "carlook.de") ? StatusUser.VERTRIEBLER : StatusUser.KUNDE;
+        StatusUser statusUser = email.equals(vorname + "." + nachname + Parameter.COMPANY_MAIL_ADDRESS) ? StatusUser.VERTRIEBLER : StatusUser.KUNDE;
 
         try {
             userTemp = UserDAO.getInstance().register(userTemp, statusUser);

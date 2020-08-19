@@ -10,6 +10,8 @@ import org.carlook.controller.exception.NoSuchUserOrPassword;
 import org.carlook.gui.components.*;
 import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
 import org.carlook.model.objects.entities.User;
+import org.carlook.services.util.DBTables;
+import org.carlook.services.util.OtherMethods;
 import org.carlook.services.util.Roles;
 import org.carlook.services.util.Views;
 
@@ -49,12 +51,12 @@ public class LoginView extends VerticalLayout implements View {
         Label emailFieldLabel = new Label();
         emailFieldLabel.setIcon(VaadinIcons.USER);
         TextField textField = new TextField();
-        TextFieldWithIcon emailTextField = new TextFieldWithIcon(textField,"Email", emailFieldLabel);
+        TextFieldWithIcon emailTextField = new TextFieldWithIcon(textField, OtherMethods.getStringWithFirstUpperLetter(DBTables.User.COL_EMAIL), emailFieldLabel);
 
         Label passwortFieldLabel = new Label();
         passwortFieldLabel.setIcon(VaadinIcons.PASSWORD);
         PasswordField passwordField = new PasswordField();
-        TextFieldWithIcon passwortTextField = new TextFieldWithIcon(passwordField,"Passwort", passwortFieldLabel);
+        TextFieldWithIcon passwortTextField = new TextFieldWithIcon(passwordField,OtherMethods.getStringWithFirstUpperLetter(DBTables.User.COL_PASSWORD), passwortFieldLabel);
 
         Button loginButton = new Button("Login");
         loginButton.setStyleName("loginButton");

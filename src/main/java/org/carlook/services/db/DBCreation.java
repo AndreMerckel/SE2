@@ -1,7 +1,6 @@
 package org.carlook.services.db;
 
 import org.carlook.controller.exception.DatabaseException;
-import org.carlook.services.exampleData.ExampleData;
 import org.carlook.services.util.DBTables;
 
 import java.sql.PreparedStatement;
@@ -37,7 +36,7 @@ public class DBCreation {
         PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
         try {
             statement.execute();
-            Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, "Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich hinzugefuegt!\n");
+            Logger.getLogger(DBCreation.class.getName()).log(Level.INFO, "Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich hinzugefuegt!\n");
         } catch (SQLException e) {
             Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, sqlBefehl, e);
             return;
@@ -55,7 +54,7 @@ public class DBCreation {
         PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
         try {
             statement.execute();
-            Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, "Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich entfernt!\n");
+            Logger.getLogger(DBCreation.class.getName()).log(Level.INFO, "Tabellen in Schema \"" + DBTables.SCHEMA + "\" erfolgreich entfernt!\n");
         } catch (SQLException e) {
             Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, sqlBefehl, e);
         } finally {
@@ -68,7 +67,7 @@ public class DBCreation {
             dropAllTables();
             executeCreate();
         } catch (DatabaseException e) {
-            Logger.getLogger(DBCreation.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DBCreation.class.getName()).log(Level.INFO, null, e);
             return;
         }
     }

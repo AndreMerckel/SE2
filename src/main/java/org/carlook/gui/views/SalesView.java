@@ -17,9 +17,7 @@ import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.User;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
-import org.carlook.services.util.GridCreator;
-import org.carlook.services.util.Roles;
-import org.carlook.services.util.Views;
+import org.carlook.services.util.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +46,7 @@ public class SalesView extends VerticalLayout implements View {
         addComponent(new Header(false));
         List<Fahrzeug> salesFahrzeuge = FahrzeugControl.fetchFahrzeugeVonVertriebler((Vertriebler) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER));
 
-       Grid<Fahrzeug> grid = new GridCreator<Fahrzeug>(new Fahrzeug(), "Kundensicht", Grid.SelectionMode.SINGLE, "headerStyle", "tableStyle").createTable();
+       Grid<Fahrzeug> grid = new GridCreator<Fahrzeug>(new Fahrzeug(), OtherMethods.getStringWithFirstUpperLetter(DBTables.Kunde.NAME) +"sicht", Grid.SelectionMode.SINGLE, "headerStyle", "tableStyle").createTable();
         grid.setSizeFull();
         grid.setHeightMode(HeightMode.ROW);
         grid.setHeightByRows(salesFahrzeuge.size());
@@ -67,9 +65,9 @@ public class SalesView extends VerticalLayout implements View {
                 return;
             }
             if (state) {
-                UI.getCurrent().addWindow(new ConfirmationWindow("Fahrzeug: " + f.getKennzeichen() + " erfolgreich gelöscht!"));
+                UI.getCurrent().addWindow(new ConfirmationWindow(OtherMethods.getStringWithFirstUpperLetter(DBTables.Fahrzeug.NAME) + ": " + f.getKennzeichen() + " erfolgreich gelöscht!"));
             } else {
-                UI.getCurrent().addWindow(new ConfirmationWindow("Error beim Löschen von Fahrzeug: " + f.getKennzeichen()));
+                UI.getCurrent().addWindow(new ConfirmationWindow("Error beim Löschen von " + OtherMethods.getStringWithFirstUpperLetter(DBTables.Fahrzeug.NAME) + ": " + f.getKennzeichen()));
             }
             salesFahrzeuge.remove(clickEvent.getItem());
             UI.getCurrent().getNavigator().navigateTo(Views.SALESVIEW);

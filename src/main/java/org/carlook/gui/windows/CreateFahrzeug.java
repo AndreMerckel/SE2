@@ -11,6 +11,7 @@ import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
 import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
+import org.carlook.services.util.Parameter;
 import org.carlook.services.util.Roles;
 import org.carlook.services.util.Views;
 
@@ -20,7 +21,7 @@ import java.util.logging.Logger;
 
 public class CreateFahrzeug extends Window {
     public CreateFahrzeug() {
-        super("Fahrzeug hinzufügen");
+        super(Parameter.FAHRZEUG + " hinzufügen");
         center();
 
         this.setWidth("250px");

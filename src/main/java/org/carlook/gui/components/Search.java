@@ -9,6 +9,8 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
 import org.carlook.model.objects.entities.Fahrzeug;
+import org.carlook.services.util.DBTables;
+import org.carlook.services.util.OtherMethods;
 
 public class Search<T> extends HorizontalLayout {
     Grid<T> grid;
@@ -23,22 +25,22 @@ public class Search<T> extends HorizontalLayout {
         Label markeFieldLabel = new Label();
         markeFieldLabel.setIcon(VaadinIcons.USER);
         TextField makeField = new TextField();
-        TextFieldWithIcon markeTextField = new TextFieldWithIcon(makeField, "Hersteller", markeFieldLabel);
+        TextFieldWithIcon markeTextField = new TextFieldWithIcon(makeField, OtherMethods.getStringWithFirstUpperLetter(DBTables.Fahrzeug.COL_HERSTELLER), markeFieldLabel);
 
         Label modelFieldLabel = new Label();
         modelFieldLabel.setIcon(VaadinIcons.USER);
         TextField modelField = new TextField();
-        TextFieldWithIcon modelTextField = new TextFieldWithIcon(modelField, "Modell", modelFieldLabel);
+        TextFieldWithIcon modelTextField = new TextFieldWithIcon(modelField, OtherMethods.getStringWithFirstUpperLetter(DBTables.Fahrzeug.COL_MODELL), modelFieldLabel);
 
         Label baujahrFieldLabel = new Label();
         baujahrFieldLabel.setIcon(VaadinIcons.USER);
         TextField baujahrField = new TextField();
-        TextFieldWithIcon baujahrTextField = new TextFieldWithIcon(baujahrField, "Baujahr", baujahrFieldLabel);
+        TextFieldWithIcon baujahrTextField = new TextFieldWithIcon(baujahrField, OtherMethods.getStringWithFirstUpperLetter(DBTables.Fahrzeug.COL_BAUJAHR), baujahrFieldLabel);
 
         Label kraftstoffFieldLabel = new Label();
         kraftstoffFieldLabel.setIcon(VaadinIcons.USER);
         TextField kraftstoffField = new TextField();
-        TextFieldWithIcon kraftstoffTextField = new TextFieldWithIcon(kraftstoffField, "Kraftstoff", kraftstoffFieldLabel);
+        TextFieldWithIcon kraftstoffTextField = new TextFieldWithIcon(kraftstoffField, OtherMethods.getStringWithFirstUpperLetter(DBTables.Fahrzeug.COL_KRAFTSTOFF), kraftstoffFieldLabel);
 
         makeField.addValueChangeListener(this::filter);
         modelField.addValueChangeListener(this::filter);
