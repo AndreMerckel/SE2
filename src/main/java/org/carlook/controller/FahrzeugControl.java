@@ -8,6 +8,8 @@ import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,6 +49,28 @@ public class FahrzeugControl {
      */
     public void update(String fahrgestellnummer, String Kategorie, String newVal) {
 
+    }
+
+    public static List<Fahrzeug> fetchAllFahrzeuge(){
+        List<Fahrzeug> fahrzeugeList = new ArrayList<>();
+        try{
+            fahrzeugeList = FahrzeugDAO.getInstance().getAllFahrzeuge();
+        }catch(Error | DatabaseException ex){
+            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fahrzeugeList;
+
+    }
+
+    public static List<Fahrzeug> fetchFahrzeugeVonVertriebler(Vertriebler vertriebler){
+        List<Fahrzeug> fahrzeuglist = new ArrayList<>();
+
+        try{
+            fahrzeuglist = FahrzeugDAO.getInstance().getFahrzeugeByVertriebler(vertriebler);
+        } catch(Error | DatabaseException ex) {
+            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fahrzeuglist;
     }
 
 

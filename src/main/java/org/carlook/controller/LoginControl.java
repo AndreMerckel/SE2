@@ -5,7 +5,6 @@ import com.vaadin.ui.UI;
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.NoSuchUserOrPassword;
 import org.carlook.model.dao.UserDAO;
-import org.carlook.model.objects.dto.ReservationDTO;
 import org.carlook.model.objects.dto.UserDTO;
 import org.carlook.model.objects.entities.Kunde;
 import org.carlook.model.objects.entities.Vertriebler;

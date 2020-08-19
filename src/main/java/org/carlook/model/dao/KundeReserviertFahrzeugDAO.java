@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class KundeReserviertFahrzeugDAO extends AbstractDAO implements FetchFahrzeugInterface {
+public class KundeReserviertFahrzeugDAO extends AbstractDAO {
 
     private static KundeReserviertFahrzeugDAO kundeReserviertFahrzeugDAO;
     private String table = DBTables.KundeReserviertFahrzeug.TAB;
@@ -36,8 +36,8 @@ public class KundeReserviertFahrzeugDAO extends AbstractDAO implements FetchFahr
         sqlBefehl = "INSERT INTO " + table + " (" + DBTables.Fahrzeug.COL_KENNZEICHEN +"," + DBTables.Kunde.COL_KUNDENNUMMER + ") VALUES (?,?)";
         PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
         try {
-            preparedStatement.setString(1, reservationDTO.getFahrzeugDTO().getKennzeichen());
-            preparedStatement.setInt(2, reservationDTO.getKundeDTO().getKundennummer());
+            preparedStatement.setString(1, reservationDTO.getFahrzeug().getKennzeichen());
+            preparedStatement.setInt(2, reservationDTO.getKunde().getKundennummer());
 
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {

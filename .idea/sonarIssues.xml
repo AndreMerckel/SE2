@@ -33,6 +33,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/controller/Register.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/controller/ReservationControl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/org/carlook/controller/SearchControl.java">
           <value>
             <set />
@@ -103,6 +113,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/gui/views/UserView.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/org/carlook/gui/windows/ConfirmationWindow.java">
           <value>
             <set />
@@ -128,6 +143,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/model/dao/ReservationDAO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/org/carlook/model/dao/UserDAO.java">
           <value>
             <set />
@@ -139,6 +159,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/org/carlook/model/objects/dto/KundeDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/model/objects/dto/ReservationDTO.java">
           <value>
             <set />
           </value>
@@ -159,6 +184,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/org/carlook/services/exampleData/ExampleData.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/services/exampleData/ListSupplier.java">
           <value>
             <set />
           </value>

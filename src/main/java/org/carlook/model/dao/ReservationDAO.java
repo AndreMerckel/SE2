@@ -5,6 +5,7 @@ import org.carlook.factories.DTOFactory;
 import org.carlook.model.objects.dto.FahrzeugDTO;
 import org.carlook.model.objects.dto.KundeDTO;
 import org.carlook.model.objects.dto.ReservationDTO;
+import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.DBTables;
 
@@ -43,8 +44,8 @@ public class ReservationDAO extends AbstractDAO {
         PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
 
         try {
-            preparedStatement.setInt(1,reservationDTO.getKundeDTO().getKundennummer());
-            preparedStatement.setString(2,reservationDTO.getFahrzeugDTO().getKennzeichen());
+            preparedStatement.setInt(1,reservationDTO.getKunde().getKundennummer());
+            preparedStatement.setString(2,reservationDTO.getFahrzeug().getKennzeichen());
 
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
@@ -104,9 +105,9 @@ public class ReservationDAO extends AbstractDAO {
         try {
             while (resultSet.next()) {
                 KundeDTO kundeDTO = DTOFactory.createNewKundeDTO().setKundennummer(resultSet.getInt(DBTables.Kunde.COL_KUNDENNUMMER));
-                FahrzeugDTO fahrzeugDTO = DTOFactory.createNewFahrzeugDTO().setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN));
+                Fahrzeug fahrzeug = DTOFactory.createNewFahrzeugDTO().setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN));
 
-                reservationList.add(DTOFactory.createNewReservationDTO().setFahrzeugDTO(fahrzeugDTO).setKundeDTO(kundeDTO));
+                reservationList.add(DTOFactory.createNewReservationDTO().setFahrzeugDTO(fahrzeug).setKundeDTO(kundeDTO));
             }
 
         } catch (SQLException e) {

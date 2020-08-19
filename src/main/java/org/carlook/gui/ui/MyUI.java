@@ -29,7 +29,7 @@ public class MyUI extends UI {
 
         navi.addView(Views.LOGIN, LoginView.class);
         navi.addView(Views.REGISTER, RegisterView.class);
-        navi.addView(Views.USERSEARCHVIEW, UserSearchView.class);
+        navi.addView(Views.USERSEARCHVIEW, UserView.class);
         navi.addView(Views.SALESVIEW, SalesView.class);
 
         UI.getCurrent().getNavigator().navigateTo(Views.LOGIN);
