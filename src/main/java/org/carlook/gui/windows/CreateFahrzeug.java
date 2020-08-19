@@ -6,17 +6,14 @@ import com.vaadin.ui.*;
 import org.carlook.controller.FahrzeugControl;
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.RegisterFailedException;
+import org.carlook.factories.Factories;
 import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
-import org.carlook.model.dao.FahrzeugDAO;
-import org.carlook.model.objects.dto.FahrzeugDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.Roles;
 import org.carlook.services.util.Views;
 
-import javax.management.NotificationFilter;
-import javax.swing.text.View;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -92,15 +89,16 @@ public class CreateFahrzeug extends Window {
                 return;
             }
 
-            Fahrzeug fz = new Fahrzeug();
-            fz.setBaujahr(Integer.parseInt(baujahrField.getValue()));
-            fz.setBeschreibung(beschreibungField.getValue());
-            fz.setFahrgestellnummer(fahrgestellnummberField.getValue());
-            fz.setKennzeichen(kennzeichenField.getValue());
-            fz.setKraftstoff(kraftstoffField.getValue());
-            fz.setLocation(locationField.getValue());
-            fz.setModell(modelField.getValue());
-            fz.setHersteller(herstellerField.getValue());
+            Fahrzeug fz = Factories.createNewFahrzeug()
+            .setBaujahr(Integer.parseInt(baujahrField.getValue()))
+            .setBeschreibung(beschreibungField.getValue())
+            .setFahrgestellnummer(fahrgestellnummberField.getValue())
+            .setKennzeichen(kennzeichenField.getValue())
+            .setKraftstoff(kraftstoffField.getValue())
+            .setLocation(locationField.getValue())
+            .setModell(modelField.getValue())
+            .setHersteller(herstellerField.getValue());
+
             Vertriebler v = (Vertriebler) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER);
             fz.setVertriebler(v.getVertriebnummer());
             try {

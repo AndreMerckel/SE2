@@ -3,9 +3,7 @@ package org.carlook.model.dao;
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.RegisterFailedException;
 import org.carlook.factories.DTOFactory;
-import org.carlook.model.objects.dto.FahrzeugDTO;
-import org.carlook.model.objects.dto.FahrzeugSearchDTO;
-import org.carlook.model.objects.dto.VertrieblerDTO;
+import org.carlook.factories.Factories;
 import org.carlook.model.objects.dto.VertrieblerErstelltFahrzeugDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Vertriebler;
@@ -80,10 +78,7 @@ public class FahrzeugDAO extends AbstractDAO {
             throw new RegisterFailedException().setReason(err);
         }
 
-
-        FahrzeugDTO fahrzeugDTO = DTOFactory.createNewFahrzeugDTO().setKennzeichen(fahrzeug.getKennzeichen());
-
-        VertrieblerErstelltFahrzeugDTO vertrieblerErstelltFahrzeugDTO = DTOFactory.createNewVertrieblerErstelltFahrzeugDTO().setFahrzeugDTO(fahrzeugDTO).setVertrieblerDTO(vertriebler);
+        VertrieblerErstelltFahrzeugDTO vertrieblerErstelltFahrzeugDTO = DTOFactory.createNewVertrieblerErstelltFahrzeugDTO().setFahrzeug(fahrzeug).setVertriebler(vertriebler);
 
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
@@ -251,7 +246,7 @@ public class FahrzeugDAO extends AbstractDAO {
             statement.setInt(1,vertriebler.getVertriebnummer());
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Fahrzeug fahrzeug = new Fahrzeug()
+                Fahrzeug fahrzeug = Factories.createNewFahrzeug()
                         .setHersteller(resultSet.getString(DBTables.Fahrzeug.COL_HERSTELLER))
                         .setModell(resultSet.getString(DBTables.Fahrzeug.COL_MODELL))
                         .setBeschreibung(resultSet.getString(DBTables.Fahrzeug.COL_BESCHREIBUNG))

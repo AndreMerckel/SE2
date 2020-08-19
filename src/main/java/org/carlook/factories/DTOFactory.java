@@ -17,10 +17,6 @@ public class DTOFactory {
         return new KundeDTO();
     }
 
-    public static FahrzeugDTO createNewFahrzeugDTO() {
-        return new FahrzeugDTO();
-    }
-
     public static VertrieblerErstelltFahrzeugDTO createNewVertrieblerErstelltFahrzeugDTO() {
         return new VertrieblerErstelltFahrzeugDTO();
     }

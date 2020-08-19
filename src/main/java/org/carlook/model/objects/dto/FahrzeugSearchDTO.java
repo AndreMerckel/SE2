@@ -1,8 +1,10 @@
 package org.carlook.model.objects.dto;
 
+import org.carlook.model.objects.entities.Vertriebler;
+
 public class FahrzeugSearchDTO {
     String marke, modell, kraftstoff, location;
-    VertrieblerDTO vertrieblerDTO;
+    Vertriebler vertriebler;
     int baujahr;
 
     public FahrzeugSearchDTO setMarke(String marks) {
@@ -51,12 +53,12 @@ public class FahrzeugSearchDTO {
         return this;
     }
 
-    public VertrieblerDTO getVertrieblerDTO() {
-        return vertrieblerDTO;
+    public Vertriebler getVertriebler() {
+        return vertriebler;
     }
 
-    public FahrzeugSearchDTO setVertrieblerDTO(VertrieblerDTO vertrieblerDTO) {
-        this.vertrieblerDTO = vertrieblerDTO;
+    public FahrzeugSearchDTO setVertriebler(Vertriebler vertriebler) {
+        this.vertriebler = vertriebler;
         return this;
     }
 }

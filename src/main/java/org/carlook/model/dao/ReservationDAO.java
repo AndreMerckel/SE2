@@ -2,10 +2,11 @@ package org.carlook.model.dao;
 
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.factories.DTOFactory;
-import org.carlook.model.objects.dto.FahrzeugDTO;
+import org.carlook.factories.Factories;
 import org.carlook.model.objects.dto.KundeDTO;
 import org.carlook.model.objects.dto.ReservationDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
+import org.carlook.model.objects.entities.Kunde;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.DBTables;
 
@@ -21,7 +22,7 @@ public class ReservationDAO extends AbstractDAO {
 
     private static ReservationDAO reservationDAO;
 
-    private String table = DBTables.KundeReserviertFahrzeug.TAB;
+    private final String table = DBTables.KundeReserviertFahrzeug.TAB;
 
     private ReservationDAO() {
 
@@ -33,49 +34,46 @@ public class ReservationDAO extends AbstractDAO {
         return reservationDAO;
     }
 
-    public void insert(ReservationDTO reservationDTO) throws DatabaseException {
+    public void register(ReservationDTO reservationDTO) throws DatabaseException {
 
         JDBCConnection.getInstance().openConnection();
-        String email, sqlBefehl;
+        String sqlBefehl;
 
-        sqlBefehl = "INSERT INTO " + table + " (" +
-                DBTables.Kunde.COL_KUNDENNUMMER + "," + DBTables.Fahrzeug.COL_KENNZEICHEN + ") VALUES (?,?)";
-
+        sqlBefehl = "INSERT INTO " + table + " (" + DBTables.Fahrzeug.COL_KENNZEICHEN +"," + DBTables.Kunde.COL_KUNDENNUMMER + ") VALUES (?,?)";
         PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
-
         try {
-            preparedStatement.setInt(1,reservationDTO.getKunde().getKundennummer());
-            preparedStatement.setString(2,reservationDTO.getFahrzeug().getKennzeichen());
+            preparedStatement.setString(1, reservationDTO.getFahrzeug().getKennzeichen());
+            preparedStatement.setInt(2, reservationDTO.getKunde().getKundennummer());
 
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
-            Logger.getLogger(ReservationDAO.class.getName()).log(Level.SEVERE, null, throwables);
+            Logger.getLogger(ReservationDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
     }
 
-    public List<ReservationDTO> getReservationsByKennzeichen(FahrzeugDTO fahrzeugDTO) throws DatabaseException {
-            JDBCConnection.getInstance().openConnection();
-            String email, sqlBefehl;
+    public List<ReservationDTO> getReservationsByKennzeichen(Fahrzeug fahrzeug) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+        String email, sqlBefehl;
 
-            sqlBefehl = "SELECT * FROM " + table +
-                    " WHERE " + DBTables.Fahrzeug.COL_KENNZEICHEN + " = ?;";
+        sqlBefehl = "SELECT * FROM " + table +
+                " WHERE " + DBTables.Fahrzeug.COL_KENNZEICHEN + " = ?;";
 
-            PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
-            ResultSet resultSet = null;
-            try {
-                preparedStatement.setString(1,fahrzeugDTO.getKennzeichen());
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
+        ResultSet resultSet = null;
+        try {
+            preparedStatement.setString(1, fahrzeug.getKennzeichen());
 
-                resultSet = preparedStatement.executeQuery();
-            } catch (SQLException throwables) {
-                Logger.getLogger(ReservationDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
-            } finally {
-                JDBCConnection.getInstance().closeConnection();
-            }
-            List<ReservationDTO> list = fetch(resultSet);
-            assert resultSet != null;
-            return fetch(resultSet);
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException throwables) {
+            Logger.getLogger(ReservationDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        List<ReservationDTO> list = fetch(resultSet);
+        assert resultSet != null;
+        return fetch(resultSet);
     }
 
     public List<ReservationDTO> getReservationByKundennummer(KundeDTO kundeDTO) throws DatabaseException {
@@ -104,10 +102,10 @@ public class ReservationDAO extends AbstractDAO {
         List<ReservationDTO> reservationList = new ArrayList<>();
         try {
             while (resultSet.next()) {
-                KundeDTO kundeDTO = DTOFactory.createNewKundeDTO().setKundennummer(resultSet.getInt(DBTables.Kunde.COL_KUNDENNUMMER));
-                Fahrzeug fahrzeug = DTOFactory.createNewFahrzeugDTO().setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN));
+                Kunde kunde = Factories.createNewKunde().setKundennummer(resultSet.getInt(DBTables.Kunde.COL_KUNDENNUMMER));
+                Fahrzeug fahrzeug = Factories.createNewFahrzeug().setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN));
 
-                reservationList.add(DTOFactory.createNewReservationDTO().setFahrzeugDTO(fahrzeug).setKundeDTO(kundeDTO));
+                reservationList.add(DTOFactory.createNewReservationDTO().setFahrzeug(fahrzeug).setKunde(kunde));
             }
 
         } catch (SQLException e) {
@@ -121,6 +119,35 @@ public class ReservationDAO extends AbstractDAO {
             }
         }
         return reservationList;
+    }
+
+    public int getKundennummerByFahrzeug(Fahrzeug fahrzeug) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+        List<org.carlook.model.objects.entities.Fahrzeug> fahrzeugeList = new ArrayList<>();
+
+        String sqlBefehl = "Select * FROM " + table + ", " + DBTables.Fahrzeug.TAB + " WHERE " + table + "." + DBTables.Fahrzeug.COL_KENNZEICHEN + " = " + DBTables.Fahrzeug.COL_KENNZEICHEN + " AND " + table + "." + DBTables.Fahrzeug.COL_KENNZEICHEN + " = '?':";
+        PreparedStatement statement = getPreparedStatement(sqlBefehl);
+        ResultSet resultSet = null;
+        int res = 0;
+
+        try {
+            statement.setString(1, fahrzeug.getKennzeichen());
+            resultSet = statement.executeQuery();
+
+            assert resultSet != null;
+            if (resultSet.next());
+            res = resultSet.getInt(DBTables.Kunde.COL_KUNDENNUMMER);
+        } catch (SQLException throwables) {
+            Logger.getLogger(FahrzeugDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+            try {
+                if (resultSet != null)
+                    resultSet.close(); } catch (Exception exc) {
+                Logger.getLogger(ReservationDAO.class.getName()).log(Level.SEVERE, sqlBefehl, exc);
+            }
+        }
+        return res;
     }
 
 }

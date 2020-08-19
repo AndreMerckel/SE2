@@ -8,7 +8,8 @@ public class Kunde extends User {
         return kundennummer;
     }
 
-    public void setKundennummer(int kundennummer) {
+    public Kunde setKundennummer(int kundennummer) {
         this.kundennummer = kundennummer;
+        return this;
     }
 }

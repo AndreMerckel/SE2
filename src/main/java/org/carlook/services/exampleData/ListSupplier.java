@@ -4,13 +4,12 @@ import org.carlook.controller.exception.DatabaseException;
 import org.carlook.factories.DTOFactory;
 import org.carlook.factories.Factories;
 import org.carlook.model.dao.FahrzeugDAO;
-import org.carlook.model.dao.KundeReserviertFahrzeugDAO;
 import org.carlook.model.dao.UserDAO;
-import org.carlook.model.objects.dto.FahrzeugDTO;
 import org.carlook.model.objects.dto.KundeDTO;
 import org.carlook.model.objects.dto.ReservationDTO;
 import org.carlook.model.objects.dto.UserDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
+import org.carlook.model.objects.entities.Kunde;
 import org.carlook.services.util.Parameter;
 
 import java.util.ArrayList;
@@ -140,10 +139,10 @@ public class ListSupplier {
     }
 
     public static class FahrzeugData {
-        private static List<Fahrzeug> dataList = null;
+        private static List<org.carlook.model.objects.entities.Fahrzeug> dataList = null;
 
-        public static List<Fahrzeug> getList() {
-            List<Fahrzeug> list = dataList;
+        public static List<org.carlook.model.objects.entities.Fahrzeug> getList() {
+            List<org.carlook.model.objects.entities.Fahrzeug> list = dataList;
             if (dataList == null) {
                 list = new ArrayList<>();
                 list.add(Factories.createNewFahrzeug().setHersteller("Ford").setBeschreibung("Gossling").setKraftstoff("Diesel").setBaujahr(2017).setModell("Quint").setFahrgestellnummer("WVGAV3AX7DW214002").setKennzeichen(Parameter.KENNZEICHEN + "0094").setVertriebler(39).setLocation("Hamburg"));
@@ -273,10 +272,10 @@ public class ListSupplier {
 
                 for (String tmp : listSign) {
 
-                    KundeDTO kundeDTO = DTOFactory.createNewKundeDTO().setKundennummer(new Random().nextInt(sizeKunde-1) + 1);
-                    FahrzeugDTO fahrzeugDTO = DTOFactory.createNewFahrzeugDTO().setKennzeichen(tmp);
+                    Kunde kunde = Factories.cre().setKundennummer(new Random().nextInt(sizeKunde-1) + 1);
+                    Fahrzeug fahrzeug = Factories.createNewFahrzeug().setKennzeichen(tmp);
 
-                    newDataList.add(DTOFactory.createNewReservationDTO().setFahrzeugDTO(fahrzeugDTO).setKundeDTO(kundeDTO));
+                    newDataList.add(DTOFactory.createNewReservationDTO().setFahrzeug(fahrzeug).setKunde(kunde));
                 }
                 dataList = newDataList;
             }

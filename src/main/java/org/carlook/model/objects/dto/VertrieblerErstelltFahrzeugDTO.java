@@ -1,27 +1,28 @@
 package org.carlook.model.objects.dto;
 
+import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Vertriebler;
 
 public class VertrieblerErstelltFahrzeugDTO {
 
-    public VertrieblerDTO vertrieblerDTO ;
-    public FahrzeugDTO fahrzeugDTO;
+    public Vertriebler vertriebler;
+    public Fahrzeug fahrzeug;
 
-    public VertrieblerDTO getVertrieblerDTO() {
-        return vertrieblerDTO;
+    public Vertriebler getVertriebler() {
+        return vertriebler;
     }
 
-    public VertrieblerErstelltFahrzeugDTO setVertrieblerDTO(Vertriebler vertriebler) {
-        this.vertrieblerDTO = vertrieblerDTO;
+    public VertrieblerErstelltFahrzeugDTO setVertriebler(Vertriebler vertriebler) {
+        this.vertriebler = this.vertriebler;
         return this;
     }
 
-    public FahrzeugDTO getFahrzeugDTO() {
-        return fahrzeugDTO;
+    public Fahrzeug getFahrzeug() {
+        return fahrzeug;
     }
 
-    public VertrieblerErstelltFahrzeugDTO setFahrzeugDTO(FahrzeugDTO fahrzeugDTO) {
-        this.fahrzeugDTO = fahrzeugDTO;
+    public VertrieblerErstelltFahrzeugDTO setFahrzeug(Fahrzeug fahrzeug) {
+        this.fahrzeug = fahrzeug;
         return this;
     }
 }
