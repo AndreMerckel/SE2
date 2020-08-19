@@ -44,9 +44,9 @@ public class ExampleData {
         } catch (DatabaseException e) {
             Logger.getLogger(ExampleData.class.getName()).log(Level.SEVERE, null,e);
         }
-        Vertriebler vertriebler = DTOFactory.createNewVertrieblerDTO().setVertriebnummer(new Random().nextInt(sizeVertriebler-1)+1);
         for (Fahrzeug tmp : list) {
             try {
+                Vertriebler vertriebler = DTOFactory.createNewVertrieblerDTO().setVertriebnummer(new Random().nextInt(sizeVertriebler-1)+1);
                 FahrzeugControl.register(tmp,vertriebler);
             } catch (DatabaseException | RegisterFailedException e) {
                 Logger.getLogger(ExampleData.class.getName()).log(Level.SEVERE, null, e);
