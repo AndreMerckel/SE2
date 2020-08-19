@@ -8,15 +8,11 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.MenuBar;
 import org.carlook.controller.LoginControl;
 import org.carlook.gui.windows.CreateFahrzeug;
-import org.carlook.model.objects.dto.CustomerDTO;
 import org.carlook.model.objects.dto.UserDTO;
-import org.carlook.model.objects.dto.VertrieblerDTO;
 import org.carlook.model.objects.entities.User;
 import org.carlook.services.util.Roles;
 import org.carlook.services.util.StatusUser;
 import org.carlook.services.util.Views;
-
-import java.awt.*;
 
 public class Header extends HorizontalLayout {
 

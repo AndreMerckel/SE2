@@ -12,7 +12,7 @@ public class ReservationDTO {
         return kunde;
     }
 
-    public ReservationDTO setKunde(KundeDTO kundeDTO) {
+    public ReservationDTO setKunde(Kunde kunde) {
         this.kunde = kunde;
         return this;
     }
@@ -21,7 +21,7 @@ public class ReservationDTO {
         return fahrzeug;
     }
 
-    public ReservationDTO setFahrzeugDTO(Fahrzeug fahrzeug) {
+    public ReservationDTO setFahrzeug(Fahrzeug fahrzeug) {
         this.fahrzeug = fahrzeug;
         return this;
     }

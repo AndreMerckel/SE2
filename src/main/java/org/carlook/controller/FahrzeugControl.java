@@ -3,7 +3,6 @@ package org.carlook.controller;
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.RegisterFailedException;
 import org.carlook.model.dao.FahrzeugDAO;
-import org.carlook.model.objects.dto.VertrieblerDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
