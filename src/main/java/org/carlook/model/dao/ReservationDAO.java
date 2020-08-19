@@ -154,7 +154,7 @@ public class ReservationDAO extends AbstractDAO {
     public boolean isReserved(ReservationDTO reservationDTO) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
 
-        String sqlBefehl = "Select * FROM " + table + " WHERE " + DBTables.Fahrzeug.COL_KENNZEICHEN + " = '?' AND " + DBTables.Kunde.COL_KUNDENNUMMER + " = ?:";
+        String sqlBefehl = "Select * FROM " + table + " WHERE " + DBTables.Fahrzeug.COL_KENNZEICHEN + " = ? AND " + DBTables.Kunde.COL_KUNDENNUMMER + " = ?;";
         PreparedStatement statement = getPreparedStatement(sqlBefehl);
         ResultSet resultSet = null;
         boolean res = false;

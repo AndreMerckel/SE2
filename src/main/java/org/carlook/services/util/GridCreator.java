@@ -31,7 +31,7 @@ public class GridCreator <A extends GridProps<String, Integer>>{
         table.addColumn(A::getKraftstoff).setCaption("Kraftstoff");
         table.addColumn(A::getBeschreibung).setCaption("Beschreibung");
         table.addColumn(A::getLocation).setCaption("Ort");
-        table.addColumn(A::getFahrgestellnummer).setCaption("Fahrgestellnummer");
+//        table.addColumn(A::getFahrgestellnummer).setCaption("Fahrgestellnummer");
         table.addColumn(A::getKennzeichen).setCaption("Kennzeichen");
         table.addColumn(A::getVertriebler).setCaption("Vertriebler");
         table.setSelectionMode(selectionMode);

@@ -15568,6 +15568,14 @@ div.v-layout.v-horizontal.v-widget {
 	opacity: 50%;
 }
 
+.mytheme .redButton {
+	background-color: red;
+}
+
+.mytheme .blueButton {
+	background-color: blue;
+}
+
 .mytheme .header_main {
 	align-self: center;
 	width: 100%;
