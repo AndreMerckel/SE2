@@ -37,7 +37,7 @@ public class DBTables {
 
     public static class Kunde {
 
-        public static final String NAME = "kunde";
+        public static final String NAME = "verbraucher";
 
         public static final String COL_KUNDENNUMMER = "k_nr";
 
@@ -54,7 +54,7 @@ public class DBTables {
 
     public static class Vertriebler {
 
-        public static final String NAME = "vertriebler";
+        public static final String NAME = "kunde";
 
         public static final String COL_VERTRIEBLERNUMMER = "v_nr";
 

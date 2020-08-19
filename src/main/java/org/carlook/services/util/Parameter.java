@@ -4,8 +4,8 @@ public class Parameter {
 
     public static final String COPY_RIGHT = "- " + Parameter.COMPANY + ", coded by: André Merckel, Martin Müller -";
 
-    public static final String COMPANY_NAME = "CarLook";
-    public static final String COMPANY_LEGAL_FORM = "Ldt.";
+    public static final String COMPANY_NAME = "Carlook";
+    public static final String COMPANY_LEGAL_FORM = "Ltd.";
     public static final String PROJECT_NAME = "SE2_Hausarbeit";
     public static final String COMPANY_MAIL_DOMAIN = "de";
 
