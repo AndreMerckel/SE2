@@ -2,28 +2,27 @@ package org.carlook.gui.components.TextFieldWithIcon;
 
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 
-public class TextFieldWithIcon<T extends String> extends HorizontalLayout {
-    TextField textField;
+public class TextFieldWithIcon extends HorizontalLayout {
     Label textlabel;
     Label label;
-    T placeholder;
+    String placeholder;
     HorizontalLayout innerLayout;
     HorizontalLayout overLayout;
+    TextField textField;
 
-    public TextFieldWithIcon(T placeholder, Label label, Boolean pw) {
-        this.textField = pw ? new PasswordField() : new TextField();
-        this.textField.setWidth("20rem");
-        this.textField.setId(placeholder);
+    public TextFieldWithIcon(TextField textField, String placeholder, Label label) {
+        this.textField = textField;
+        textField.setWidth("20rem");
+        textField.setId(placeholder);
         this.setWidth("" + textField.getWidth());
         this.placeholder = placeholder;
         this.SetUpComponent(placeholder, label);
     }
 
 
-    public void SetUpComponent(T placeholder, Label label) {
+    public void SetUpComponent(String placeholder, Label label) {
         textField.setStyleName("textfieldwidth");
         this.setStyleName("textfieldwidth");
         this.setStyleName("textfieldWithIcon");

@@ -51,7 +51,6 @@ public class FahrzeugDAO extends AbstractDAO {
                         .setBaujahr(resultSet.getInt(DBTables.Fahrzeug.COL_BAUJAHR))
                         .setVertriebler(resultSet.getInt(DBTables.Fahrzeug.COL_VERTRIEBLER));
 
-
                 fahrzeugeList.add(fahrzeug);
             }
         } catch (SQLException throwables) {

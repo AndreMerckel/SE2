@@ -47,23 +47,28 @@ public class RegisterView extends VerticalLayout implements View{
 
         Label emailFieldLabel = new Label();
         emailFieldLabel.setIcon(VaadinIcons.USER);
-        TextFieldWithIcon emailTextField = new TextFieldWithIcon("Email", emailFieldLabel, false);
+        TextField emailField = new TextField();
+        TextFieldWithIcon emailTextField = new TextFieldWithIcon(emailField,"Email", emailFieldLabel);
 
         Label vornameFieldLabel = new Label();
         vornameFieldLabel.setIcon(VaadinIcons.USER);
-        TextFieldWithIcon vornameTextField = new TextFieldWithIcon("Vorname", vornameFieldLabel, false);
+        TextField vornameField = new TextField();
+        TextFieldWithIcon vornameTextField = new TextFieldWithIcon(vornameField,"Vorname", vornameFieldLabel);
 
         Label nachnameFieldLabel = new Label();
         nachnameFieldLabel.setIcon(VaadinIcons.USER);
-        TextFieldWithIcon nachnameTextField = new TextFieldWithIcon("Nachname", nachnameFieldLabel, false);
+        TextField nachnameField = new TextField();
+        TextFieldWithIcon nachnameTextField = new TextFieldWithIcon(nachnameField,"Nachname", nachnameFieldLabel);
 
         Label passwortFieldLabel = new Label();
         passwortFieldLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon passwortTextField = new TextFieldWithIcon("Passwort", passwortFieldLabel, true);
+        PasswordField passwordField = new PasswordField();
+        TextFieldWithIcon passwortTextField = new TextFieldWithIcon(passwordField,"Passwort", passwortFieldLabel);
 
         Label repeatPasswortFieldLabel = new Label();
         repeatPasswortFieldLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon repeatPasswortTextField = new TextFieldWithIcon("Passwort", repeatPasswortFieldLabel, true);
+        PasswordField repeatPassswordField = new PasswordField();
+        TextFieldWithIcon repeatPasswortTextField = new TextFieldWithIcon(repeatPassswordField,"Passwort", repeatPasswortFieldLabel);
 
         Button registerButton = new Button("Register");
         Button switchLogin = new Button("Switch to Login");

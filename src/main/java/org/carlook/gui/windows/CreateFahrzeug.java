@@ -30,43 +30,51 @@ public class CreateFahrzeug extends Window {
 
         Label herstellerLabel = new Label();
         herstellerLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon herstellerField = new TextFieldWithIcon("Hersteller", herstellerLabel, false);
-        grid.addComponent(herstellerField);
+        TextField herstellerField = new TextField();
+        TextFieldWithIcon herstellerTextField = new TextFieldWithIcon(herstellerField,"Hersteller", herstellerLabel);
+        grid.addComponent(herstellerTextField);
 
         Label beschreibungLabel = new Label();
         beschreibungLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon beschreibungField = new TextFieldWithIcon("Beschreibung", beschreibungLabel, false);
-        grid.addComponent(beschreibungField);
+        TextField beschreibungField = new TextField();
+        TextFieldWithIcon beschreibungTextField = new TextFieldWithIcon(beschreibungField,"Beschreibung", beschreibungLabel);
+        grid.addComponent(beschreibungTextField);
 
         Label kraftstoffLabel = new Label();
         kraftstoffLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon kraftstoffField = new TextFieldWithIcon("Kraftstoff", kraftstoffLabel, false);
-        grid.addComponent(kraftstoffField);
+        TextField kraftstoffField = new TextField();
+        TextFieldWithIcon kraftstoffTextField = new TextFieldWithIcon(kraftstoffField,"Kraftstoff", kraftstoffLabel);
+        grid.addComponent(kraftstoffTextField);
 
         Label baujahrLabel = new Label();
         baujahrLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon baujahrField = new TextFieldWithIcon("Baujahr", baujahrLabel, false);
-        grid.addComponent(baujahrField);
+        TextField baujahrField = new TextField();
+        TextFieldWithIcon baujahrTextField = new TextFieldWithIcon(baujahrField,"Baujahr", baujahrLabel);
+        grid.addComponent(baujahrTextField);
 
         Label modelLabel = new Label();
         modelLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon modelField = new TextFieldWithIcon("Model", modelLabel, false);
-        grid.addComponent(modelField);
+        TextField modelField = new TextField();
+        TextFieldWithIcon modelTextField = new TextFieldWithIcon(modelField,"Model", modelLabel);
+        grid.addComponent(modelTextField);
 
         Label fahrgestellnummberLabel = new Label();
         fahrgestellnummberLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon fahrgestellnummberField = new TextFieldWithIcon("Fahrgestell", fahrgestellnummberLabel, false);
-        grid.addComponent(fahrgestellnummberField);
+        TextField fahrgestellnummberField = new TextField();
+        TextFieldWithIcon fahrgestellnummberTextField = new TextFieldWithIcon(fahrgestellnummberField,"Fahrgestell", fahrgestellnummberLabel);
+        grid.addComponent(fahrgestellnummberTextField);
 
         Label kennzeichenLabel = new Label();
         kennzeichenLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon kennzeichenField = new TextFieldWithIcon("Kennzeichen", kennzeichenLabel, false);
-        grid.addComponent(kennzeichenField);
+        TextField kennzeichenField = new TextField();
+        TextFieldWithIcon kennzeichenTextField = new TextFieldWithIcon(kennzeichenField,"Kennzeichen", kennzeichenLabel);
+        grid.addComponent(kennzeichenTextField);
 
         Label locationLabel = new Label();
         locationLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon locationField = new TextFieldWithIcon("Standort", locationLabel, false);
-        grid.addComponent(locationField);
+        TextField locationField = new TextField();
+        TextFieldWithIcon locationTextField = new TextFieldWithIcon(locationField,"Standort", locationLabel);
+        grid.addComponent(locationTextField);
 
         Button addCarButton = new Button("Speichern");
         addCarButton.setStyleName("addCarButton");

@@ -48,12 +48,13 @@ public class LoginView extends VerticalLayout implements View {
 
         Label emailFieldLabel = new Label();
         emailFieldLabel.setIcon(VaadinIcons.USER);
-        TextFieldWithIcon emailTextField = new TextFieldWithIcon("Email", emailFieldLabel, false);
-
+        TextField textField = new TextField();
+        TextFieldWithIcon emailTextField = new TextFieldWithIcon(textField,"Email", emailFieldLabel);
 
         Label passwortFieldLabel = new Label();
         passwortFieldLabel.setIcon(VaadinIcons.PASSWORD);
-        TextFieldWithIcon passwortTextField = new TextFieldWithIcon("Passwort", passwortFieldLabel, true);
+        PasswordField passwordField = new PasswordField();
+        TextFieldWithIcon passwortTextField = new TextFieldWithIcon(passwordField,"Passwort", passwortFieldLabel);
 
         Button loginButton = new Button("Login");
         loginButton.setStyleName("loginButton");
