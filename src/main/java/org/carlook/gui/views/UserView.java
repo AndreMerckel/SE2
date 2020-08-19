@@ -13,12 +13,10 @@ import org.carlook.controller.exception.DatabaseException;
 import org.carlook.gui.components.Footer;
 import org.carlook.gui.components.Header;
 import org.carlook.gui.windows.ConfirmationWindow;
-import org.carlook.model.dao.FahrzeugDAO;
 import org.carlook.model.objects.dto.ReservationDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Kunde;
 import org.carlook.model.objects.entities.User;
-import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.GridCreator;
 import org.carlook.services.util.Roles;
@@ -27,8 +25,6 @@ import org.carlook.services.util.Views;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static java.lang.System.err;
 
 public class UserView extends VerticalLayout implements View {
 
@@ -64,9 +60,14 @@ public class UserView extends VerticalLayout implements View {
         grid.setItems(allFahrzeuge);
         grid.addComponentColumn(fahrzeug -> {
             boolean check = false;
+            /*
             if(ReservationControl.checkReserved(((Kunde) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER)).getKundennummer(), fahrzeug.getKennzeichen())) {
                 check = true;
             }
+            */
+             if(ReservationControl.checkReservedSession(fahrzeug.getKennzeichen())){
+                 check = true;
+             }
             if(check){
                 Button button = new Button("Reservierung aufheben");
                 button.addClickListener(e -> loescheReservierung(fahrzeug));
@@ -106,6 +107,8 @@ public class UserView extends VerticalLayout implements View {
         } else {
             UI.getCurrent().addWindow(new ConfirmationWindow("Error beim Reservieren von Fahrzeug: " + f.getKennzeichen()));
         }
+        List<String> res = (List<String>)UI.getCurrent().getSession().getAttribute(Roles.RESERVATIONS);
+        res.add(f.getKennzeichen());
         UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
     }
 
@@ -119,7 +122,7 @@ public class UserView extends VerticalLayout implements View {
         r.setFahrzeug(f);
         boolean state = false;
         try {
-            state = ReservationControl.register(r);
+            state = ReservationControl.unregister(r);
         } catch (DatabaseException ex) {
             Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
             return;
@@ -128,6 +131,13 @@ public class UserView extends VerticalLayout implements View {
             UI.getCurrent().addWindow(new ConfirmationWindow("Reservierung für Fahrzeug: " + f.getKennzeichen() + " erfolgreich aufgehoben!"));
         } else {
             UI.getCurrent().addWindow(new ConfirmationWindow("Error beim löschen von Fahrzeugreservierung: " + f.getKennzeichen()));
+        }
+        List<String> res = (List<String>)UI.getCurrent().getSession().getAttribute(Roles.RESERVATIONS);
+        for (String e : res){
+            if(e.equals(f.getKennzeichen())){
+                res.remove(e);
+                break;
+            }
         }
         UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
     }
