@@ -1,25 +1,28 @@
 package org.carlook.model.objects.dto;
 
+import org.carlook.model.objects.entities.Fahrzeug;
+import org.carlook.model.objects.entities.Kunde;
+
 public class ReservationDTO {
 
-    public KundeDTO kundeDTO;
-    public FahrzeugDTO fahrzeugDTO;
+    public Kunde kunde;
+    public Fahrzeug fahrzeug;
 
-    public KundeDTO getKundeDTO() {
-        return kundeDTO;
+    public Kunde getKunde() {
+        return kunde;
     }
 
-    public ReservationDTO setKundeDTO(KundeDTO kundeDTO) {
-        this.kundeDTO = kundeDTO;
+    public ReservationDTO setKunde(KundeDTO kundeDTO) {
+        this.kunde = kunde;
         return this;
     }
 
-    public FahrzeugDTO getFahrzeugDTO() {
-        return fahrzeugDTO;
+    public Fahrzeug getFahrzeug() {
+        return fahrzeug;
     }
 
-    public ReservationDTO setFahrzeugDTO(FahrzeugDTO fahrzeugDTO) {
-        this.fahrzeugDTO = fahrzeugDTO;
+    public ReservationDTO setFahrzeugDTO(Fahrzeug fahrzeug) {
+        this.fahrzeug = fahrzeug;
         return this;
     }
 }

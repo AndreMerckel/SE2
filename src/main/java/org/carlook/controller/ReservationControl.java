@@ -5,11 +5,9 @@ import org.carlook.model.dao.KundeReserviertFahrzeugDAO;
 import org.carlook.model.dao.ReservationDAO;
 import org.carlook.model.objects.dto.ReservationDTO;
 
-public class ReservationControl implements Register<ReservationDTO> {
+public class ReservationControl{
 
-
-    @Override
-    public void register(ReservationDTO reservationDTO) throws DatabaseException {
+    public static void register(ReservationDTO reservationDTO) throws DatabaseException {
         KundeReserviertFahrzeugDAO.getInstance().register(reservationDTO);
     }
 }
