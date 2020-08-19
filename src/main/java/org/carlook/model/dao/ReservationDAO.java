@@ -35,11 +35,10 @@ public class ReservationDAO extends AbstractDAO {
     }
 
     public void register(ReservationDTO reservationDTO) throws DatabaseException {
-
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
 
-        sqlBefehl = "INSERT INTO " + table + " (" + DBTables.Fahrzeug.COL_KENNZEICHEN +"," + DBTables.Kunde.COL_KUNDENNUMMER + ") VALUES (?,?)";
+        sqlBefehl = "INSERT INTO " + table + " (" + DBTables.Fahrzeug.COL_KENNZEICHEN + "," + DBTables.Kunde.COL_KUNDENNUMMER + ") VALUES (?,?)";
         PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
         try {
             preparedStatement.setString(1, reservationDTO.getFahrzeug().getKennzeichen());
@@ -87,7 +86,7 @@ public class ReservationDAO extends AbstractDAO {
         ResultSet resultSet = null;
 
         try {
-            preparedStatement.setInt(1,kundeDTO.getKundennummer());
+            preparedStatement.setInt(1, kundeDTO.getKundennummer());
 
             resultSet = preparedStatement.executeQuery();
         } catch (SQLException throwables) {
@@ -114,7 +113,8 @@ public class ReservationDAO extends AbstractDAO {
             JDBCConnection.getInstance().closeConnection();
             try {
                 if (resultSet != null)
-                    resultSet.close(); } catch (Exception exc) {
+                    resultSet.close();
+            } catch (Exception exc) {
                 Logger.getLogger(ReservationDAO.class.getName()).log(Level.SEVERE, null, exc);
             }
         }
@@ -135,7 +135,7 @@ public class ReservationDAO extends AbstractDAO {
             resultSet = statement.executeQuery();
 
             assert resultSet != null;
-            if (resultSet.next());
+            if (resultSet.next()) ;
             res = resultSet.getInt(DBTables.Kunde.COL_KUNDENNUMMER);
         } catch (SQLException throwables) {
             Logger.getLogger(FahrzeugDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
@@ -143,7 +143,8 @@ public class ReservationDAO extends AbstractDAO {
             JDBCConnection.getInstance().closeConnection();
             try {
                 if (resultSet != null)
-                    resultSet.close(); } catch (Exception exc) {
+                    resultSet.close();
+            } catch (Exception exc) {
                 Logger.getLogger(ReservationDAO.class.getName()).log(Level.SEVERE, sqlBefehl, exc);
             }
         }
@@ -177,5 +178,24 @@ public class ReservationDAO extends AbstractDAO {
             }
         }
         return res;
+    }
+
+    public void deleteReservation(ReservationDTO reservationDTO) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+        String sqlBefehl;
+
+        sqlBefehl = "DELETE FROM " + table + " WHERE " + DBTables.Kunde.COL_KUNDENNUMMER + " = ? AND " + DBTables.Fahrzeug.COL_KENNZEICHEN + " =  ?;";
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
+        try {
+            preparedStatement.setInt(1, reservationDTO.getKunde().getKundennummer());
+            preparedStatement.setString(2, reservationDTO.getFahrzeug().getKennzeichen());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            Logger.getLogger(ReservationDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
     }
 }
