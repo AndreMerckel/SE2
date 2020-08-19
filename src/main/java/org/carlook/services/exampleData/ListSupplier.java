@@ -272,7 +272,7 @@ public class ListSupplier {
 
                 for (String tmp : listSign) {
 
-                    Kunde kunde = Factories.cre().setKundennummer(new Random().nextInt(sizeKunde-1) + 1);
+                    Kunde kunde = Factories.createNewKunde().setKundennummer(new Random().nextInt(sizeKunde-1) + 1);
                     Fahrzeug fahrzeug = Factories.createNewFahrzeug().setKennzeichen(tmp);
 
                     newDataList.add(DTOFactory.createNewReservationDTO().setFahrzeug(fahrzeug).setKunde(kunde));
