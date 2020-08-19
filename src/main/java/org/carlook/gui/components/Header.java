@@ -34,7 +34,7 @@ public class Header extends HorizontalLayout {
         User user = (User) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER);
         StatusUser statusUser = (StatusUser) UI.getCurrent().getSession().getAttribute(Roles.STATUS);
 
-            Label headLabel = new Label(user != null ? "Logged in as: " + ((statusUser == StatusUser.VERTRIEBLER ? Roles.VERTRIEBLER : Roles.KUNDE) + ": " + user.getVorname() + " " + user.getNachname() + ", " + user.getNachname()): "");
+            Label headLabel = new Label(user != null ? "Logged in as " + ((statusUser == StatusUser.VERTRIEBLER ? Roles.VERTRIEBLER : Roles.KUNDE) + ": " + user.getVorname() + " " + user.getNachname() + ", " + user.getEmail()): "");
             headLabel.addStyleName("header_main_menuBox_headLabel");
 
         headLogo.addClickListener(e ->{

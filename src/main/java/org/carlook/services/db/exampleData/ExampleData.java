@@ -1,4 +1,4 @@
-package org.carlook.services.exampleData;
+package org.carlook.services.db.exampleData;
 
 import org.carlook.controller.FahrzeugControl;
 import org.carlook.controller.LoginControl;
@@ -34,7 +34,7 @@ public class ExampleData {
         for (UserDTO tmp : list) {
             LoginControl.registerAdmin(tmp);
         }
-        Logger.getLogger(ExampleData.class.getName()).log(Level.SEVERE, list.get(0).getClass()  + " erfolgreich hinzugefuegt!\n");
+        Logger.getLogger(ExampleData.class.getName()).log(Level.INFO, list.get(0).getClass()  + " erfolgreich hinzugefuegt!\n");
     }
 
     public static void initFahrzeuge(List<Fahrzeug> list) {
@@ -42,18 +42,18 @@ public class ExampleData {
         try {
             sizeVertriebler = UserDAO.getInstance().sizeVertriebler();
         } catch (DatabaseException e) {
-            Logger.getLogger(ExampleData.class.getName()).log(Level.SEVERE, null,e);
+            Logger.getLogger(ExampleData.class.getName()).log(Level.INFO, null,e);
         }
         for (Fahrzeug tmp : list) {
             try {
                 Vertriebler vertriebler = DTOFactory.createNewVertrieblerDTO().setVertriebnummer(new Random().nextInt(sizeVertriebler-1)+1);
                 FahrzeugControl.register(tmp,vertriebler);
             } catch (DatabaseException | RegisterFailedException e) {
-                Logger.getLogger(ExampleData.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(ExampleData.class.getName()).log(Level.INFO, null, e);
                 return;
             }
         }
-        Logger.getLogger(ExampleData.class.getName()).log(Level.SEVERE, list.get(0).getClass()  + " erfolgreich hinzugefuegt!\n");
+        Logger.getLogger(ExampleData.class.getName()).log(Level.INFO, list.get(0).getClass()  + " erfolgreich hinzugefuegt!\n");
     }
 
     public static void initKundeResFahzg() {
@@ -66,7 +66,7 @@ public class ExampleData {
                 return;
             }
         }
-        Logger.getLogger(ExampleData.class.getName()).log(Level.SEVERE, reservationDTOList.get(0).getClass()  + " erfolgreich hinzugefuegt!\n");
+        Logger.getLogger(ExampleData.class.getName()).log(Level.INFO, reservationDTOList.get(0).getClass()  + " erfolgreich hinzugefuegt!\n");
     }
 
 }

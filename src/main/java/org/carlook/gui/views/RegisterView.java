@@ -10,6 +10,8 @@ import org.carlook.gui.components.Footer;
 import org.carlook.gui.components.Header;
 import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
 import org.carlook.model.objects.entities.User;
+import org.carlook.services.util.DBTables;
+import org.carlook.services.util.OtherMethods;
 import org.carlook.services.util.Roles;
 import org.carlook.services.util.Views;
 
@@ -48,27 +50,27 @@ public class RegisterView extends VerticalLayout implements View{
         Label emailFieldLabel = new Label();
         emailFieldLabel.setIcon(VaadinIcons.USER);
         TextField emailField = new TextField();
-        TextFieldWithIcon emailTextField = new TextFieldWithIcon(emailField,"Email", emailFieldLabel);
+        TextFieldWithIcon emailTextField = new TextFieldWithIcon(emailField, OtherMethods.getStringWithFirstUpperLetter(DBTables.User.COL_EMAIL), emailFieldLabel);
 
         Label vornameFieldLabel = new Label();
         vornameFieldLabel.setIcon(VaadinIcons.USER);
         TextField vornameField = new TextField();
-        TextFieldWithIcon vornameTextField = new TextFieldWithIcon(vornameField,"Vorname", vornameFieldLabel);
+        TextFieldWithIcon vornameTextField = new TextFieldWithIcon(vornameField,OtherMethods.getStringWithFirstUpperLetter(DBTables.User.COL_VORNAME), vornameFieldLabel);
 
         Label nachnameFieldLabel = new Label();
         nachnameFieldLabel.setIcon(VaadinIcons.USER);
         TextField nachnameField = new TextField();
-        TextFieldWithIcon nachnameTextField = new TextFieldWithIcon(nachnameField,"Nachname", nachnameFieldLabel);
+        TextFieldWithIcon nachnameTextField = new TextFieldWithIcon(nachnameField,OtherMethods.getStringWithFirstUpperLetter(DBTables.User.COL_NACHNAME), nachnameFieldLabel);
 
         Label passwortFieldLabel = new Label();
         passwortFieldLabel.setIcon(VaadinIcons.PASSWORD);
         PasswordField passwordField = new PasswordField();
-        TextFieldWithIcon passwortTextField = new TextFieldWithIcon(passwordField,"Passwort", passwortFieldLabel);
+        TextFieldWithIcon passwortTextField = new TextFieldWithIcon(passwordField,OtherMethods.getStringWithFirstUpperLetter(DBTables.User.COL_PASSWORD), passwortFieldLabel);
 
         Label repeatPasswortFieldLabel = new Label();
         repeatPasswortFieldLabel.setIcon(VaadinIcons.PASSWORD);
         PasswordField repeatPassswordField = new PasswordField();
-        TextFieldWithIcon repeatPasswortTextField = new TextFieldWithIcon(repeatPassswordField,"Passwort", repeatPasswortFieldLabel);
+        TextFieldWithIcon repeatPasswortTextField = new TextFieldWithIcon(repeatPassswordField,OtherMethods.getStringWithFirstUpperLetter(DBTables.User.COL_PASSWORD), repeatPasswortFieldLabel);
 
         Button registerButton = new Button("Register");
         Button switchLogin = new Button("Switch to Login");

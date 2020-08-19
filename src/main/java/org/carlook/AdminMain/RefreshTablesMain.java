@@ -1,7 +1,7 @@
 package org.carlook.AdminMain;
 
 import org.carlook.services.db.DBCreation;
-import org.carlook.services.exampleData.ExampleData;
+import org.carlook.services.db.exampleData.ExampleData;
 
 public class RefreshTablesMain {
 
