@@ -34,7 +34,6 @@ public class LoginView extends VerticalLayout implements View {
     public LoginView(){};
 
     public void setUp() {
-        this.setSizeFull();
         addComponent(new Header(false));
 
         VerticalLayout layout = new VerticalLayout();
@@ -62,7 +61,7 @@ public class LoginView extends VerticalLayout implements View {
         loginButton.setStyleName("loginButton");
 
         Button switchRegister = new Button("Switch to Register");
-        switchRegister.setStyleName("switchRegisterButton");
+        switchRegister.setStyleName("buttonBlue");
 
         layout.addComponent(emailTextField);
         layout.addComponent(passwortTextField);

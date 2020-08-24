@@ -15640,6 +15640,6 @@ div.v-layout.v-horizontal.v-widget {
 	margin: 1rem;
 }
 
-.mytheme .confirmButton, .mytheme .addCarButton {
+.mytheme .buttonBlue, .mytheme .confirmButton, .mytheme .addCarButton {
 	background-color: blue;
 }
