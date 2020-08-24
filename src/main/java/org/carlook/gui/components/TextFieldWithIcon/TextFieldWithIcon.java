@@ -66,11 +66,11 @@ public class TextFieldWithIcon extends HorizontalLayout {
         return this.textField.getValue();
     }
 
+    public String getCaption(){return this.placeholder;}
+
     public void setValue(String value){
         this.textField.setValue(value);
     }
-
-
 
 
 }

@@ -83,7 +83,7 @@ public class UserView extends VerticalLayout implements View {
 
                 return button;
             }
-        }).setCaption("Reserviert");
+        }).setCaption("Reserviert").setId("Reserviert");
         grid.setRowHeight(60);
 
         this.addComponent(grid);
