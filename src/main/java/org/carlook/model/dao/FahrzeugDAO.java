@@ -2,9 +2,7 @@ package org.carlook.model.dao;
 
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.RegisterFailedException;
-import org.carlook.factories.DTOFactory;
 import org.carlook.factories.Factories;
-import org.carlook.model.objects.dto.VertrieblerErstelltFahrzeugDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Kennzeichen;
 import org.carlook.model.objects.entities.Vertriebler;
@@ -35,7 +33,7 @@ public class FahrzeugDAO extends AbstractDAO {
     public List<Fahrzeug> getAllFahrzeuge() throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         List<Fahrzeug> fahrzeugeList = new ArrayList<>();
-        String sqlBefehl = "Select * FROM " + table + ";";
+        String sqlBefehl = "Select * FROM " + table;
         PreparedStatement statement = getPreparedStatement(sqlBefehl);
         ResultSet resultSet = null;
         try {
@@ -77,8 +75,6 @@ public class FahrzeugDAO extends AbstractDAO {
                 err = DBTables.Vertriebler.NAME + "DTO == null";
             throw new RegisterFailedException().setReason(err);
         }
-
-        VertrieblerErstelltFahrzeugDTO vertrieblerErstelltFahrzeugDTO = DTOFactory.createNewVertrieblerErstelltFahrzeugDTO().setFahrzeug(fahrzeug).setVertriebler(vertriebler);
 
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;

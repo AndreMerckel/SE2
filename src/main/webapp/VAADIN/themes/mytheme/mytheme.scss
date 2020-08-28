@@ -286,6 +286,15 @@
   .addCarButton{
     background-color: blue;
   }
+
+  .v-slot-buttonBlueAddButton{
+    display:flex;
+    justify-content: center;
+  }
+
+  .buttonBlueAddButton{
+    background-color: blue;
+  }
   //GRID LAYOUT - END
 
 }
