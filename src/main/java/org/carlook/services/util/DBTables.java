@@ -89,9 +89,9 @@ public class DBTables {
                 COL_BESCHREIBUNG + " VARCHAR(255) NOT NULL,\n" +
                 COL_KRAFTSTOFF + " VARCHAR(255) NOT NULL,\n" +
                 COL_BAUJAHR + " NUMERIC(4) NOT NULL,\n" +
-                COL_MODELL + " VARCHAR(255) NOT NULL," +
+                COL_MODELL + " VARCHAR(255) NOT NULL,\n" +
                 COL_FAHRGESTELLNUMMER + " VARCHAR(255) NOT NULL UNIQUE,\n" +
-                COL_KENNZEICHEN + " VARCHAR(255) NOT NULL UNIQUE," +
+                COL_KENNZEICHEN + " VARCHAR(255) NOT NULL UNIQUE,\n" +
                 COL_VERTRIEBLER + " INTEGER NOT NULL,\n" +
                 COL_LOCATION + " VARCHAR(255) NOT NULL,\n" +
                 "CONSTRAINT pk_" + NAME + " PRIMARY KEY (" + COL_KENNZEICHEN +"),\n" +

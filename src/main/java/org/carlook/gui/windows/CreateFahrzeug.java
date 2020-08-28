@@ -87,13 +87,16 @@ public class CreateFahrzeug extends Window {
         addCarButton.addClickListener(e -> {
 
             try {
+                String fahrgestellnummerTMP = fahrgestellnummberField.getValue().trim();
 
-                boolean test =Integer.parseInt(baujahrField.getValue()) > 1750 && Integer.parseInt(baujahrField.getValue()) < Calendar.getInstance().get(Calendar.YEAR) + 1;
-                boolean test2 = !fahrgestellnummberField.getValue().trim().equals("");
-                if(!test){
+                boolean test = Integer.parseInt(baujahrField.getValue()) > 1750 && Integer.parseInt(baujahrField.getValue()) < Calendar.getInstance().get(Calendar.YEAR) + 1;
+                boolean test2 = !fahrgestellnummerTMP.equals("") && !FahrzeugControl.checkFahrgestellnummerAvailability(fahrgestellnummerTMP);
+
+                if(!test) {
                     Notification.show("Falsches Jahr als Baujahr eingegeben. Akzeptiert werden nur viertellige realistische Jahreszahlen");
                     return;
                 }
+
                 if(!test2){
                     Notification.show("Fahrgestellnummer darf nicht leer sein und muss eindeutig sein.");
                     return;
@@ -107,7 +110,7 @@ public class CreateFahrzeug extends Window {
             Fahrzeug fz = Factories.createNewFahrzeug()
             .setBaujahr(Integer.parseInt(baujahrField.getValue()))
             .setBeschreibung(beschreibungField.getValue())
-            .setFahrgestellnummer(fahrgestellnummberField.getValue())
+            .setFahrgestellnummer(fahrgestellnummberField.getValue().trim())
             .setKennzeichen(Factories.createNewKennzeichen().setKennzeichen(kennzeichenField.getValue()))
             .setKraftstoff(kraftstoffField.getValue())
             .setLocation(locationField.getValue())
