@@ -52,12 +52,14 @@ public class ReservationControl {
 
     //Complete Session Query
     public static boolean checkReservedSession(String kennzeichen){
-         boolean check = false;
+        boolean check = false;
         List<String> reservations = (List<String>) UI.getCurrent().getSession().getAttribute(Roles.RESERVATIONS);
-        for (String s : reservations){
-            if (s.equals(kennzeichen)) {
-                check = true;
-                break;
+        if( reservations != null){
+            for (String s : reservations){
+                if (s.equals(kennzeichen)) {
+                    check = true;
+                    break;
+                }
             }
         }
         return check;

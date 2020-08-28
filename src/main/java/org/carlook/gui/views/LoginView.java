@@ -10,10 +10,7 @@ import org.carlook.controller.exception.NoSuchUserOrPassword;
 import org.carlook.gui.components.*;
 import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
 import org.carlook.model.objects.entities.User;
-import org.carlook.services.util.DBTables;
-import org.carlook.services.util.OtherMethods;
-import org.carlook.services.util.Roles;
-import org.carlook.services.util.Views;
+import org.carlook.services.util.*;
 
 
 public class LoginView extends VerticalLayout implements View {
@@ -26,8 +23,10 @@ public class LoginView extends VerticalLayout implements View {
 
         if(user == null) {
             this.setUp();
-        } else {
+        } else if(UI.getCurrent().getSession().getAttribute(Roles.STATUS) == StatusUser.KUNDE) {
             UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
+        } else if(UI.getCurrent().getSession().getAttribute(Roles.STATUS) == StatusUser.VERTRIEBLER ){
+            UI.getCurrent().getNavigator().navigateTo(Views.SALESVIEW);
         };
     }
 
