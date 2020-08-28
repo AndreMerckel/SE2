@@ -84,9 +84,6 @@ public class Search<T> extends HorizontalLayout {
             } else {
                return hersteller && modell && baujahr && kraftstoff;
             }
-
-
-
         });
     }
 
