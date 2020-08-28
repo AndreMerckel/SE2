@@ -75,6 +75,16 @@ public class FahrzeugControl {
         return fahrzeuglist;
     }
 
+    public static boolean checkFahrgestellnummerAvailability(String fahrgeetellnummer) {
+        boolean res = false;
+        try {
+            res = FahrzeugDAO.getInstance().checkFahrgestellnummerAvailability(fahrgeetellnummer);
+        } catch (DatabaseException e) {
+            Logger.getLogger(FahrzeugControl.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return res;
+    }
+
 
     public static String getRandomKennzeichen() {
         int rdmInt = new Random().nextInt(9999)+1;

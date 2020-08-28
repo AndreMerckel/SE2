@@ -308,4 +308,24 @@ public class FahrzeugDAO extends AbstractDAO {
         return res;
     }
 
+    public boolean checkFahrgestellnummerAvailability(String fahrgestellnummer) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+
+        String sqlBefehl = "SELECT FROM " + table + " WHERE " + DBTables.Fahrzeug.COL_FAHRGESTELLNUMMER + " = ?";
+        PreparedStatement statement = getPreparedStatement(sqlBefehl);
+        ResultSet resultSet = null;
+        boolean res = false;
+
+        try {
+            statement.setString(1, fahrgestellnummer);
+            resultSet = statement.executeQuery();
+            res = resultSet.next();
+        } catch (SQLException throwables) {
+            Logger.getLogger(FahrzeugDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return res;
+    }
+
 }
