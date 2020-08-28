@@ -30,49 +30,51 @@ public class CreateFahrzeug extends Window {
         GridLayout grid = new GridLayout(1, 9);
 
         Label herstellerLabel = new Label();
-        herstellerLabel.setIcon(VaadinIcons.PASSWORD);
+        herstellerLabel.setIcon(VaadinIcons.FACTORY);
         TextField herstellerField = new TextField();
         TextFieldWithIcon herstellerTextField = new TextFieldWithIcon(herstellerField,"Hersteller", herstellerLabel);
         grid.addComponent(herstellerTextField);
 
         Label beschreibungLabel = new Label();
-        beschreibungLabel.setIcon(VaadinIcons.PASSWORD);
+        beschreibungLabel.setIcon(VaadinIcons.TEXT_INPUT);
         TextField beschreibungField = new TextField();
         TextFieldWithIcon beschreibungTextField = new TextFieldWithIcon(beschreibungField,"Beschreibung", beschreibungLabel);
         grid.addComponent(beschreibungTextField);
 
         Label kraftstoffLabel = new Label();
-        kraftstoffLabel.setIcon(VaadinIcons.PASSWORD);
+        kraftstoffLabel.setIcon(VaadinIcons.DROP);
         TextField kraftstoffField = new TextField();
         TextFieldWithIcon kraftstoffTextField = new TextFieldWithIcon(kraftstoffField,"Kraftstoff", kraftstoffLabel);
         grid.addComponent(kraftstoffTextField);
 
         Label baujahrLabel = new Label();
-        baujahrLabel.setIcon(VaadinIcons.PASSWORD);
+        baujahrLabel.setIcon(VaadinIcons.CLOCK);
         TextField baujahrField = new TextField();
         TextFieldWithIcon baujahrTextField = new TextFieldWithIcon(baujahrField,"Baujahr", baujahrLabel);
         grid.addComponent(baujahrTextField);
 
         Label modelLabel = new Label();
-        modelLabel.setIcon(VaadinIcons.PASSWORD);
+        modelLabel.setIcon(VaadinIcons.TAG);
         TextField modelField = new TextField();
         TextFieldWithIcon modelTextField = new TextFieldWithIcon(modelField,"Model", modelLabel);
         grid.addComponent(modelTextField);
 
         Label fahrgestellnummberLabel = new Label();
-        fahrgestellnummberLabel.setIcon(VaadinIcons.PASSWORD);
+        fahrgestellnummberLabel.setIcon(VaadinIcons.CAR);
         TextField fahrgestellnummberField = new TextField();
         TextFieldWithIcon fahrgestellnummberTextField = new TextFieldWithIcon(fahrgestellnummberField,"Fahrgestell", fahrgestellnummberLabel);
         grid.addComponent(fahrgestellnummberTextField);
 
         Label kennzeichenLabel = new Label();
-        kennzeichenLabel.setIcon(VaadinIcons.PASSWORD);
+        kennzeichenLabel.setIcon(null);
         TextField kennzeichenField = new TextField();
-        TextFieldWithIcon kennzeichenTextField = new TextFieldWithIcon(kennzeichenField,"Kennzeichen", kennzeichenLabel);
+        kennzeichenField.setReadOnly(true);
+        kennzeichenField.setValue("SU-CL-456");
+        TextFieldWithIcon kennzeichenTextField = new TextFieldWithIcon(kennzeichenField,"", kennzeichenLabel);
         grid.addComponent(kennzeichenTextField);
 
         Label locationLabel = new Label();
-        locationLabel.setIcon(VaadinIcons.PASSWORD);
+        locationLabel.setIcon(VaadinIcons.LOCATION_ARROW);
         TextField locationField = new TextField();
         TextFieldWithIcon locationTextField = new TextFieldWithIcon(locationField,"Standort", locationLabel);
         grid.addComponent(locationTextField);
