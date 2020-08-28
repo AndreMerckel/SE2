@@ -2,6 +2,7 @@ package org.carlook.controller;
 
 import com.vaadin.ui.UI;
 import org.carlook.controller.exception.DatabaseException;
+import org.carlook.factories.Factories;
 import org.carlook.model.dao.ReservationDAO;
 import org.carlook.model.objects.dto.ReservationDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
@@ -35,7 +36,7 @@ public class ReservationControl {
     public static boolean checkReserved(Integer id, String kennzeichen){
         ReservationDTO r = new ReservationDTO();
         Fahrzeug f = new Fahrzeug();
-        f.setKennzeichen(kennzeichen);
+        f.setKennzeichen(Factories.createNewKennzeichen().setKennzeichen(kennzeichen));
         Kunde k = new Kunde();
         k.setKundennummer(id);
         r.setFahrzeug(f);
@@ -64,4 +65,5 @@ public class ReservationControl {
         }
         return check;
     }
+
 }

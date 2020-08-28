@@ -8,6 +8,7 @@ import com.vaadin.ui.renderers.ButtonRenderer;
 import org.carlook.controller.FahrzeugControl;
 import org.carlook.controller.ReservationControl;
 import org.carlook.controller.exception.DatabaseException;
+import org.carlook.factories.Factories;
 import org.carlook.gui.components.Footer;
 import org.carlook.gui.components.Header;
 import org.carlook.gui.windows.ConfirmationWindow;
@@ -55,7 +56,7 @@ public class SalesView extends VerticalLayout implements View {
         grid.addColumn(fahrzeug -> "Delete", new ButtonRenderer<>(clickEvent->{
             Fahrzeug f = new Fahrzeug();
             f.setFahrgestellnummer(clickEvent.getItem().getFahrgestellnummer());
-            f.setKennzeichen(clickEvent.getItem().getKennzeichen());
+            f.setKennzeichen(Factories.createNewKennzeichen().setKennzeichen(clickEvent.getItem().getKennzeichen()));
             f.setVertriebler(clickEvent.getItem().getVertriebler());
             boolean state = false;
             try {
