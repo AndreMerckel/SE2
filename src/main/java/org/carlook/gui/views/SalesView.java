@@ -42,7 +42,7 @@ public class SalesView extends VerticalLayout implements View {
 
     public void setUp() {
         addComponent(new Header(false));
-        List<Fahrzeug> salesFahrzeuge = FahrzeugControl.fetchFahrzeugeVonVertriebler((Vertriebler) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER));
+            List<Fahrzeug> salesFahrzeuge = FahrzeugControl.fetchFahrzeugeVonVertriebler((Vertriebler) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER));
 
         if(salesFahrzeuge.size() == 0) {
             Button newKfz = new Button("Neues Fahrzeug");
@@ -53,7 +53,7 @@ public class SalesView extends VerticalLayout implements View {
             this.addComponent(newKfz);
         } else {
 
-            Grid<Fahrzeug> grid = new GridCreator<Fahrzeug>(new Fahrzeug(), OtherMethods.getStringWithFirstUpperLetter(DBTables.Kunde.NAME) + "sicht", Grid.SelectionMode.SINGLE, "headerStyle", "tableStyle").createTable();
+            Grid<Fahrzeug> grid = new GridCreator<Fahrzeug>(new Fahrzeug(), OtherMethods.getStringWithFirstUpperLetter(DBTables.Kunde.NAME) + "sicht", Grid.SelectionMode.SINGLE, "headerStyle", "tableStyle").createTableVertriebler();
             grid.setSizeFull();
             grid.setHeightMode(HeightMode.ROW);
             grid.setHeightByRows(salesFahrzeuge.size());

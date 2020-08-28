@@ -49,7 +49,7 @@ public class UserView extends VerticalLayout implements View {
     public void setUp() throws DatabaseException{
         addComponent(new Header(false));
 
-        Grid<Fahrzeug> grid = new GridCreator<Fahrzeug>(new Fahrzeug(), "Usersicht", Grid.SelectionMode.SINGLE, "headerStyle", "tableStyle").createTable();
+        Grid<Fahrzeug> grid = new GridCreator<Fahrzeug>(new Fahrzeug(), "Usersicht", Grid.SelectionMode.SINGLE, "headerStyle", "tableStyle").createTableUser();
         addComponent(new Search<>(grid));
 
         List<Fahrzeug> allFahrzeuge = FahrzeugControl.fetchAllFahrzeuge();
