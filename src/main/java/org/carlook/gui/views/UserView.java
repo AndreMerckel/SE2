@@ -23,6 +23,8 @@ import org.carlook.services.util.GridCreator;
 import org.carlook.services.util.Roles;
 import org.carlook.services.util.Views;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -111,7 +113,13 @@ public class UserView extends VerticalLayout implements View {
             UI.getCurrent().addWindow(new ConfirmationWindow("Error beim Reservieren von Fahrzeug: " + f.getKennzeichen()));
         }
         List<String> res = (List<String>)UI.getCurrent().getSession().getAttribute(Roles.RESERVATIONS);
-        res.add(f.getKennzeichen());
+        if(res != null){
+            res.add(f.getKennzeichen());
+        } else {
+            res = new ArrayList<String>();
+            res.add(f.getKennzeichen());
+            UI.getCurrent().getSession().setAttribute(Roles.RESERVATIONS, res);
+        }
         UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
     }
 
