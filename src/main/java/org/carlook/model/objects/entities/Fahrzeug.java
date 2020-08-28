@@ -74,9 +74,13 @@ public class Fahrzeug implements GridProps<String, Integer> {
         return kennzeichen;
     }
 
-    public Fahrzeug setKennzeichen(Kennzeichen kennzeichen) {
-        this.kennzeichen = kennzeichen.toString();
+    public Fahrzeug setKennzeichen(String kennzeichen) {
+        this.kennzeichen = kennzeichen;
         return this;
+    }
+
+    public Fahrzeug setKennzeichen(Kennzeichen kennzeichen) {
+        return setKennzeichen(kennzeichen.toString());
     }
 
     public Integer getVertriebler() {

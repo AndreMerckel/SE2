@@ -49,111 +49,110 @@ public class UtilNewUserData {
         list.add("Baujahr");
         list.add("Modell");
         list.add("Fahrgestellnummer");
-        list.add("Kennzeichen");
         list.add("Vertriebler");
         list.add("Location");
 
 
-        String s = "Mazda,Kindersitz im Kofferraum,Diesel,2018,Concerto,WBA1K5C55FV233044,SU-CL-5938,46,Bonn\n" +
-                "Ford,gutes Entetainment-System,Gas,2019,Integra SJ,3D7LP2ET8AG786303,SU-CL-9236,3,Rheinbach\n" +
-                "Dodge,mit Ledersitze,Elektro,2019,Elysion,JTHFE2C25A2530070,SU-CL-8061,32,Hamburg\n" +
-                "Mercury,Ganzjahresreifen,Diesel,2019,Integra SJ,WAUFEBFM2CA942855,SU-CL-5482,31,Hamburg\n" +
-                "Ford,Confort-Ausstattung,Diesel,2019,CR-X,4USFE43547L257126,SU-CL-0478,29,Rheinbach\n" +
-                "Saturn,Kindersitz im Kofferraum,Benzin,2017,Rafaga,1G6AH5SX8D0880636,SU-CL-7123,15,Siegburg\n" +
-                "Hummer,Ganzjahresreifen,Gas,2018,Concerto,2G4WB55K511023691,SU-CL-9328,30,Hamburg\n" +
-                "Pontiac,Klimaautomatik,Elektro,2017,Insight,1FMEU7FE0AU903984,SU-CL-9801,19,Rheinbach\n" +
-                "Mercury,begehrt!,Benzin,2017,Capa,KL4CJESBXDB344610,SU-CL-3609,50,Sankt Augustin\n" +
-                "Hyundai,unfallfrei mit vielen Extra,Benzin,2018,Orthia,WBABN53453J280421,SU-CL-4514,41,Berlin\n" +
-                "Subaru,Kindersitz im Kofferraum,Gas,2020,Concerto,WBAKE5C50DJ578742,SU-CL-0117,4,Rheinbach\n" +
-                "Dodge,Gepflegtes Auto,Elektro,2017,Prelude,SALAG2D4XAA975540,SU-CL-5705,31,Berlin\n" +
-                "Nissan,mit Ledersitze,Diesel,2020,City,5J8TB3H3XFL505849,SU-CL-2771,40,Hennef\n" +
-                "Mitsubishi,kleiner Unfallschaden,Elektro,2020,Insight,JH4CL95904C701642,SU-CL-1043,12,Hennef\n" +
-                "Buick,mit Ledersitze,Benzin,2019,Fit,WAUVT68E04A535259,SU-CL-0574,29,Köln\n" +
-                "Bentley,kleiner Unfallschaden,Gas,2020,Life,WAUEF98E07A168392,SU-CL-2555,21,Siegburg\n" +
-                "Jeep,mit Ledersitze,Elektro,2020,Mobilio,3D73M3HL5AG071554,SU-CL-0573,38,Berlin\n" +
-                "BMW,Unsere Besten!,Benzin,2019,Ridgeline,1GYS3SKJ6FR539349,SU-CL-1544,22,Hamburg\n" +
-                "GMC,Klimaautomatik,Diesel,2018,Civic,4T1BF1FK3CU811502,SU-CL-3951,28,Hamburg\n" +
-                "Pontiac,Highline,Diesel,2020,CR-Z,3C6TD4DT2CG728214,SU-CL-9541,12,Köln\n" +
-                "Volkswagen,mit Ledersitze,Gas,2020,Fit,WBS3C9C58FP326346,SU-CL-1797,26,Rheinbach\n" +
-                "Infiniti,begehrt!,Elektro,2019,Ridgeline,1GD02ZCG6EF908525,SU-CL-4294,4,Rheinbach\n" +
-                "Chrysler,Ganzjahresreifen,Gas,2019,Capa,WAUPL68E45A927865,SU-CL-0419,49,Siegburg\n" +
-                "Chevrolet,elektrisch verstellbare Sitze,Diesel,2017,Partner,3C3CFFAR9FT769950,SU-CL-6768,33,Bonn\n" +
-                "Volkswagen,unfallfrei mit vielen Extra,Diesel,2018,Logo,WAU2MAFC1FN443433,SU-CL-8248,21,Hennef\n" +
-                "Land Rover,Klimaautomatik,Elektro,2017,Accord,WBAPK7C51BA043751,SU-CL-6179,2,Siegburg\n" +
-                "Hyundai,begehrt!,Elektro,2018,MDX,1GYFC66808R640485,SU-CL-4940,4,Sankt Augustin\n" +
-                "Cadillac,Confort-Ausstattung,Gas,2017,Inspire,19UUA9F28DA849998,SU-CL-4686,42,Köln\n" +
-                "Chevrolet,Confort-Ausstattung,Diesel,2019,FR-V,5TDDK3DC3DS299634,SU-CL-9123,24,Sankt Augustin\n" +
-                "Chevrolet,mit Ledersitze,Benzin,2020,Fit Aria,SALAB2D42AA638858,SU-CL-9948,11,Rheinbach\n" +
-                "Nissan,unfallfrei mit vielen Extra,Diesel,2019,CR-X,2G4GR5ER5D9518122,SU-CL-6690,4,München\n" +
-                "Mitsubishi,Gepflegtes Auto,Gas,2019,Insight,WBSDE93431B480023,SU-CL-6018,32,München\n" +
-                "GMC,begehrt!,Diesel,2017,FR-V,3C4PDDAG5ET554232,SU-CL-6054,28,München\n" +
-                "GMC,elektrisch verstellbare Sitze,Elektro,2019,Crossroad,WBA5A5C55FD780289,SU-CL-2478,39,Bonn\n" +
-                "Chevrolet,kleiner Unfallschaden,Gas,2019,Elysion,19XFB2E27CE690142,SU-CL-5823,41,Hamburg\n" +
-                "Mercedes-Benz,elektrisch verstellbare Sitze,Diesel,2017,Insight,JN1CV6AP2CM895276,SU-CL-0480,21,Hamburg\n" +
-                "Isuzu,Confort-Ausstattung,Elektro,2018,Jazz,1N6AF0KY2EN450911,SU-CL-2583,13,Bonn\n" +
-                "GMC,unfallfrei mit vielen Extra,Benzin,2017,Edix,3D7TP2CT4BG723400,SU-CL-7757,17,Berlin\n" +
-                "Suzuki,begehrt!,Benzin,2019,Crosstour,WDBSK7AA9CF905534,SU-CL-3793,7,Hennef\n" +
-                "Honda,Ganzjahresreifen,Diesel,2020,Crossroad,WBANA535X5B381940,SU-CL-1057,30,Köln\n" +
-                "Ford,elektrisch verstellbare Sitze,Benzin,2020,Capa,1G6AH5R39F0409424,SU-CL-9350,18,Hennef\n" +
-                "Volkswagen,kleiner Unfallschaden,Elektro,2018,Insight,1GYUKAEF8AR943341,SU-CL-8673,22,Hennef\n" +
-                "GMC,kleiner Unfallschaden,Elektro,2018,Partner,JN8AE2KP0C9029675,SU-CL-9614,6,Hamburg\n" +
-                "Lincoln,Klimaautomatik,Benzin,2020,Prelude,WBANN73516C577499,SU-CL-0537,3,Hennef\n" +
-                "Pontiac,begehrt!,Diesel,2017,NSX,137ZA90381E550914,SU-CL-2489,45,Rheinbach\n" +
-                "Mazda,Ganzjahresreifen,Diesel,2018,FR-V,3D73Y4EL7AG778797,SU-CL-8415,19,Rheinbach\n" +
-                "Jeep,mit Ledersitze,Elektro,2019,Life,3VW507AT1EM329993,SU-CL-2788,33,Hennef\n" +
-                "Toyota,Highline,Gas,2017,Insight,JTHKD5BH9E2759382,SU-CL-0192,43,Hamburg\n" +
-                "Toyota,Ganzjahresreifen,Elektro,2020,City,WBADW3C51CE623205,SU-CL-2104,22,Siegburg\n" +
-                "Mercedes-Benz,unfallfrei mit vielen Extra,Benzin,2018,Domani,1G6YV36A175050492,SU-CL-9256,11,Hamburg\n" +
-                "Ford,elektrisch verstellbare Sitze,Gas,2017,NSX,5J6TF1H58EL542951,SU-CL-1958,37,Berlin\n" +
-                "Mitsubishi,Klimaautomatik,Gas,2017,Insight,JTDBT4K35A1832170,SU-CL-8994,47,Siegburg\n" +
-                "Volkswagen,elektrisch verstellbare Sitze,Diesel,2020,Accord,19UUA66274A679261,SU-CL-4311,2,Sankt Augustin\n" +
-                "Ford,gutes Entetainment-System,Elektro,2017,Capa,WAUGGAFR3EA391665,SU-CL-6438,7,Sankt Augustin\n" +
-                "Chevrolet,Gepflegtes Auto,Diesel,2019,Airwave,WA1CMAFP0EA664340,SU-CL-2258,14,Rheinbach\n" +
-                "Mitsubishi,gutes Entetainment-System,Gas,2019,Domani,WBAVB73517K513530,SU-CL-2970,16,Hamburg\n" +
-                "GMC,mit Ledersitze,Gas,2018,Element,5FNRL3H26AB005146,SU-CL-4890,25,Rheinbach\n" +
-                "Aston Martin,unfallfrei mit vielen Extra,Elektro,2019,Pilot,JH4DC53826S670863,SU-CL-4781,23,Bonn\n" +
-                "Kia,unfallfrei mit vielen Extra,Elektro,2020,Element,WAUJFAFH2BN570722,SU-CL-3421,25,Hennef\n" +
-                "Mitsubishi,elektrisch verstellbare Sitze,Elektro,2018,Integra,WBAVA33538P330372,SU-CL-5108,39,Köln\n" +
-                "BMW,elektrisch verstellbare Sitze,Elektro,2020,Jazz,JN8AE2KP8C9845243,SU-CL-8321,22,Köln\n" +
-                "Dodge,elektrisch verstellbare Sitze,Gas,2018,CR-X,WA1LGBFE7CD352975,SU-CL-5039,4,Rheinbach\n" +
-                "Volvo,elektrisch verstellbare Sitze,Benzin,2019,Element,1G6AB5R36D0542995,SU-CL-9204,25,Bonn\n" +
-                "Scion,Kindersitz im Kofferraum,Diesel,2020,Ridgeline,1G4GC5ER2DF957920,SU-CL-5869,32,Sankt Augustin\n" +
-                "Ford,gutes Entetainment-System,Gas,2019,HR-V,5GADS13SX72180246,SU-CL-2489,38,Bonn\n" +
-                "Hyundai,Unsere Besten!,Diesel,2018,Orthia,3C4PDDDG4CT860329,SU-CL-1743,25,Sankt Augustin\n" +
-                "Ford,Kindersitz im Kofferraum,Diesel,2020,CR-X,5GAEV23798J114453,SU-CL-9544,21,Köln\n" +
-                "Ford,Gepflegtes Auto,Elektro,2020,Elysion,WBALZ5C5XCD034075,SU-CL-7886,32,München\n" +
-                "Jaguar,Unsere Besten!,Elektro,2018,CR-V,1FMEU5DE1AU471526,SU-CL-8542,22,Köln\n" +
-                "Honda,kleiner Unfallschaden,Elektro,2019,Prelude,JH4KC1F5XEC233705,SU-CL-2442,42,Sankt Augustin\n" +
-                "BMW,Ganzjahresreifen,Elektro,2019,City,WAUHE78P48A519313,SU-CL-1656,10,Berlin\n" +
-                "Mitsubishi,Unsere Besten!,Diesel,2020,Passport,2T1BPRHE2EC961608,SU-CL-3539,50,Sankt Augustin\n" +
-                "Pontiac,mit Ledersitze,Elektro,2017,Logo,1G6DE5EG6A0882379,SU-CL-5797,46,Sankt Augustin\n" +
-                "GMC,Ganzjahresreifen,Gas,2018,Crosstour,1FTWX3A56AE344385,SU-CL-4721,27,Rheinbach\n" +
-                "GMC,Highline,Elektro,2020,Civic,5LMJJ2H51AE952550,SU-CL-5347,11,Hamburg\n" +
-                "Ford,kleiner Unfallschaden,Diesel,2018,Mobilio,JTDKDTB38F1997063,SU-CL-2877,4,Köln\n" +
-                "Volkswagen,elektrisch verstellbare Sitze,Gas,2019,Partner,JTHBB1BAXA2090180,SU-CL-3207,1,Köln\n" +
-                "Chevrolet,Confort-Ausstattung,Gas,2019,Fit,WBAYP9C56FD365968,SU-CL-3564,21,Bonn\n" +
-                "Mercury,Kindersitz im Kofferraum,Gas,2020,Logo,3D7TP2CT0BG757091,SU-CL-6653,38,Sankt Augustin\n" +
-                "Nissan,elektrisch verstellbare Sitze,Benzin,2019,FR-V,WBABV13464J835581,SU-CL-7103,37,Köln\n" +
-                "Toyota,Klimaautomatik,Elektro,2017,Element,YV140MEB5F1648045,SU-CL-4058,21,Hamburg\n" +
-                "Dodge,Klimaautomatik,Elektro,2018,Passport,1G6AF5S38D0561952,SU-CL-5125,24,Berlin\n" +
-                "Audi,Highline,Gas,2020,FR-V,WAUVT68E14A043632,SU-CL-0810,7,Köln\n" +
-                "Mercedes-Benz,Unsere Besten!,Gas,2020,NSX,JH4KB16687C212611,SU-CL-7521,10,Berlin\n" +
-                "Toyota,Confort-Ausstattung,Elektro,2019,Orthia,2T2BK1BA0AC721579,SU-CL-1714,40,Rheinbach\n" +
-                "Dodge,kleiner Unfallschaden,Elektro,2017,Accord,2T2BK1BA7FC249095,SU-CL-5497,20,Sankt Augustin\n" +
-                "Dodge,Unsere Besten!,Gas,2020,Odyssey,WAULD64B64N244063,SU-CL-0363,4,Köln\n" +
-                "Mazda,elektrisch verstellbare Sitze,Diesel,2018,Rafaga,3N1AB6AP5AL755942,SU-CL-9221,1,Berlin\n" +
-                "Volvo,kleiner Unfallschaden,Benzin,2018,Ascot,2G4GV5GV7C9892090,SU-CL-6525,26,Hennef\n" +
-                "Dodge,elektrisch verstellbare Sitze,Benzin,2019,Life,1D4RE2GG2BC363511,SU-CL-8889,38,Bonn\n" +
-                "Acura,Ganzjahresreifen,Diesel,2020,Orthia,WBAHL03516D625149,SU-CL-1209,11,Bonn\n" +
-                "Lexus,Klimaautomatik,Elektro,2019,Integra,WAUBVAFB4BN020232,SU-CL-7117,34,Sankt Augustin\n" +
-                "Dodge,Kindersitz im Kofferraum,Benzin,2018,NSX,5N1AA0NC5EN073648,SU-CL-7601,16,Hamburg\n" +
-                "Volkswagen,unfallfrei mit vielen Extra,Gas,2018,Jazz,2C3CDXCT1DH005214,SU-CL-4327,45,Berlin\n" +
-                "Ford,begehrt!,Benzin,2020,Crosstour,WVWAA7AJ6BW520186,SU-CL-2585,23,Berlin\n" +
-                "Dodge,Highline,Elektro,2019,Element,2G4GV5EV1B9926736,SU-CL-8056,10,Hennef\n" +
-                "Chevrolet,begehrt!,Elektro,2020,Fit Aria,JTHBE1KSXB0545736,SU-CL-2798,36,Sankt Augustin\n" +
-                "Honda,Klimaautomatik,Diesel,2019,Civic,5GALVBED1AJ917953,SU-CL-4658,25,Hamburg\n" +
-                "Honda,elektrisch verstellbare Sitze,Diesel,2019,Accord,WA1DMAFP3FA282406,SU-CL-7218,20,Hamburg\n" +
-                "GMC,elektrisch verstellbare Sitze,Elektro,2018,Elysion,SCFFDCCD8CG121337,SU-CL-1151,15,Rheinbach";
+        String s = "Dodge,begehrt!,Elektro,2020,Accord,WAUDF68E35A059612,93,München\n" +
+                "Hyundai,gutes Entetainment-System,Benzin,2020,CR-X,2G61N5S33D9234013,70,Köln\n" +
+                "Nissan,gutes Entetainment-System,Elektro,2018,CR-X,WAUJGAFC7DN055624,80,Sankt Augustin\n" +
+                "Mazda,Gepflegtes Auto,Diesel,2017,Inspire,WAUDGAFL7DA456952,68,Berlin\n" +
+                "GMC,mit Klimaautomatik,Gas,2017,NSX,WBAYF4C59DD955505,70,Berlin\n" +
+                "Chevrolet,Geil!,Gas,2020,Fit Aria,19XFB2E51DE298124,70,Bonn\n" +
+                "BMW,Geil!,Elektro,2017,Fit Aria,WVGEP9BP7FD441797,87,Bonn\n" +
+                "Mercury,begehrt!,Gas,2020,Avancier,3C63D2JL6CG829765,60,Bonn\n" +
+                "Mercedes-Benz,Confort-Ausstattung,Gas,2020,Rafaga,WA1VMBFE2ED840879,78,Hamburg\n" +
+                "Buick,unfallfrei mit vielen Extra,Elektro,2020,CR-X,1G6DK5EG1A0741602,69,Hamburg\n" +
+                "Aston Martin,Gepflegtes Auto,Elektro,2018,Fit Aria,1FTEX1CM8DF220654,88,Hamburg\n" +
+                "Volvo,unfallfrei mit vielen Extra,Benzin,2020,Inspire,WAUFGBFC8DN768673,75,Sankt Augustin\n" +
+                "MINI,mit Kindersitz,Elektro,2018,City,JN1BY1AR4EM714835,60,Sankt Augustin\n" +
+                "Pontiac,mit Klimaautomatik,Diesel,2019,HR-V,WBAKG7C58DJ405184,89,Berlin\n" +
+                "Lexus,Gepflegtes Auto,Elektro,2020,City,JN8AZ1FY1DW504092,61,München\n" +
+                "Aston Martin,gutes Entetainment-System,Elektro,2019,Ascot,JH4NA12662T206577,69,München\n" +
+                "Hummer,mit Kindersitz,Elektro,2017,CR-V,3VW4A7AT0DM445533,68,Berlin\n" +
+                "Mitsubishi,unfallfrei mit vielen Extra,Elektro,2018,Capa,SALSF2D44DA150072,56,Köln\n" +
+                "Mazda,Gepflegtes Auto,Diesel,2020,Insight,3D7JB1ET7BG117991,100,Sankt Augustin\n" +
+                "Infiniti,Gepflegtes Auto,Diesel,2019,Civic,SCBCR63W95C479419,71,Köln\n" +
+                "Honda,gutes Entetainment-System,Elektro,2017,MDX,4USCN33462L255522,96,Köln\n" +
+                "Mazda,begehrt!,Diesel,2019,Avancier,WA1AV74L49D622619,99,Köln\n" +
+                "Infiniti,mit Klimaautomatik,Elektro,2018,Legend,WBAVT13526A805024,97,Hamburg\n" +
+                "GMC,kleiner Unfallschaden,Gas,2018,FCX Clarity,1FTWF3B5XAE058315,59,Hamburg\n" +
+                "Lexus,mit Kindersitz,Gas,2020,MDX,TRUUT28N731583336,87,München\n" +
+                "Nissan,mit Kindersitz,Gas,2020,Life,2LNBL8CVXAX843157,53,Bonn\n" +
+                "Subaru,Unsere Besten!,Diesel,2018,Accord,SALVP2BG2EH040296,99,Sankt Augustin\n" +
+                "Isuzu,Gepflegtes Auto,Gas,2017,Orthia,3D73Y4EL9BG377818,57,Hamburg\n" +
+                "Nissan,begehrt!,Gas,2019,Accord,KMHTC6AD1EU807227,77,Sankt Augustin\n" +
+                "Lexus,Highline,Gas,2017,Ridgeline,2FMGK5BC2CB695431,92,Köln\n" +
+                "Chevrolet,unfallfrei mit vielen Extra,Diesel,2019,Odyssey,1G6DS8E32D0015749,95,Sankt Augustin\n" +
+                "Chrysler,gutes Entetainment-System,Benzin,2019,Life,1G6DJ1E34D0207992,57,Köln\n" +
+                "Dodge,gutes Entetainment-System,Benzin,2020,Gooding,1G4GF5G3XCF622757,78,Sankt Augustin\n" +
+                "Oldsmobile,gutes Entetainment-System,Benzin,2020,Integra,1B3BD4FBXBN784420,52,Bonn\n" +
+                "Jaguar,mit Klimaautomatik,Benzin,2019,Gooding,1N6AA0CAXAN929779,74,München\n" +
+                "Oldsmobile,unfallfrei mit vielen Extra,Elektro,2017,CR-Z,1FTFW1E84AF811714,77,Hamburg\n" +
+                "Plymouth,mit Kindersitz,Diesel,2019,Capa,1G6DL5E34C0564363,61,Berlin\n" +
+                "Audi,Unsere Besten!,Diesel,2020,Quint,1GTN1TEHXEZ644434,64,Köln\n" +
+                "Suzuki,unfallfrei mit vielen Extra,Elektro,2019,Ascot,2FMGK5C82FB589625,57,Bonn\n" +
+                "Ford,Geil!,Benzin,2019,Freed,JN8AF5MV3FT168670,51,Bonn\n" +
+                "Infiniti,Unsere Besten!,Diesel,2018,Odyssey,2C4RDGBG6ER946521,91,Bonn\n" +
+                "Audi,unfallfrei mit vielen Extra,Gas,2018,Elysion,1G6AH5S38D0383373,85,Bonn\n" +
+                "Lotus,Gepflegtes Auto,Gas,2017,Crossroad,2T2BK1BA2FC727228,79,Bonn\n" +
+                "Land Rover,mit Kindersitz,Benzin,2017,MDX,3D7TP2CT5BG052867,62,Köln\n" +
+                "Chevrolet,unfallfrei mit vielen Extra,Elektro,2018,Passport,KNADM5A36F6376068,94,München\n" +
+                "Ford,mit Klimaautomatik,Diesel,2019,Pilot,WAUDF98E78A241514,95,Bonn\n" +
+                "Land Rover,mit Klimaautomatik,Gas,2017,Accord,1GD11ZCG2DF073173,88,Sankt Augustin\n" +
+                "Volkswagen,gutes Entetainment-System,Benzin,2018,CR-Z,WBAYP1C53FD874269,61,Bonn\n" +
+                "Ford,kleiner Unfallschaden,Gas,2018,Insight,WAUMFAFH6FN127797,72,Bonn\n" +
+                "Cadillac,Gepflegtes Auto,Elektro,2018,Rafaga,5LMJJ2H53CE152724,68,Bonn\n" +
+                "Nissan,begehrt!,Diesel,2020,CR-V,WBALL5C56EJ529640,91,Sankt Augustin\n" +
+                "Jeep,mit Klimaautomatik,Elektro,2017,Logo,1G4GH5G39CF210906,59,Köln\n" +
+                "Lincoln,mit Klimaautomatik,Gas,2020,Mobilio,1GYFK66847R690811,62,Hamburg\n" +
+                "Oldsmobile,Unsere Besten!,Benzin,2017,Crosstour,JN1CV6EK0CM749800,81,Sankt Augustin\n" +
+                "Chevrolet,kleiner Unfallschaden,Benzin,2017,Inspire,3VW517ATXEM217898,67,Bonn\n" +
+                "Toyota,Gepflegtes Auto,Diesel,2017,Ridgeline,1FTSX2B51AE656167,97,München\n" +
+                "Jaguar,mit Kindersitz,Gas,2018,Element,5N1CR2MM6EC150630,75,Hamburg\n" +
+                "Mitsubishi,Unsere Besten!,Elektro,2019,Fit Aria,JN1AY1AP7CM019711,65,Sankt Augustin\n" +
+                "Mazda,Unsere Besten!,Diesel,2020,Prelude,1FAHP2DW7BG762489,63,Sankt Augustin\n" +
+                "Hyundai,kleiner Unfallschaden,Diesel,2017,Ridgeline,YV1672MK7A2742957,61,Köln\n" +
+                "Volkswagen,Confort-Ausstattung,Diesel,2020,CR-V,WVGAV3AXXDW363262,98,Sankt Augustin\n" +
+                "Ford,Gepflegtes Auto,Benzin,2019,Integra,2FMGK5BC9CB536261,91,Sankt Augustin\n" +
+                "Toyota,mit Kindersitz,Gas,2018,CR-X,WA1CFBFPXBA058667,74,Bonn\n" +
+                "Toyota,Highline,Gas,2019,Accord,WAUVT58E32A247131,78,München\n" +
+                "Eagle,gutes Entetainment-System,Benzin,2018,Integra,WBAEU33422K379646,68,Berlin\n" +
+                "Mazda,kleiner Unfallschaden,Diesel,2017,MDX,WAUJGAFC2DN924498,94,Hamburg\n" +
+                "Cadillac,unfallfrei mit vielen Extra,Diesel,2020,Crossroad,WP0CA2A84ES008947,91,Köln\n" +
+                "BMW,unfallfrei mit vielen Extra,Gas,2020,Life,JN8AF5MR3DT355200,69,Köln\n" +
+                "MINI,Geil!,Elektro,2019,Inspire,1FTWW3A51AE896833,81,Berlin\n" +
+                "Mitsubishi,Gepflegtes Auto,Elektro,2019,Gooding,1C4RDJAG8EC376481,83,Hamburg\n" +
+                "Acura,Highline,Gas,2018,Orthia,3N1CN7APXEK414599,58,Bonn\n" +
+                "Ford,kleiner Unfallschaden,Benzin,2020,CR-X,WAUNG94F09N853578,95,Bonn\n" +
+                "Dodge,mit Kindersitz,Elektro,2017,MDX,1D4RE2GG1BC106047,97,Hamburg\n" +
+                "Subaru,mit Kindersitz,Elektro,2020,Gooding,1D7RV1GTXAS598303,90,Berlin\n" +
+                "Mitsubishi,Highline,Diesel,2018,Integra,1C4RDJDG7EC423768,83,München\n" +
+                "GMC,mit Kindersitz,Gas,2019,Elysion,1G6DP5E34C0977601,59,Sankt Augustin\n" +
+                "Audi,Unsere Besten!,Gas,2018,CR-V,WAUAFAFL1CA254712,82,Bonn\n" +
+                "Ford,Highline,Benzin,2019,Edix,1GT01ZCG7EF299906,65,Sankt Augustin\n" +
+                "Studebaker,Highline,Gas,2019,FCX Clarity,WBABD33495P845356,54,München\n" +
+                "Toyota,kleiner Unfallschaden,Gas,2019,Passport,WBADX1C57CJ411353,81,Köln\n" +
+                "Mazda,Gepflegtes Auto,Benzin,2020,Jazz,4USBU53548L905976,64,Sankt Augustin\n" +
+                "Audi,begehrt!,Benzin,2019,Prelude,1GD11ZCG3DF914806,68,Bonn\n" +
+                "Chevrolet,Geil!,Benzin,2017,Passport,JM1NC2JFXB0274188,56,Hamburg\n" +
+                "Jeep,kleiner Unfallschaden,Diesel,2018,Inspire,1G6DE5E51D0707105,76,Berlin\n" +
+                "Mazda,Geil!,Benzin,2020,NSX,2C3CCAEG1EH558575,68,München\n" +
+                "Chevrolet,begehrt!,Diesel,2019,CR-Z,WAUCD64B54N420486,69,Berlin\n" +
+                "Chevrolet,Highline,Diesel,2017,Edix,TRUTC28N061656143,80,Sankt Augustin\n" +
+                "Ford,Geil!,Benzin,2020,HR-V,1FTWX3A58AE983884,75,Berlin\n" +
+                "Mazda,unfallfrei mit vielen Extra,Elektro,2020,Crosstour,KMHHT6KD6DU531503,58,Berlin\n" +
+                "Cadillac,mit Klimaautomatik,Elektro,2019,Pilot,3D7TT2HT0BG757774,100,München\n" +
+                "GMC,mit Klimaautomatik,Benzin,2019,CR-V,1G6AJ5S31F0274373,99,Köln\n" +
+                "Mercedes-Benz,unfallfrei mit vielen Extra,Benzin,2019,Passport,3LNDL2L30BR646325,95,Berlin\n" +
+                "Toyota,kleiner Unfallschaden,Gas,2020,Crossroad,1FTEX1CM8BF163532,97,Bonn\n" +
+                "Kia,unfallfrei mit vielen Extra,Diesel,2017,Crosstour,WAUHF98P57A361619,81,Hamburg\n" +
+                "Suzuki,mit Kindersitz,Diesel,2018,CR-V,1C3ADEBZ6DV465378,65,München\n" +
+                "Acura,begehrt!,Diesel,2019,Elysion,3GYFNEE37DS799490,51,Bonn\n" +
+                "Isuzu,begehrt!,Elektro,2017,Insight,1N6AD0CU3AC967464,70,Bonn\n" +
+                "Honda,kleiner Unfallschaden,Diesel,2018,Ridgeline,JH4NA12625S107541,55,München\n" +
+                "Acura,Highline,Gas,2018,Integra SJ,JTHBC1KS5A5652913,98,Bonn\n" +
+                "Oldsmobile,begehrt!,Elektro,2018,Beat,1GD21ZCG2DZ578567,85,Berlin";
 
         System.out.println(getFormat(s,list));
 

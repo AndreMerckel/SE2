@@ -47,7 +47,7 @@ public class ExampleData {
         for (Fahrzeug tmp : list) {
             try {
                 Vertriebler vertriebler = DTOFactory.createNewVertrieblerDTO().setVertriebnummer(new Random().nextInt(sizeVertriebler-1)+1);
-                FahrzeugControl.register(tmp,vertriebler);
+                FahrzeugControl.register(tmp.setKennzeichen(FahrzeugControl.getRandomKennzeichen()),vertriebler);
             } catch (DatabaseException | RegisterFailedException e) {
                 Logger.getLogger(ExampleData.class.getName()).log(Level.INFO, null, e);
                 return;
