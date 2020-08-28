@@ -14,7 +14,6 @@ public class JDBCConnection {
     private String zugangsdaten = ZugangsdatenDB.ZUGANG_DB;
 
 
-
     private static JDBCConnection connection = null;
     private String url = "jdbc:postgresql://dumbo.inf.h-brs.de/" + zugangsdaten;
     private Connection conn;

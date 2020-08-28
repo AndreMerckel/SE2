@@ -138,6 +138,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/model/dao/AbstractDAO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/org/carlook/model/dao/FahrzeugDAO.java">
           <value>
             <set />
@@ -168,6 +173,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/model/objects/dto/FahrzeugMitVertrieblerDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/org/carlook/model/objects/dto/KundeDTO.java">
           <value>
             <set />
@@ -194,6 +204,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/org/carlook/model/objects/entities/Kunde.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/org/carlook/services/db/JDBCConnection.java">
           <value>
             <set />
           </value>
@@ -238,12 +253,12 @@
             <set />
           </value>
         </entry>
-        <entry key="$USER_HOME$/Documents/vaadinMeinHotelWeb/src/main/java/org/bonn/se/gui/views/MainView.java">
+        <entry key="$PROJECT_DIR$/../vaadinMeinHotelWeb/src/main/java/org/bonn/se/gui/views/MainView.java">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$USER_HOME$/Documents/wi-inf_se2_2020_mortys/src/main/java/org/mortys/gui/views/LoginView.java">
+        <entry key="$PROJECT_DIR$/../wi-inf_se2_2020_mortys/src/main/java/org/mortys/gui/views/LoginView.java">
           <value>
             <set />
           </value>

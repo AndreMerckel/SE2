@@ -59,18 +59,24 @@ public class Header extends HorizontalLayout {
         });
 
 
-        item1.addItem("Suche", VaadinIcons.SEARCH, new MenuBar.Command() {
-            @Override
-            public void menuSelected(MenuBar.MenuItem menuItem) {
-                if(statusUser == StatusUser.VERTRIEBLER){
-                    UI.getCurrent().getNavigator().navigateTo(Views.SALESVIEW);
-                } else {
-                    UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
+        if (statusUser == StatusUser.VERTRIEBLER){
+            item1.addItem("Meine Fahrzeuge", VaadinIcons.CAR, new MenuBar.Command() {
+                @Override
+                public void menuSelected(MenuBar.MenuItem menuItem) {
+                        UI.getCurrent().getNavigator().navigateTo(Views.SALESVIEW);
                 }
-            }
-        });
+            });
+        } else {
+            item1.addItem("Suche", VaadinIcons.SEARCH, new MenuBar.Command() {
+                @Override
+                public void menuSelected(MenuBar.MenuItem menuItem) {
+                        UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
+                }
+            });
+        }
+
         if(statusUser == StatusUser.VERTRIEBLER) {
-            item1.addItem("Fahrzeug hinzufügen", VaadinIcons.CAR, new MenuBar.Command() {
+            item1.addItem("Fahrzeug hinzufügen", VaadinIcons.PLUS_CIRCLE, new MenuBar.Command() {
                 @Override
                 public void menuSelected(MenuBar.MenuItem selectedItem) {
                     UI.getCurrent().addWindow(new CreateFahrzeug());

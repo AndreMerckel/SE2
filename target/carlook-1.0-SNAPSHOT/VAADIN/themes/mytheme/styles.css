@@ -15643,3 +15643,12 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .buttonBlue, .mytheme .confirmButton, .mytheme .addCarButton {
 	background-color: blue;
 }
+
+.mytheme .v-slot-buttonBlueAddButton {
+	display: flex;
+	justify-content: center;
+}
+
+.mytheme .buttonBlueAddButton {
+	background-color: blue;
+}

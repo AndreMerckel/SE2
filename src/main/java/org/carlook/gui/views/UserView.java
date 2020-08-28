@@ -4,9 +4,6 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.grid.HeightMode;
 import com.vaadin.ui.*;
-import com.vaadin.ui.renderers.ButtonRenderer;
-import com.vaadin.ui.renderers.ClickableRenderer;
-import com.vaadin.ui.renderers.TextRenderer;
 import org.carlook.controller.FahrzeugControl;
 import org.carlook.controller.ReservationControl;
 import org.carlook.controller.exception.DatabaseException;
@@ -18,12 +15,10 @@ import org.carlook.model.objects.dto.ReservationDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Kunde;
 import org.carlook.model.objects.entities.User;
-import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.GridCreator;
 import org.carlook.services.util.Roles;
 import org.carlook.services.util.Views;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -54,7 +49,7 @@ public class UserView extends VerticalLayout implements View {
     public void setUp() throws DatabaseException{
         addComponent(new Header(false));
 
-        Grid<Fahrzeug> grid = new GridCreator<Fahrzeug>(new Fahrzeug(), "Vertrieblersicht", Grid.SelectionMode.SINGLE, "headerStyle", "tableStyle").createTable();
+        Grid<Fahrzeug> grid = new GridCreator<Fahrzeug>(new Fahrzeug(), "Usersicht", Grid.SelectionMode.SINGLE, "headerStyle", "tableStyle").createTable();
         addComponent(new Search<>(grid));
 
         List<Fahrzeug> allFahrzeuge = FahrzeugControl.fetchAllFahrzeuge();
@@ -104,7 +99,7 @@ public class UserView extends VerticalLayout implements View {
         try {
             state = ReservationControl.register(r);
         } catch (DatabaseException ex) {
-            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserView.class.getName()).log(Level.SEVERE, null, ex);
             return;
         }
         if (state) {
@@ -135,7 +130,7 @@ public class UserView extends VerticalLayout implements View {
         try {
             state = ReservationControl.unregister(r);
         } catch (DatabaseException ex) {
-            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserView.class.getName()).log(Level.SEVERE, null, ex);
             return;
         }
         if (state) {

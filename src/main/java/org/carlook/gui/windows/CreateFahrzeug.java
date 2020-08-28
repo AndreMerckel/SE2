@@ -10,7 +10,6 @@ import org.carlook.factories.Factories;
 import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
 import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Vertriebler;
-import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.Parameter;
 import org.carlook.services.util.Roles;
 import org.carlook.services.util.Views;
@@ -115,7 +114,7 @@ public class CreateFahrzeug extends Window {
             try {
                 FahrzeugControl.register(fz,v);
             } catch (DatabaseException | RegisterFailedException ex) {
-                Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CreateFahrzeug.class.getName()).log(Level.SEVERE, null, ex);
             }
             UI.getCurrent().addWindow(new ConfirmationWindow("Fahrzeug erfolgreich hinzugefügt!" ));
             UI.getCurrent().getNavigator().navigateTo(Views.SALESVIEW);
