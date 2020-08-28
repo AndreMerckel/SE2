@@ -6,6 +6,7 @@ import org.carlook.factories.DTOFactory;
 import org.carlook.factories.Factories;
 import org.carlook.model.objects.dto.VertrieblerErstelltFahrzeugDTO;
 import org.carlook.model.objects.entities.Fahrzeug;
+import org.carlook.model.objects.entities.Kennzeichen;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.DBTables;
@@ -47,7 +48,7 @@ public class FahrzeugDAO extends AbstractDAO {
                         .setKraftstoff(resultSet.getString(DBTables.Fahrzeug.COL_KRAFTSTOFF))
                         .setLocation(resultSet.getString(DBTables.Fahrzeug.COL_LOCATION))
                         .setFahrgestellnummer(resultSet.getString(DBTables.Fahrzeug.COL_FAHRGESTELLNUMMER))
-                        .setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN))
+                        .setKennzeichen(Factories.createNewKennzeichen().setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN)))
                         .setBaujahr(resultSet.getInt(DBTables.Fahrzeug.COL_BAUJAHR))
                         .setVertriebler(resultSet.getInt(DBTables.Fahrzeug.COL_VERTRIEBLER));
 
@@ -252,7 +253,7 @@ public class FahrzeugDAO extends AbstractDAO {
                         .setKraftstoff(resultSet.getString(DBTables.Fahrzeug.COL_KRAFTSTOFF))
                         .setLocation(resultSet.getString(DBTables.Fahrzeug.COL_LOCATION))
                         .setFahrgestellnummer(resultSet.getString(DBTables.Fahrzeug.COL_FAHRGESTELLNUMMER))
-                        .setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN))
+                        .setKennzeichen(Factories.createNewKennzeichen().setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN)))
                         .setBaujahr(resultSet.getInt(DBTables.Fahrzeug.COL_BAUJAHR))
                         .setVertriebler(vertriebler.getVertriebnummer());
 
@@ -289,6 +290,26 @@ public class FahrzeugDAO extends AbstractDAO {
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
+    }
+
+    public boolean checkKennzeichenAvailability(Kennzeichen kennzeichen) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+
+        String sqlBefehl = "SELECT FROM " + table + " WHERE " + DBTables.Fahrzeug.COL_KENNZEICHEN + " = ?";
+        PreparedStatement statement = getPreparedStatement(sqlBefehl);
+        ResultSet resultSet = null;
+        boolean res = false;
+
+        try {
+            statement.setString(1, kennzeichen.getKennzeichen());
+            resultSet = statement.executeQuery();
+            res = resultSet.next();
+        } catch (SQLException throwables) {
+            Logger.getLogger(FahrzeugDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return res;
     }
 
 }

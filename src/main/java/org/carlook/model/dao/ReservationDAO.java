@@ -102,7 +102,7 @@ public class ReservationDAO extends AbstractDAO {
         try {
             while (resultSet.next()) {
                 Kunde kunde = Factories.createNewKunde().setKundennummer(resultSet.getInt(DBTables.Kunde.COL_KUNDENNUMMER));
-                Fahrzeug fahrzeug = Factories.createNewFahrzeug().setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN));
+                Fahrzeug fahrzeug = Factories.createNewFahrzeug().setKennzeichen(Factories.createNewKennzeichen().setKennzeichen(resultSet.getString(DBTables.Fahrzeug.COL_KENNZEICHEN)));
 
                 reservationList.add(DTOFactory.createNewReservationDTO().setFahrzeug(fahrzeug).setKunde(kunde));
             }

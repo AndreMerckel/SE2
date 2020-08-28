@@ -69,7 +69,7 @@ public class CreateFahrzeug extends Window {
         kennzeichenLabel.setIcon(null);
         TextField kennzeichenField = new TextField();
         kennzeichenField.setReadOnly(true);
-        kennzeichenField.setValue("SU-CL-456");
+        kennzeichenField.setValue(FahrzeugControl.getRandomKennzeichen());
         TextFieldWithIcon kennzeichenTextField = new TextFieldWithIcon(kennzeichenField,"", kennzeichenLabel);
         grid.addComponent(kennzeichenTextField);
 
@@ -104,7 +104,7 @@ public class CreateFahrzeug extends Window {
             .setBaujahr(Integer.parseInt(baujahrField.getValue()))
             .setBeschreibung(beschreibungField.getValue())
             .setFahrgestellnummer(fahrgestellnummberField.getValue())
-            .setKennzeichen(kennzeichenField.getValue())
+            .setKennzeichen(Factories.createNewKennzeichen().setKennzeichen(kennzeichenField.getValue()))
             .setKraftstoff(kraftstoffField.getValue())
             .setLocation(locationField.getValue())
             .setModell(modelField.getValue())

@@ -2,13 +2,16 @@ package org.carlook.controller;
 
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.RegisterFailedException;
+import org.carlook.factories.Factories;
 import org.carlook.model.dao.FahrzeugDAO;
 import org.carlook.model.objects.entities.Fahrzeug;
+import org.carlook.model.objects.entities.Kennzeichen;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,8 +57,8 @@ public class FahrzeugControl {
         List<Fahrzeug> fahrzeugeList = new ArrayList<>();
         try{
             fahrzeugeList = FahrzeugDAO.getInstance().getAllFahrzeuge();
-        }catch(Error | DatabaseException ex){
-            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(Error | DatabaseException ex){
+            Logger.getLogger(FahrzeugControl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return fahrzeugeList;
 
@@ -64,12 +67,25 @@ public class FahrzeugControl {
     public static List<Fahrzeug> fetchFahrzeugeVonVertriebler(Vertriebler vertriebler){
         List<Fahrzeug> fahrzeuglist = new ArrayList<>();
 
-        try{
+        try {
             fahrzeuglist = FahrzeugDAO.getInstance().getFahrzeugeByVertriebler(vertriebler);
-        } catch(Error | DatabaseException ex) {
-            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Error | DatabaseException ex) {
+            Logger.getLogger(FahrzeugControl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return fahrzeuglist;
+    }
+
+
+    public static String getRandomKennzeichen() {
+        int rdmInt = new Random().nextInt(9999)+1;
+        Kennzeichen kennzeichen = Factories.createNewKennzeichen().setKennzeichen(rdmInt);
+        try {
+            if (FahrzeugDAO.getInstance().checkKennzeichenAvailability(kennzeichen))
+                return getRandomKennzeichen();
+        } catch (DatabaseException e) {
+            Logger.getLogger(FahrzeugControl.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return kennzeichen.getKennzeichen();
     }
 
 
