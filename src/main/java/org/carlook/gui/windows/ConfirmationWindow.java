@@ -8,6 +8,8 @@ public class ConfirmationWindow extends Window {
     public ConfirmationWindow(String text){
         super("Confirmation");
         center();
+        setModal(true);
+        setResizable(false);
 
         //Some basic content for the window
         VerticalLayout content = new VerticalLayout();

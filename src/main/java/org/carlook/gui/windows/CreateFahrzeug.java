@@ -89,11 +89,16 @@ public class CreateFahrzeug extends Window {
             try {
 
                 boolean test =Integer.parseInt(baujahrField.getValue()) > 1750 && Integer.parseInt(baujahrField.getValue()) < Calendar.getInstance().get(Calendar.YEAR) + 1;
+                boolean test2 = !fahrgestellnummberField.getValue().trim().equals("");
                 if(!test){
                     Notification.show("Falsches Jahr als Baujahr eingegeben. Akzeptiert werden nur viertellige realistische Jahreszahlen");
                     return;
                 }
-            }catch(NumberFormatException err){
+                if(!test2){
+                    Notification.show("Fahrgestellnummer darf nicht leer sein und muss eindeutig sein.");
+                    return;
+                }
+            } catch(NumberFormatException err) {
                 Notification.show("Falsches Jahr als Baujahr eingegeben. Akzeptiert werden nur viertellige realistische Jahreszahlen");
                 //UI.getCurrent().addWindow(new ConfirmationWindow("Fahrzeug erfolgreich hinzugefügt!" ));
                 return;

@@ -22,7 +22,7 @@ public class GridCreator <A extends GridProps<String, Integer>>{
         this.tableStyle = tableStyle;
     }
 
-    public Grid<A> createTable() {
+    public Grid<A> createTableUser() {
         table = new Grid<A>();
         table.setCaption("Treffer");
         table.addColumn(A::getHersteller).setCaption("Hersteller");
@@ -31,7 +31,25 @@ public class GridCreator <A extends GridProps<String, Integer>>{
         table.addColumn(A::getKraftstoff).setCaption("Kraftstoff");
         table.addColumn(A::getBeschreibung).setCaption("Beschreibung");
         table.addColumn(A::getLocation).setCaption("Ort");
-//        table.addColumn(A::getFahrgestellnummer).setCaption("Fahrgestellnummer");
+   //     table.addColumn(A::getFahrgestellnummer).setCaption("Fahrgestellnummer");
+        table.addColumn(A::getKennzeichen).setCaption("Kennzeichen");
+        table.addColumn(A::getVertriebler).setCaption("Vertriebler");
+        table.setSelectionMode(selectionMode);
+        table.getDefaultHeaderRow().setStyleName(headerStyle);
+        table.setStyleName(tableStyle);
+        return table;
+    }
+
+    public Grid<A> createTableVertriebler() {
+        table = new Grid<A>();
+        table.setCaption("Treffer");
+        table.addColumn(A::getHersteller).setCaption("Hersteller");
+        table.addColumn(A::getModell).setCaption("Modell");
+        table.addColumn(A::getBaujahr).setCaption("Baujahr");
+        table.addColumn(A::getKraftstoff).setCaption("Kraftstoff");
+        table.addColumn(A::getBeschreibung).setCaption("Beschreibung");
+        table.addColumn(A::getLocation).setCaption("Ort");
+        table.addColumn(A::getFahrgestellnummer).setCaption("Fahrgestellnummer");
         table.addColumn(A::getKennzeichen).setCaption("Kennzeichen");
         table.addColumn(A::getVertriebler).setCaption("Vertriebler");
         table.setSelectionMode(selectionMode);
