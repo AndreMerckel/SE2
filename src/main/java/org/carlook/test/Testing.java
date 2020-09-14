@@ -29,7 +29,7 @@ public class Testing{
         driver.findElement(By.className("loginButton")).click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("header_main_menuBox_headLabel")));
-
+        driver.close();
     }
 
 }
