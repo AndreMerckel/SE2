@@ -11,7 +11,6 @@ org/carlook/model/objects/entities/Kennzeichen.class
 org/carlook/model/objects/dto/UserDTO.class
 org/carlook/gui/components/TextFieldWithIcon/TextFieldWithIcon.class
 org/carlook/gui/ui/MyUI.class
-org/carlook/test/TestingTest.class
 org/carlook/gui/windows/ConfirmationWindow.class
 org/carlook/services/db/exampleData/ListSupplier$UserData.class
 org/carlook/model/objects/dto/FahrzeugSearchDTO.class

@@ -29,6 +29,7 @@ public class LoginControl {
         }
         catch (DatabaseException ex) {
             Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DatabaseException(ex.getReason());
         }
 
             try {
