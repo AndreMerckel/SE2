@@ -8,6 +8,7 @@ import org.carlook.model.dao.ReservationDAO;
 import org.carlook.model.dao.UserDAO;
 import org.carlook.model.objects.dto.UserDTO;
 import org.carlook.model.objects.entities.Kunde;
+import org.carlook.model.objects.entities.User;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.Parameter;
@@ -15,6 +16,7 @@ import org.carlook.services.util.Roles;
 import org.carlook.services.util.StatusUser;
 import org.carlook.services.util.Views;
 
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
