@@ -91,7 +91,7 @@ public class DBTables {
                 COL_BAUJAHR + " NUMERIC(4) NOT NULL,\n" +
                 COL_MODELL + " VARCHAR(255) NOT NULL,\n" +
                 COL_FAHRGESTELLNUMMER + " VARCHAR(255) NOT NULL UNIQUE,\n" +
-                COL_KENNZEICHEN + " VARCHAR(255) NOT NULL UNIQUE,\n" +
+                COL_KENNZEICHEN + " VARCHAR(11) NOT NULL UNIQUE,\n" +
                 COL_VERTRIEBLER + " INTEGER NOT NULL,\n" +
                 COL_LOCATION + " VARCHAR(255) NOT NULL,\n" +
                 "CONSTRAINT pk_" + NAME + " PRIMARY KEY (" + COL_KENNZEICHEN +"),\n" +
@@ -107,7 +107,7 @@ public class DBTables {
 
         public static final String CREATE_TAB  = "CREATE TABLE " + TAB + " (\n" +
                 Kunde.COL_KUNDENNUMMER + " INTEGER NOT NULL,\n" +
-                Fahrzeug.COL_KENNZEICHEN + " VARCHAR(255) NOT NULL,\n" +
+                Fahrzeug.COL_KENNZEICHEN + " VARCHAR(11) NOT NULL,\n" +
                 " CONSTRAINT pk_" + NAME + " PRIMARY KEY (" + Kunde.COL_KUNDENNUMMER + ",\n" + Fahrzeug.COL_KENNZEICHEN + "),\n" +
                 " CONSTRAINT fk_" + Fahrzeug.NAME + " FOREIGN KEY (" + Fahrzeug.COL_KENNZEICHEN + ") REFERENCES " + Fahrzeug.TAB + " (" + Fahrzeug.COL_KENNZEICHEN + "),\n" +
                 " CONSTRAINT fk_" + Kunde.NAME + " FOREIGN KEY (" + Kunde.COL_KUNDENNUMMER + ") REFERENCES " + Kunde.TAB + " (" + Kunde.COL_KUNDENNUMMER + ")\n" +
