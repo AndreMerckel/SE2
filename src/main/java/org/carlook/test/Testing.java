@@ -22,7 +22,7 @@ public class Testing{
         WebDriver driver = new ChromeDriver();
         WebDriverWait wait = new WebDriverWait(driver, 4);
 
-        driver.get("http://localhost:8080/Carlook_war_exploded");
+        driver.get("http://localhost:8080/carlook_war_exploded");
 
         UserDTO userDTO = UserControl.getRndUser();
 
