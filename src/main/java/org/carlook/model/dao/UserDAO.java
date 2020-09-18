@@ -2,7 +2,10 @@ package org.carlook.model.dao;
 
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.NoSuchUserOrPassword;
+import org.carlook.factories.DTOFactory;
+import org.carlook.factories.Factories;
 import org.carlook.model.objects.dto.UserDTO;
+import org.carlook.model.objects.entities.User;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.DBTables;
 import org.carlook.services.util.StatusUser;
@@ -60,6 +63,42 @@ public class UserDAO extends AbstractDAO {
         return userDTO;
     }
 
+    public UserDTO getUserByRowNum(int rnum) throws DatabaseException {
+        JDBCConnection.getInstance().openConnection();
+        String sqlBefehl;
+
+        sqlBefehl = "SELECT " + DBTables.User.COL_EMAIL + ", " + DBTables.User.COL_PASSWORD + " \n" +
+                "FROM (SELECT row_number() OVER () as rnum , " + DBTables.User.COL_EMAIL + ", " + DBTables.User.COL_PASSWORD + " \n" +
+                "FROM " + DBTables.User.TAB + ") tab \n" +
+                "WHERE rnum = ?;\n";
+
+        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
+        ResultSet resultSet = null;
+
+        UserDTO userDTO = null;
+
+        try {
+            preparedStatement.setInt(1,rnum);
+            resultSet = preparedStatement.executeQuery();
+
+            assert resultSet != null;
+            if (resultSet.next()) {
+                String email, password;
+                email = resultSet.getString(DBTables.User.COL_EMAIL);
+                password = resultSet.getString(DBTables.User.COL_PASSWORD);
+                userDTO = DTOFactory.createNewUserDTO().setEmail(email).setPassword(password);
+            }
+
+            resultSet.close();
+        } catch (SQLException throwables) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+        } finally {
+            JDBCConnection.getInstance().closeConnection();
+        }
+        return userDTO;
+
+    }
+
     public int getVertrieblerNummer(String email) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
@@ -80,7 +119,7 @@ public class UserDAO extends AbstractDAO {
             res = resultSet.getInt(DBTables.Vertriebler.COL_VERTRIEBLERNUMMER);
 
         } catch (SQLException throwables) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
@@ -105,6 +144,7 @@ public class UserDAO extends AbstractDAO {
             resultSet.next();
 
             res = resultSet.getInt(DBTables.Kunde.COL_KUNDENNUMMER);
+            resultSet.close();
 
         } catch (SQLException throwables) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
@@ -212,7 +252,7 @@ public class UserDAO extends AbstractDAO {
             resultSet = preparedStatement.executeQuery();
 
             resultSet.next();
-            res = resultSet.getInt(1);
+            res = 1 + resultSet.getInt(1);
         } catch (SQLException throwables) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
         } finally {
