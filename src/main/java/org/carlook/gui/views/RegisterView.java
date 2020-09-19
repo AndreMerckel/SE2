@@ -10,10 +10,7 @@ import org.carlook.gui.components.Footer;
 import org.carlook.gui.components.Header;
 import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
 import org.carlook.model.objects.entities.User;
-import org.carlook.services.util.DBTables;
-import org.carlook.services.util.OtherMethods;
-import org.carlook.services.util.Roles;
-import org.carlook.services.util.Views;
+import org.carlook.services.util.*;
 
 public class RegisterView extends VerticalLayout implements View{
 
@@ -47,7 +44,7 @@ public class RegisterView extends VerticalLayout implements View{
 
 
         Label emailFieldLabel = new Label();
-        emailFieldLabel.setIcon(VaadinIcons.USER);
+        emailFieldLabel.setIcon(VaadinIcons.ENVELOPE);
         TextField emailField = new TextField();
         TextFieldWithIcon emailTextField = new TextFieldWithIcon(emailField, OtherMethods.getStringWithFirstUpperLetter(DBTables.User.COL_EMAIL), emailFieldLabel);
 
@@ -69,7 +66,7 @@ public class RegisterView extends VerticalLayout implements View{
         Label repeatPasswortFieldLabel = new Label();
         repeatPasswortFieldLabel.setIcon(VaadinIcons.PASSWORD);
         PasswordField repeatPassswordField = new PasswordField();
-        TextFieldWithIcon repeatPasswortTextField = new TextFieldWithIcon(repeatPassswordField,OtherMethods.getStringWithFirstUpperLetter(DBTables.User.COL_PASSWORD), repeatPasswortFieldLabel);
+        TextFieldWithIcon repeatPasswortTextField = new TextFieldWithIcon(repeatPassswordField, Parameter.RE_ENTER_PASSWORD_STRING, repeatPasswortFieldLabel);
 
         Button registerButton = new Button("Register");
         Button switchLogin = new Button("Switch to Login");
@@ -100,16 +97,23 @@ public class RegisterView extends VerticalLayout implements View{
             String vorname = vornameTextField.getValue();
             String nachname = nachnameTextField.getValue();
 
+            if(email.equals("") || password.equals("") || vorname.equals("") || nachname.equals("")){
+                Notification.show("Error", "Any field is mandatory. Please try again", Notification.Type.ERROR_MESSAGE);
+            return;
+            }
             if(!repeatPassword.equals(password)){
                 Notification.show("Error", "Passwords dont match", Notification.Type.ERROR_MESSAGE);
                 return;
             }
-                try{
+            try{
                 LoginControl.register(email,password, vorname, nachname);
             }catch(DatabaseException ex1){
-                Notification.show("Error", "Db Error", Notification.Type.ERROR_MESSAGE);
+                Notification.show("Error", ex1.getReason(), Notification.Type.ERROR_MESSAGE);
                 emailTextField.setValue("");
                 passwortTextField.setValue("");
+                return;
+            }catch(Exception ex){
+                Notification.show("Error", ex.getMessage(), Notification.Type.ERROR_MESSAGE);
             }
             Notification.show("Sucessfully", "Sign up scuessfully", Notification.Type.ASSISTIVE_NOTIFICATION);
         });

@@ -57,6 +57,7 @@ public class UserDAO extends AbstractDAO {
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
+            throw new DatabaseException(throwables.getMessage());
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
