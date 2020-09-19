@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 public class CreateFahrzeug extends Window {
     public CreateFahrzeug() {
-        super(Parameter.FAHRZEUG + " hinzufügen");
+        super("Fahrzeug hinzufügen");
         center();
 
         this.setWidth("250px");

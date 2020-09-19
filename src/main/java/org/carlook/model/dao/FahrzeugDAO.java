@@ -22,9 +22,9 @@ public class FahrzeugDAO extends AbstractDAO {
     private static FahrzeugDAO fahrzeugDAO;
     private String table = DBTables.Fahrzeug.TAB;
 
-    private FahrzeugDAO() throws DatabaseException {}
+    private FahrzeugDAO() {}
 
-    public static synchronized FahrzeugDAO getInstance() throws DatabaseException {
+    public static synchronized FahrzeugDAO getInstance() {
 
         if (fahrzeugDAO == null) fahrzeugDAO = new FahrzeugDAO();
         return fahrzeugDAO;
@@ -211,7 +211,7 @@ public class FahrzeugDAO extends AbstractDAO {
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
 
-        sqlBefehl = "SELECT " + DBTables.Fahrzeug.COL_KENNZEICHEN + " FROM " + table + " ORDER BY RANDOM() LIMIT (SELECT COUNT(*) FROM " + table + ")*0.1;";
+        sqlBefehl = "SELECT " + DBTables.Fahrzeug.COL_KENNZEICHEN + " FROM " + table + " ORDER BY RANDOM() LIMIT (SELECT COUNT(*) FROM " + table + ")*0.60;";
         PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
         List<String> list = new ArrayList<>();
         try {

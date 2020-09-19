@@ -5,6 +5,7 @@ import org.carlook.controller.LoginControl;
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.RegisterFailedException;
 import org.carlook.factories.DTOFactory;
+import org.carlook.model.dao.LogDAO;
 import org.carlook.model.dao.ReservationDAO;
 import org.carlook.model.dao.UserDAO;
 import org.carlook.model.objects.dto.ReservationDTO;
@@ -26,7 +27,11 @@ public class ExampleData {
         initFahrzeuge(ListSupplier.FahrzeugData.getList());
         initKundeResFahzg();
 
-
+        try {
+            LogDAO.getInstance().insertLog();
+        } catch (DatabaseException e) {
+            Logger.getLogger(ExampleData.class.getName()).log(Level.INFO, null, e);
+        }
     }
 
 
@@ -44,6 +49,7 @@ public class ExampleData {
         } catch (DatabaseException e) {
             Logger.getLogger(ExampleData.class.getName()).log(Level.INFO, null,e);
         }
+
         for (Fahrzeug tmp : list) {
             try {
                 Vertriebler vertriebler = DTOFactory.createNewVertrieblerDTO().setVertriebnummer(new Random().nextInt(sizeVertriebler-1)+1);
