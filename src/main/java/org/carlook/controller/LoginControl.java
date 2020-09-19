@@ -68,21 +68,29 @@ public class LoginControl {
         }
     }
 
-    public static void register(String email, String password, String vorname, String nachname) throws DatabaseException {
-
+    public static void register(String email, String password, String vorname, String nachname) throws Exception {
+        StatusUser statusUser = StatusUser.KUNDE;
         UserDTO userTemp = new UserDTO();
         userTemp.setEmail(email);
         userTemp.setNachname(nachname);
         userTemp.setVorname(vorname);
         userTemp.setPassword(password);
 
-        StatusUser statusUser = email.equals(vorname + "." + nachname + Parameter.COMPANY_MAIL_ADDRESS) ? StatusUser.VERTRIEBLER : StatusUser.KUNDE;
+        if(email.endsWith(Parameter.COMPANY_MAIL_ADDRESS)){
+            if(email.equals(vorname + "." + nachname + Parameter.COMPANY_MAIL_ADDRESS)){
+                statusUser = StatusUser.VERTRIEBLER;
+            } else {
+                throw new Exception("Error not Valid combination of company email constraint. Please try again");
+            }
+        }
+
 
         try {
             userTemp = UserDAO.getInstance().register(userTemp, statusUser);
         }
         catch (DatabaseException ex) {
             Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
         }
 
         VaadinSession session = UI.getCurrent().getSession();
@@ -109,7 +117,7 @@ public class LoginControl {
 
     }
 
-    public static void register(UserDTO userDTO) throws DatabaseException {
+    public static void register(UserDTO userDTO) throws Exception {
         register(userDTO.getEmail(), userDTO.getPassword(), userDTO.getVorname(), userDTO.getNachname());
     }
 

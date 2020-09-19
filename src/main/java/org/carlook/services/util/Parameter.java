@@ -15,4 +15,5 @@ public class Parameter {
     public static final String COMPANY_MAIL_ADDRESS = ("@" + COMPANY_NAME.toLowerCase() + "." + COMPANY_MAIL_DOMAIN).trim();
     public static final String COMPANY = COMPANY_NAME + " " + COMPANY_LEGAL_FORM;
     public static final String KENNZEICHEN = (KENNZEICHEN_ORT + "-" + KENNZEICHEN_KUERZEL + "-").toUpperCase().trim();
+    public static final String RE_ENTER_PASSWORD_STRING = "Re-enter password";
 }
