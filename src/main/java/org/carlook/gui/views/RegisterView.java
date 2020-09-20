@@ -14,12 +14,13 @@ import org.carlook.services.util.*;
 
 import java.util.logging.Level;
 
+/**
+ * Sicht des Registrierungsprozesses
+ */
 public class RegisterView extends VerticalLayout implements View{
 
 
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-
-
         User user = (User) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER);
 
         if(user == null) {
@@ -99,17 +100,17 @@ public class RegisterView extends VerticalLayout implements View{
             String vorname = vornameTextField.getValue();
             String nachname = nachnameTextField.getValue();
 
-            if(email.equals("") || password.equals("") || vorname.equals("") || nachname.equals("")){
+            if (email.equals("") || password.equals("") || vorname.equals("") || nachname.equals("")) {
                 Notification.show("Error", "Any field is mandatory. Please try again", Notification.Type.ERROR_MESSAGE);
             return;
             }
-            if(!repeatPassword.equals(password)){
+            if (!repeatPassword.equals(password)){
                 Notification.show("Error", "Passwords dont match", Notification.Type.ERROR_MESSAGE);
                 return;
             }
-            try{
+            try {
                 LoginControl.register(email,password, vorname, nachname);
-            }catch(DatabaseException ex1){
+            } catch (DatabaseException ex1) {
                 String reason = "";
                 if (ex1.getReason().contains(DBTables.User.COL_EMAIL) && ex1.getReason().contains("already exists")) {
                     reason = "Email bereits vorhanden";
@@ -121,10 +122,10 @@ public class RegisterView extends VerticalLayout implements View{
                 emailTextField.setValue("");
                 passwortTextField.setValue("");
                 return;
-            }catch(Exception ex){
+            } catch(Exception ex) {
                 Notification.show("Error", ex.getMessage(), Notification.Type.ERROR_MESSAGE);
             }
-            Notification.show("Sucessfully", "Sign up scuessfully", Notification.Type.ASSISTIVE_NOTIFICATION);
+            Notification.show("Sucessfully", "Sign up successfully", Notification.Type.ASSISTIVE_NOTIFICATION);
         });
 
         switchLogin.addClickListener(e ->{

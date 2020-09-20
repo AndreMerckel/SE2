@@ -8,17 +8,25 @@ import org.carlook.model.dao.ReservationDAO;
 import org.carlook.model.dao.UserDAO;
 import org.carlook.model.objects.dto.UserDTO;
 import org.carlook.model.objects.entities.Kunde;
-import org.carlook.model.objects.entities.User;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
 import org.carlook.services.util.*;
 
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Login-Controller
+ */
 public class LoginControl {
 
+    /**
+     * ueberprueft, ob Logindaten valide sind und weist ggfs. dessen Status in der Session zu
+     * @param email
+     * @param password
+     * @throws NoSuchUserOrPassword
+     * @throws DatabaseException
+     */
     public static void checkAuthentication(String email, String password) throws NoSuchUserOrPassword, DatabaseException {
 
         UserDTO userTemp = null;
@@ -52,7 +60,7 @@ public class LoginControl {
             kd.setVorname(userTemp.getVorname());
 
             session.setAttribute(Roles.CURRENT_USER, kd);
-            session.setAttribute(Roles.RESERVATIONS, ReservationDAO.getInstance().reservierungen(kd.getKundennummer()));
+            session.setAttribute(Roles.RESERVATIONS, ReservationDAO.getInstance().getKennzeichenByKundennummer(kd.getKundennummer()));
             UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
         } else {
             Vertriebler vt = new Vertriebler();
@@ -65,6 +73,14 @@ public class LoginControl {
         }
     }
 
+    /**
+     * registriert ein User in der DB und weist dessen Status anhand seiner Email-Adresse in der Session zu
+     * @param email
+     * @param password
+     * @param vorname
+     * @param nachname
+     * @throws Exception
+     */
     public static void register(String email, String password, String vorname, String nachname) throws Exception {
         StatusUser statusUser = StatusUser.KUNDE;
         UserDTO userTemp = new UserDTO();
@@ -114,15 +130,27 @@ public class LoginControl {
 
     }
 
+    /**
+     * Hilfsmethode für Beispieldaten, wirft an Mutterfunktion weiter
+     * @param userDTO
+     * @throws Exception
+     */
     public static void register(UserDTO userDTO) throws Exception {
         register(userDTO.getEmail(), userDTO.getPassword(), userDTO.getVorname(), userDTO.getNachname());
     }
 
+    /**
+     * logt den User aus und beendet die Session
+     */
     public static void logoutUser() {
         UI.getCurrent().getSession().close();
         UI.getCurrent().getPage().setLocation(Views.LOGIN);
     }
 
+    /**
+     * Admin-Funktion
+     * @param userDTO
+     */
     public static void registerAdmin(UserDTO userDTO) {
 
         StatusUser statusUser = userDTO.getEmail().trim().equals((userDTO.getVorname() + "." + userDTO.getNachname() + Parameter.COMPANY_MAIL_ADDRESS).toLowerCase()) ? StatusUser.VERTRIEBLER : StatusUser.KUNDE;

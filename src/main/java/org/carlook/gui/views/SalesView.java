@@ -22,12 +22,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Vertrieblersicht
+ */
 public class SalesView extends VerticalLayout implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-
-
         User user = (User) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER);
 
         if(user == null) {
@@ -38,6 +39,9 @@ public class SalesView extends VerticalLayout implements View {
         };
     }
 
+    /**
+     * Default-Konstruktor
+     */
     public SalesView(){};
 
     public void setUp() {

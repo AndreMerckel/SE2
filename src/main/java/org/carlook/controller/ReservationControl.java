@@ -11,8 +11,17 @@ import org.carlook.services.util.Roles;
 
 import java.util.List;
 
+/**
+ * Reservation-Controller
+ */
 public class ReservationControl {
 
+    /**
+     * fuegt eine Reservierung in der DB hinzu
+     * @param reservationDTO
+     * @return true, falls die Reservierung erfolgreich hinzugefuegt worden ist
+     * @throws DatabaseException
+     */
     public static boolean register(ReservationDTO reservationDTO) throws DatabaseException {
         try{
             ReservationDAO.getInstance().register(reservationDTO);
@@ -22,6 +31,11 @@ public class ReservationControl {
         return true;
     }
 
+    /**
+     * entfernt die Reservierung von der DB
+     * @param reservationDTO
+     * @throws DatabaseException
+     */
     public static boolean unregister(ReservationDTO reservationDTO) throws DatabaseException {
         try{
             ReservationDAO.getInstance().deleteReservation(reservationDTO);
@@ -52,6 +66,12 @@ public class ReservationControl {
     }
 
     //Complete Session Query
+
+    /**
+     * ueberprueft ob eine Reservierung anhand eines Kennzeichen besteht
+     * @param kennzeichen
+     * @return
+     */
     public static boolean checkReservedSession(String kennzeichen){
         boolean check = false;
         List<String> reservations = (List<String>) UI.getCurrent().getSession().getAttribute(Roles.RESERVATIONS);

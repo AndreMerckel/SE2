@@ -1,5 +1,8 @@
 package org.carlook.services.util;
 
+/**
+ * Config-Klasse
+ */
 public class Parameter {
 
     public static final String COPY_RIGHT = "- " + Parameter.COMPANY + ", coded by: André Merckel, Martin Müller -";

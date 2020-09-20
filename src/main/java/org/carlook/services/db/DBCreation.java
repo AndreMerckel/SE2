@@ -10,9 +10,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**
+ * Klasse zur Erstellung der Datenbank Tabellen
+ */
 public class DBCreation {
 
+    /**
+     * erstellt die Tabellen in der DB
+     * @throws DatabaseException
+     */
     public static void executeCreate() throws DatabaseException {
         JDBCConnection jdbc = JDBCConnection.getInstance();
         jdbc.openConnection();
@@ -29,6 +35,10 @@ public class DBCreation {
         }
     }
 
+    /**
+     * entfernt alle Tabellen in der DB
+     * @throws DatabaseException
+     */
     public static void dropAllTables() throws DatabaseException {
         JDBCConnection jdbc = JDBCConnection.getInstance();
         jdbc.openConnection();
@@ -45,6 +55,9 @@ public class DBCreation {
         }
     }
 
+    /**
+     * aktualisiert die DB Tabellen
+     */
     public static void refreshTables() {
         try {
             dropAllTables();

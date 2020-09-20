@@ -4,6 +4,9 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 
+/**
+ * Komponent zur Erstellung von Textfelder mit Icons
+ */
 public class TextFieldWithIcon extends HorizontalLayout {
     Label textlabel;
     Label label;
@@ -12,6 +15,12 @@ public class TextFieldWithIcon extends HorizontalLayout {
     HorizontalLayout overLayout;
     TextField textField;
 
+    /**
+     *
+     * @param textField
+     * @param placeholder
+     * @param label
+     */
     public TextFieldWithIcon(TextField textField, String placeholder, Label label) {
         this.textField = textField;
         textField.setWidth("20rem");
@@ -21,7 +30,11 @@ public class TextFieldWithIcon extends HorizontalLayout {
         this.SetUpComponent(placeholder, label);
     }
 
-
+    /**
+     *
+     * @param placeholder
+     * @param label
+     */
     public void SetUpComponent(String placeholder, Label label) {
         textField.setStyleName("textfieldwidth");
         this.setStyleName("textfieldwidth");
@@ -55,19 +68,28 @@ public class TextFieldWithIcon extends HorizontalLayout {
         });
 
     }
-
     private void detachPlaceHolder() {
         overLayout.removeComponent(innerLayout);
     }
 
     private void attachPlaceHolder() { overLayout.addComponent(innerLayout);    }
 
+    /**
+     * gibt den Wert des Textfeldes zurueck
+     */
     public String getValue() {
         return this.textField.getValue();
     }
 
+    /**
+     * gibt die Überschrift des Textfeldes zurueck
+     */
     public String getCaption(){return this.placeholder;}
 
+    /**
+     * setzt einen Wert im Textfeld
+     * @param value
+     */
     public void setValue(String value){
         this.textField.setValue(value);
     }

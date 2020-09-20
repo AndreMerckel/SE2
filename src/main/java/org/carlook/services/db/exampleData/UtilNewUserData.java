@@ -7,11 +7,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Utilklassse zur Konvertierung einer txt Datei in Java-Format
+ */
 public class UtilNewUserData {
 
+    /**
+     * liefert einen String zur Java-Format
+     * @param data
+     * @param obj
+     * @param attList
+     */
     public static String getFormat(String data, String obj, List<String> attList) {
-
-
         String res = "";
         int usrCounter = 0;
         Scanner sc = new Scanner(data);
@@ -43,6 +50,9 @@ public class UtilNewUserData {
         return res;
     }
 
+    /**
+     * gibt eine Ausgabe von Fahrzeugobjekte in Java-Form aus
+     */
     public static void printFahrzeugData() {
         List<String> list = new ArrayList<>();
         list.add("Hersteller");
@@ -72,6 +82,10 @@ public class UtilNewUserData {
 
     }
 
+
+    /**
+     * gibt eine Ausgabe von Userdaten in Java-Form aus
+     */
     public static void printUserData() {
         List<String> list = new ArrayList<>();
         list.add("Vorname");
@@ -93,6 +107,9 @@ public class UtilNewUserData {
         System.out.println(getFormat(s,"DTOFactory.createNewUserDTO",list));
     }
 
+    /**
+     * fuehrt alle print Methoden aus
+     */
     public static void printData() {
         printUserData();
         printFahrzeugData();

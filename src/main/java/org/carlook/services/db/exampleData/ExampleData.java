@@ -4,7 +4,7 @@ import org.carlook.controller.FahrzeugControl;
 import org.carlook.controller.LoginControl;
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.RegisterFailedException;
-import org.carlook.factories.DTOFactory;
+import org.carlook.factories.Factories;
 import org.carlook.model.dao.LogDAO;
 import org.carlook.model.dao.ReservationDAO;
 import org.carlook.model.dao.UserDAO;
@@ -18,11 +18,16 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Klasse zur Generierung der Beispieldaten
+ */
 public class ExampleData {
 
 
+    /**
+     * fuellt die Tabellen in der DB mit Beispieldaten
+     */
     public static void initAllExamples() {
-
         initUser(ListSupplier.UserData.getList());
         initFahrzeuge(ListSupplier.FahrzeugData.getList());
         initKundeResFahzg();
@@ -34,7 +39,10 @@ public class ExampleData {
         }
     }
 
-
+    /**
+     * fuellt die User-Tabelle mit Beispieldaten
+     * @param list
+     */
     public static void initUser(List<UserDTO> list) {
         for (UserDTO tmp : list) {
             LoginControl.registerAdmin(tmp);
@@ -42,6 +50,10 @@ public class ExampleData {
         Logger.getLogger(ExampleData.class.getName()).log(Level.INFO, list.get(0).getClass()  + " erfolgreich hinzugefuegt!\n");
     }
 
+    /**
+     * fuellt die Fahrzeug-Tabelle mit Beispieldaten und generiert die dazugehoerige Kennzeichen
+     * @param list
+     */
     public static void initFahrzeuge(List<Fahrzeug> list) {
         int sizeVertriebler = 0;
         try {
@@ -52,7 +64,7 @@ public class ExampleData {
 
         for (Fahrzeug tmp : list) {
             try {
-                Vertriebler vertriebler = DTOFactory.createNewVertrieblerDTO().setVertriebnummer(new Random().nextInt(sizeVertriebler-1)+1);
+                Vertriebler vertriebler = Factories.createNewVertriebler().setVertriebnummer(new Random().nextInt(sizeVertriebler-1)+1);
                 FahrzeugControl.register(tmp.setKennzeichen(FahrzeugControl.getRandomKennzeichen()),vertriebler);
             } catch (DatabaseException | RegisterFailedException e) {
                 Logger.getLogger(ExampleData.class.getName()).log(Level.INFO, null, e);
@@ -62,6 +74,9 @@ public class ExampleData {
         Logger.getLogger(ExampleData.class.getName()).log(Level.INFO, list.get(0).getClass()  + " erfolgreich hinzugefuegt!\n");
     }
 
+    /**
+     * fuellt die Reservierungstabelle
+     */
     public static void initKundeResFahzg() {
         List<ReservationDTO> reservationDTOList = ListSupplier.KundeResFahrzg.getList();
         for (ReservationDTO tmp : reservationDTOList) {

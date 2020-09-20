@@ -11,6 +11,10 @@ import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.services.util.DBTables;
 import org.carlook.services.util.OtherMethods;
 
+/**
+ * realisiert die On-The-Fly Fahrzeugsuche
+ * @param <T>
+ */
 public class Search<T> extends HorizontalLayout {
     Grid<T> grid;
     TextFieldWithIcon markeTextField;
@@ -18,6 +22,11 @@ public class Search<T> extends HorizontalLayout {
     TextFieldWithIcon baujahrTextField;
     TextFieldWithIcon kraftstoffTextField;
     CheckBox reserviert;
+
+    /**
+     * Konstruktor
+     * @param grid
+     */
     public Search(Grid<T> grid) {
         this.grid = grid;
         this.setup();
@@ -69,6 +78,9 @@ public class Search<T> extends HorizontalLayout {
 
     }
 
+    /**
+     * @param event
+     */
     private void filter(HasValue.ValueChangeEvent event){
         ListDataProvider<Fahrzeug> dataProvider = (ListDataProvider<Fahrzeug>) grid.getDataProvider();
         dataProvider.setFilter((item) -> {

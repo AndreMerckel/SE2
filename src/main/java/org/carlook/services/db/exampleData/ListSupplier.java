@@ -17,12 +17,21 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Lieferant der Basis Beispieldaten
+ */
 public class ListSupplier {
 
+    /**
+     * User Beispieldaten
+     */
     public static class UserData {
 
         private static List<UserDTO> dataList = null;
 
+        /**
+         * liefert eine Liste von UserDTO-Objekte
+         */
         public static List<UserDTO> getList() {
             List<UserDTO> list = dataList;
             if (dataList == null) {
@@ -582,9 +591,16 @@ public class ListSupplier {
         }
     }
 
+    /**
+     * Fahrzeug Beispieldaten
+     */
     public static class FahrzeugData {
         private static List<Fahrzeug> dataList = null;
 
+        /**
+         * liefert eine Liste von Fahrzeugobjekte
+         * @return
+         */
         public static List<Fahrzeug> getList() {
             List<Fahrzeug> list = dataList;
             if (dataList == null) {
@@ -745,10 +761,16 @@ public class ListSupplier {
         }
     }
 
+    /**
+     * Reservierung Beispieldaten
+     */
     public static class KundeResFahrzg {
 
         private static List<ReservationDTO> dataList = null;
 
+        /**
+         * liefert eine Liste von ReservierungsDTO Objekte
+         */
         public static List<ReservationDTO> getList() {
             if (dataList == null) {
                 List<String> listSign = null;
