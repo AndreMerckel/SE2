@@ -12,6 +12,8 @@ import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
 import org.carlook.model.objects.entities.User;
 import org.carlook.services.util.*;
 
+import java.util.logging.Level;
+
 public class RegisterView extends VerticalLayout implements View{
 
 
@@ -108,7 +110,14 @@ public class RegisterView extends VerticalLayout implements View{
             try{
                 LoginControl.register(email,password, vorname, nachname);
             }catch(DatabaseException ex1){
-                Notification.show("Error", ex1.getReason(), Notification.Type.ERROR_MESSAGE);
+                String reason = "";
+                if (ex1.getReason().contains(DBTables.User.COL_EMAIL) && ex1.getReason().contains("already exists")) {
+                    reason = "Email bereits vorhanden";
+                }
+                else {
+                    reason = ex1.getReason();
+                }
+                Notification.show("Error", reason, Notification.Type.ERROR_MESSAGE);
                 emailTextField.setValue("");
                 passwortTextField.setValue("");
                 return;

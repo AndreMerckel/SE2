@@ -4,6 +4,7 @@ import org.carlook.controller.exception.DatabaseException;
 import org.carlook.controller.exception.RegisterFailedException;
 import org.carlook.factories.Factories;
 import org.carlook.model.dao.FahrzeugDAO;
+import org.carlook.model.dao.ReservationDAO;
 import org.carlook.model.objects.entities.Fahrzeug;
 import org.carlook.model.objects.entities.Kennzeichen;
 import org.carlook.model.objects.entities.Vertriebler;
@@ -38,19 +39,11 @@ public class FahrzeugControl {
     public static boolean delete(Fahrzeug fz, int vertriebsnummer) throws DatabaseException {
         try {
             FahrzeugDAO.getInstance().deleteFahrzeugByKeys(fz, vertriebsnummer);
-        }catch(Error err){
+        } catch (Error err) {
             Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, err);
             return false;
         }
         return true;
-    }
-
-    /**
-     * Aktualisiert Werte anhand einer Kategorie
-     * @param fahrgestellnummer
-     */
-    public void update(String fahrgestellnummer, String Kategorie, String newVal) {
-
     }
 
     public static List<Fahrzeug> fetchAllFahrzeuge(){

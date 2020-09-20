@@ -2,7 +2,6 @@ package org.carlook.model.dao;
 
 import org.carlook.controller.exception.DatabaseException;
 import org.carlook.services.db.JDBCConnection;
-import org.carlook.services.util.DBTables;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -29,7 +28,7 @@ public class LogDAO extends AbstractDAO {
         try {
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
-            Logger.getLogger(AbstractDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
+            Logger.getLogger(LogDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
         } finally {
             JDBCConnection.getInstance().closeConnection();
         }
