@@ -1,13 +1,21 @@
 package org.carlook.controller.exception;
 
 public class NoSuchUserOrPassword extends Exception {
+
+    /**
+     * Grund der Exception
+     */
     private String reason = null;
-    public String getReason() {
-        return reason;
-    }
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
+
+    /**
+     * gibt den Grund der Exception aus
+     * @return
+     */
+
+    /**
+     * Konstruktor
+     * @param reason
+     */
     public NoSuchUserOrPassword(String reason){
         this.reason = reason;
     }

@@ -1,5 +1,8 @@
 package org.carlook.services.util;
 
+/**
+ * Klasse fuer sonstige Hilfsmethoden
+ */
 public class OtherMethods {
 
     public static String getStringWithFirstUpperLetter(String s) {

@@ -16,12 +16,18 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Fahrzeug Controller
+ */
 public class FahrzeugControl {
 
 
     /**
-     * Erstellung von einem Fahrzeug durch einen Vertriebsmitarbeiter
-     * @param fahrzeug, vertrieblerDTO
+     * fuegt das Fahrzeug mit der Vertrieblenummer in der Datenbank ein
+     * @param fahrzeug
+     * @param vertriebler
+     * @throws DatabaseException
+     * @throws RegisterFailedException
      */
     public static void register(Fahrzeug fahrzeug, Vertriebler vertriebler) throws DatabaseException, RegisterFailedException {
         try{
@@ -34,7 +40,10 @@ public class FahrzeugControl {
 
     /**
      * Entfernt ein Fahrzeug aus der Datenbank (nur Backend-Methode)
-     * @param fz, vertriebsnummer
+     * @param fz
+     * @param vertriebsnummer
+     * @return true, wenn die Löschung erfolgreich war, sonst false
+     * @throws DatabaseException
      */
     public static boolean delete(Fahrzeug fz, int vertriebsnummer) throws DatabaseException {
         try {
@@ -46,6 +55,9 @@ public class FahrzeugControl {
         return true;
     }
 
+    /**
+     * gibt eine Liste aller in der DB vorhandene Fahrzeuge aus
+     */
     public static List<Fahrzeug> fetchAllFahrzeuge(){
         List<Fahrzeug> fahrzeugeList = new ArrayList<>();
         try{
@@ -57,6 +69,10 @@ public class FahrzeugControl {
 
     }
 
+    /**
+     * gibt eine Liste von Fahrzeugen aus, die von dem jeweiligen Vertriebler erstellt worden sind
+     * @param vertriebler
+     */
     public static List<Fahrzeug> fetchFahrzeugeVonVertriebler(Vertriebler vertriebler){
         List<Fahrzeug> fahrzeuglist = new ArrayList<>();
 
@@ -68,10 +84,15 @@ public class FahrzeugControl {
         return fahrzeuglist;
     }
 
-    public static boolean checkFahrgestellnummerAvailability(String fahrgeetellnummer) {
+    /**
+     * ueberprueft, ob die Fahrgestellnummer bereits in der DB vorhanden ist
+     * @param fahrgestellnummer
+     * @return true, falls Fahrgestellnummer ist vorhanden
+     */
+    public static boolean checkFahrgestellnummerAvailability(String fahrgestellnummer) {
         boolean res = false;
         try {
-            res = FahrzeugDAO.getInstance().checkFahrgestellnummerAvailability(fahrgeetellnummer);
+            res = FahrzeugDAO.getInstance().checkFahrgestellnummerAvailability(fahrgestellnummer);
         } catch (DatabaseException e) {
             Logger.getLogger(FahrzeugControl.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -79,6 +100,10 @@ public class FahrzeugControl {
     }
 
 
+    /**
+     * gibt eine freie Kennzeichen-Kombination zurück.
+     * @return Kennzeichen als String in FORM SU-CL-####
+     */
     public static String getRandomKennzeichen() {
         int rdmInt = new Random().nextInt(9999)+1;
         Kennzeichen kennzeichen = Factories.createNewKennzeichen().setKennzeichen(rdmInt);

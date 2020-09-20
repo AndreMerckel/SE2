@@ -9,7 +9,14 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * User-Controller
+ */
 public class UserControl {
+
+    /**
+     * gibt ein zufaellig aus der DB vorhandenen User zurueck (fuer Beispieldaten)
+     */
     public static UserDTO getRndUser() {
         Random random = new Random();
         UserDAO userDAO = UserDAO.getInstance();

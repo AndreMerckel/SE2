@@ -14,16 +14,24 @@ import org.carlook.services.util.Roles;
 import org.carlook.services.util.StatusUser;
 import org.carlook.services.util.Views;
 
+/**
+ * Kopfzeeile
+ */
 public class Header extends HorizontalLayout {
 
     //Style
     UserDTO user = null;
+
+    /**
+     * Standart-Konstruktor
+     * @param logo
+     */
     public Header(boolean logo){
         this.setStyleName("header_main");
      Image headLogo = new Image(null, new ThemeResource("img/logo_Mortys.png"));
      headLogo.setWidth(150, Unit.PIXELS);
      headLogo.setStyleName("header_main_logo");
-     if(logo) {
+     if (logo) {
          this.addComponent(headLogo);
      }
 

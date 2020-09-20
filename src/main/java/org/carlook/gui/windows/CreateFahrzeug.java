@@ -18,7 +18,14 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Fenster, der zur Fahrzeugerstellung durch den Vertribeler dient
+ */
 public class CreateFahrzeug extends Window {
+
+    /**
+     * Default-Konstruktor
+     */
     public CreateFahrzeug() {
         super("Fahrzeug hinzufügen");
         center();

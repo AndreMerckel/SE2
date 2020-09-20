@@ -8,9 +8,19 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**
+ * AbstractDAO zur Lieferung eines Statements oder PrepaaredStatements
+ */
 public abstract class AbstractDAO {
 
+
+    @Deprecated
+    /**
+     * gibt einen Statetement zurueck
+     * ACHTUNG: aufgrund von SQL-Injection PreparedStatements benutzen!
+     * @deprecated
+     * @see PreparedStatement
+     */
     protected Statement getStatement() {
         Statement statement = null;
         try {
@@ -21,6 +31,10 @@ public abstract class AbstractDAO {
         return statement;
     }
 
+    /**
+     * gibt einen PreparedStatement zurueck
+     * @param sql
+     */
     protected PreparedStatement getPreparedStatement(String sql){
         PreparedStatement statement = null;
         try {

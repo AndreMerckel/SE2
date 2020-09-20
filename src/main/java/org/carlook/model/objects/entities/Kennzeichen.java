@@ -4,14 +4,26 @@ import org.carlook.services.util.DBTables;
 import org.carlook.services.util.OtherMethods;
 import org.carlook.services.util.Parameter;
 
+/**
+ * Kennzeichen-Objekt
+ */
 public class Kennzeichen {
 
     public String kennzeichen;
 
+    /**
+     * liefert das Kennzeichen
+     * @return
+     */
     public String getKennzeichen() {
         return kennzeichen;
     }
 
+    /**
+     * setzt das Kennzeichen in Abhaengigkeit eines Strings
+     * @param kennzeichen
+     * @return
+     */
     public Kennzeichen setKennzeichen(String kennzeichen) {
         String praefix = Parameter.KENNZEICHEN;
         if (!praefix.equals(kennzeichen.substring(0,praefix.length()))) {
@@ -22,6 +34,11 @@ public class Kennzeichen {
         return this;
     }
 
+    /**
+     * setzt das Kennzeichen in Abhaengigkeit eines Integers
+     * @param kennzeichen
+     * @return
+     */
     public Kennzeichen setKennzeichen(int kennzeichen) {
         if (kennzeichen > 9999 || kennzeichen < 1) {
             String reason = OtherMethods.getStringWithFirstUpperLetter(DBTables.Fahrzeug.COL_KENNZEICHEN);

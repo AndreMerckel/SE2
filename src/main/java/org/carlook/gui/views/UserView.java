@@ -24,6 +24,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Kundensicht
+ */
 public class UserView extends VerticalLayout implements View {
 
     @Override

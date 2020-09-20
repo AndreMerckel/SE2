@@ -17,19 +17,34 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Fahrzeug Zugriffklasse fuer die DB
+ */
 public class FahrzeugDAO extends AbstractDAO {
 
     private static FahrzeugDAO fahrzeugDAO;
     private String table = DBTables.Fahrzeug.TAB;
 
-    private FahrzeugDAO() {}
+    /**
+     * Default-Konstruktor
+     */
+    private FahrzeugDAO() {
 
+    }
+
+    /**
+     * Realisierung des Singleton Patterns
+     */
     public static synchronized FahrzeugDAO getInstance() {
-
         if (fahrzeugDAO == null) fahrzeugDAO = new FahrzeugDAO();
         return fahrzeugDAO;
     }
 
+    /**
+     * liefert eine Liste aller in der DB vorhanden Fahrzeugen
+     * @return
+     * @throws DatabaseException
+     */
     public List<Fahrzeug> getAllFahrzeuge() throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         List<Fahrzeug> fahrzeugeList = new ArrayList<>();
@@ -66,6 +81,13 @@ public class FahrzeugDAO extends AbstractDAO {
         return fahrzeugeList;
     }
 
+    /**
+     * fuegt ein Fahrzeug in der DB hinzu
+     * @param fahrzeug
+     * @param vertriebler
+     * @throws DatabaseException
+     * @throws RegisterFailedException
+     */
     public void register(Fahrzeug fahrzeug, Vertriebler vertriebler) throws DatabaseException, RegisterFailedException {
         if (fahrzeug == null || vertriebler == null) {
             String err;
@@ -102,6 +124,12 @@ public class FahrzeugDAO extends AbstractDAO {
         }
     }
 
+    /**
+     * gibt eine Liste von zufaellige bereits in der DB vorhandenes Kennzeichen zurueck.
+     * Die Anzahl der Kennzeichen ist zur Abhängig zu der Gesamthzahl der Fahzeuge
+     * Methode fuer Beispieldaten
+     * @throws DatabaseException
+     */
     public List<String> getKennzeichenRandRows() throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
@@ -125,6 +153,11 @@ public class FahrzeugDAO extends AbstractDAO {
         return list;
     }
 
+    /**
+     * liefert ein Fahrzeug in Abhaengikeit zum Vetriebler
+     * @param vertriebler
+     * @throws DatabaseException
+     */
     public List<Fahrzeug> getFahrzeugeByVertriebler(Vertriebler vertriebler) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         List<Fahrzeug> fahrzeugeList = new ArrayList<>();
@@ -164,6 +197,12 @@ public class FahrzeugDAO extends AbstractDAO {
         return fahrzeugeList;
     }
 
+    /**
+     * entfernt ein Fahzeug aus der DB
+     * @param fahrzeug
+     * @param vertrieblernummer
+     * @throws DatabaseException
+     */
     public void deleteFahrzeugByKeys(Fahrzeug fahrzeug, int vertrieblernummer) throws DatabaseException{
         JDBCConnection.getInstance().openConnection();
 
@@ -183,6 +222,11 @@ public class FahrzeugDAO extends AbstractDAO {
         }
     }
 
+    /**
+     * checkt, ob Kennzeichen bereits vorhanden
+     * @param kennzeichen
+     * @throws DatabaseException
+     */
     public boolean checkKennzeichenAvailability(Kennzeichen kennzeichen) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
 
@@ -203,6 +247,11 @@ public class FahrzeugDAO extends AbstractDAO {
         return res;
     }
 
+    /**
+     * checkt, ob Fahrgestellnummer bereits in der DB vorhanden ist
+     * @param fahrgestellnummer
+     * @throws DatabaseException
+     */
     public boolean checkFahrgestellnummerAvailability(String fahrgestellnummer) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
 

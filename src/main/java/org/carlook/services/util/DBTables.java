@@ -1,5 +1,8 @@
 package org.carlook.services.util;
 
+/**
+ * Deklaration der Datenbank-Tabellen
+ */
 public class DBTables {
 
     public static final String SCHEMA = Parameter.PROJECT_NAME.toLowerCase().trim();
@@ -14,6 +17,9 @@ public class DBTables {
             Fahrzeug.CREATE_TAB +
             KundeReserviertFahrzeug.CREATE_TAB;
 
+    /**
+     * User-Tabellendeklaration
+     */
     public static class User {
 
         public static final String NAME = "user";
@@ -35,6 +41,9 @@ public class DBTables {
 
     }
 
+    /**
+     * Kunde-Tabellendeklaration
+     */
     public static class Kunde {
 
         public static final String NAME = "kunde";
@@ -52,6 +61,9 @@ public class DBTables {
 
     }
 
+    /**
+     * Vertriebler-Tabellendeklaration
+     */
     public static class Vertriebler {
 
         public static final String NAME = "vertriebler";
@@ -68,6 +80,9 @@ public class DBTables {
                 ");\n\n";
     }
 
+    /**
+     * Fahrzeug-Tabellendeklaration
+     */
     public static class Fahrzeug {
 
         public static final String NAME = "fahrzeug";
@@ -99,6 +114,9 @@ public class DBTables {
                 ");\n\n";
     }
 
+    /**
+     * KundeReserviertFahrzeug-Tabellendeklaration
+     */
     public static class KundeReserviertFahrzeug {
 
         public static final String NAME = Kunde.NAME + "_reserviert_" + Fahrzeug.NAME;
@@ -114,6 +132,11 @@ public class DBTables {
                 ");\n\n";
     }
 
+    /**
+     * liefert den Tabellennamen
+     * @param name
+     * @return
+     */
     private static String getTAB(String name) {
         return SCHEMA + connector + PRAEFIX_TAB + name;
     }

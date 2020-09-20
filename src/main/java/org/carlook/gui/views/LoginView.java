@@ -12,7 +12,9 @@ import org.carlook.gui.components.TextFieldWithIcon.TextFieldWithIcon;
 import org.carlook.model.objects.entities.User;
 import org.carlook.services.util.*;
 
-
+/**
+ * Landingpage
+ */
 public class LoginView extends VerticalLayout implements View {
 
     @Override

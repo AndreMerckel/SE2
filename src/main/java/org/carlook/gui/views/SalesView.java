@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Vertrieblersicht
+ */
 public class SalesView extends VerticalLayout implements View {
 
     @Override

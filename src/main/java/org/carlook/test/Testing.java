@@ -10,7 +10,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Testing{
+/**
+ * Selenium Testklasse
+ */
+public class Testing {
     @Test
     public void testSeleniumJava() throws Exception {
 

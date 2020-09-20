@@ -18,6 +18,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Reservation Zugriffsklasse fuer DB
+ */
 public class ReservationDAO extends AbstractDAO {
 
     private static ReservationDAO reservationDAO;
@@ -28,12 +31,21 @@ public class ReservationDAO extends AbstractDAO {
 
     }
 
+    /**
+     * Realisierung Singleton-Pattern
+     * @return
+     */
     public static synchronized ReservationDAO getInstance() {
 
         if (reservationDAO == null) reservationDAO = new ReservationDAO();
         return reservationDAO;
     }
 
+    /**
+     * fuegt eine Reservierung in der DB hinzu
+     * @param reservationDTO
+     * @throws DatabaseException
+     */
     public void register(ReservationDTO reservationDTO) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
@@ -52,6 +64,11 @@ public class ReservationDAO extends AbstractDAO {
         }
     }
 
+    /**
+     * liefert eine Liste an ReservaionDTO Objekte in Abhaengigkeit zum Fahrzeug
+     * @param fahrzeug
+     * @throws DatabaseException
+     */
     public List<ReservationDTO> getReservationsByKennzeichen(Fahrzeug fahrzeug) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String email, sqlBefehl;
@@ -75,6 +92,12 @@ public class ReservationDAO extends AbstractDAO {
         return fetch(resultSet);
     }
 
+    /**
+     * iefert eine Liste an ReservaionDTO Objekte in Abhaengigkeit zum Fahrzeug
+     * @param kundeDTO
+     * @return
+     * @throws DatabaseException
+     */
     public List<ReservationDTO> getReservationByKundennummer(KundeDTO kundeDTO) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String email, sqlBefehl;
@@ -97,6 +120,12 @@ public class ReservationDAO extends AbstractDAO {
         return fetch(resultSet);
     }
 
+    /**
+     * konvergiert ein ResultSet in einer Liste von Reservation Objekte
+     * @param resultSet
+     * @return
+     * @throws DatabaseException
+     */
     public List<ReservationDTO> fetch(ResultSet resultSet) throws DatabaseException {
         List<ReservationDTO> reservationList = new ArrayList<>();
         try {
@@ -121,6 +150,12 @@ public class ReservationDAO extends AbstractDAO {
         return reservationList;
     }
 
+    /**
+     * liefert diee Kundennummer der Reservierung in Abhaengigkeit des Fahrzeuges
+     * @param fahrzeug
+     * @return
+     * @throws DatabaseException
+     */
     public int getKundennummerByFahrzeug(Fahrzeug fahrzeug) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         List<org.carlook.model.objects.entities.Fahrzeug> fahrzeugeList = new ArrayList<>();
@@ -151,6 +186,12 @@ public class ReservationDAO extends AbstractDAO {
         return res;
     }
 
+    /**
+     * checkt, Reservierungbereits vorhanden ist
+     * @param reservationDTO
+     * @return
+     * @throws DatabaseException
+     */
     public boolean isReserved(ReservationDTO reservationDTO) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
 
@@ -180,7 +221,13 @@ public class ReservationDAO extends AbstractDAO {
         return res;
     }
 
-    public List<String> reservierungen(int kundennummer) throws DatabaseException {
+    /**
+     * liefert eine Liste von Kennzeichen, die ein Kunde reserviert hat
+     * @param kundennummer
+     * @return
+     * @throws DatabaseException
+     */
+    public List<String> getKennzeichenByKundennummer(int kundennummer) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         List<String> fahrzeugeList = new ArrayList<>();
 
@@ -210,6 +257,11 @@ public class ReservationDAO extends AbstractDAO {
         return fahrzeugeList;
     }
 
+    /**
+     * entfernt eine Reservierung von der DB
+     * @param reservationDTO
+     * @throws DatabaseException
+     */
     public void deleteReservation(ReservationDTO reservationDTO) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;

@@ -16,6 +16,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * User Zugriffsklasse fuer die DB
+ */
 public class UserDAO extends AbstractDAO {
 
     private static UserDAO userDAO;

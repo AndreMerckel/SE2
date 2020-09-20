@@ -3,8 +3,15 @@ package org.carlook.gui.windows;
 
 import com.vaadin.ui.*;
 
+/**
+ * Bestaetigungsfenster
+ */
 public class ConfirmationWindow extends Window {
 
+    /**
+     * Konstruktor, der einen String annimmt
+     * @param text
+     */
     public ConfirmationWindow(String text){
         super("Confirmation");
         center();
