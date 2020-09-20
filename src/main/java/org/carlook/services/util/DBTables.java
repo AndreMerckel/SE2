@@ -8,10 +8,10 @@ public class DBTables {
     public static final String PRAEFIX_TAB = "dbs_tab_";
 
     public static final String CREATE_ALL_TABLES =
-            User.CREATE_TAB + "\n" +
-            Kunde.CREATE_TAB + "\n" +
-            Vertriebler.CREATE_TAB + "\n" +
-            Fahrzeug.CREATE_TAB + "\n" +
+            User.CREATE_TAB +
+            Kunde.CREATE_TAB +
+            Vertriebler.CREATE_TAB +
+            Fahrzeug.CREATE_TAB +
             KundeReserviertFahrzeug.CREATE_TAB;
 
     public static class User {
@@ -109,7 +109,7 @@ public class DBTables {
                 Kunde.COL_KUNDENNUMMER + " INTEGER NOT NULL,\n" +
                 Fahrzeug.COL_KENNZEICHEN + " VARCHAR(11) NOT NULL,\n" +
                 " CONSTRAINT pk_" + NAME + " PRIMARY KEY (" + Kunde.COL_KUNDENNUMMER + ",\n" + Fahrzeug.COL_KENNZEICHEN + "),\n" +
-                " CONSTRAINT fk_" + Fahrzeug.NAME + " FOREIGN KEY (" + Fahrzeug.COL_KENNZEICHEN + ") REFERENCES " + Fahrzeug.TAB + " (" + Fahrzeug.COL_KENNZEICHEN + "),\n" +
+                " CONSTRAINT fk_" + Fahrzeug.NAME + " FOREIGN KEY (" + Fahrzeug.COL_KENNZEICHEN + ") REFERENCES " + Fahrzeug.TAB + " (" + Fahrzeug.COL_KENNZEICHEN + ") ON DELETE CASCADE,\n" +
                 " CONSTRAINT fk_" + Kunde.NAME + " FOREIGN KEY (" + Kunde.COL_KUNDENNUMMER + ") REFERENCES " + Kunde.TAB + " (" + Kunde.COL_KUNDENNUMMER + ")\n" +
                 ");\n\n";
     }

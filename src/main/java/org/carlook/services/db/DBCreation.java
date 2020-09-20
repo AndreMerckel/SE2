@@ -13,26 +13,10 @@ import java.util.logging.Logger;
 
 public class DBCreation {
 
-    private static List<String> tableNames = new ArrayList<>();
-
-    private static List<String> loadTablesToList() {
-        List<String> tableCreation = new ArrayList<>();
-        tableCreation.add(DBTables.User.CREATE_TAB);
-        tableCreation.add(DBTables.Kunde.CREATE_TAB);
-        tableCreation.add(DBTables.Vertriebler.CREATE_TAB);
-        tableCreation.add(DBTables.Fahrzeug.CREATE_TAB);
-        tableCreation.add(DBTables.KundeReserviertFahrzeug.CREATE_TAB);
-        return tableCreation;
-    }
-
     public static void executeCreate() throws DatabaseException {
-        List<String> listCreation = loadTablesToList();
         JDBCConnection jdbc = JDBCConnection.getInstance();
         jdbc.openConnection();
-        String sqlBefehl = "";
-        for (String tmp : listCreation) {
-            sqlBefehl += tmp;
-        }
+        String sqlBefehl = DBTables.CREATE_ALL_TABLES;
         PreparedStatement statement = jdbc.getPreparedStatement(sqlBefehl);
         try {
             statement.execute();
@@ -46,7 +30,6 @@ public class DBCreation {
     }
 
     public static void dropAllTables() throws DatabaseException {
-        //List<String> tableNames = loadTableNames();
         JDBCConnection jdbc = JDBCConnection.getInstance();
         jdbc.openConnection();
         String sqlBefehl = "DROP SCHEMA IF EXISTS " + DBTables.SCHEMA + " CASCADE;\n" +

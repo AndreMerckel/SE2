@@ -8,6 +8,6 @@ import org.carlook.services.db.exampleData.UtilNewUserData;
 public class ExampleDataMain {
 
     public static void main(String[] args) {
-        UtilNewUserData.printFahrzeugData();
+        UtilNewUserData.printData();
     }
 }

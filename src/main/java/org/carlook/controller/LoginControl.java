@@ -11,10 +11,7 @@ import org.carlook.model.objects.entities.Kunde;
 import org.carlook.model.objects.entities.User;
 import org.carlook.model.objects.entities.Vertriebler;
 import org.carlook.services.db.JDBCConnection;
-import org.carlook.services.util.Parameter;
-import org.carlook.services.util.Roles;
-import org.carlook.services.util.StatusUser;
-import org.carlook.services.util.Views;
+import org.carlook.services.util.*;
 
 import java.util.Random;
 import java.util.logging.Level;
@@ -76,8 +73,8 @@ public class LoginControl {
         userTemp.setVorname(vorname);
         userTemp.setPassword(password);
 
-        if(email.endsWith(Parameter.COMPANY_MAIL_ADDRESS)){
-            if(email.equals(vorname + "." + nachname + Parameter.COMPANY_MAIL_ADDRESS)){
+        if (email.endsWith(Parameter.COMPANY_MAIL_ADDRESS)){
+            if (email.equals(vorname + "." + nachname + Parameter.COMPANY_MAIL_ADDRESS)){
                 statusUser = StatusUser.VERTRIEBLER;
             } else {
                 throw new Exception("Error not Valid combination of company email constraint. Please try again");
@@ -89,7 +86,7 @@ public class LoginControl {
             userTemp = UserDAO.getInstance().register(userTemp, statusUser);
         }
         catch (DatabaseException ex) {
-            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginControl.class.getName()).log(Level.SEVERE, ex.getReason(), ex);
             throw ex;
         }
 
@@ -133,7 +130,7 @@ public class LoginControl {
             UserDAO.getInstance().register(userDTO, statusUser);
         }
         catch (DatabaseException ex) {
-            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginControl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
