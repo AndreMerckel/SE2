@@ -30,7 +30,11 @@ public class TextFieldWithIcon extends HorizontalLayout {
         this.SetUpComponent(placeholder, label);
     }
 
-
+    /**
+     *
+     * @param placeholder
+     * @param label
+     */
     public void SetUpComponent(String placeholder, Label label) {
         textField.setStyleName("textfieldwidth");
         this.setStyleName("textfieldwidth");
@@ -64,7 +68,6 @@ public class TextFieldWithIcon extends HorizontalLayout {
         });
 
     }
-
     private void detachPlaceHolder() {
         overLayout.removeComponent(innerLayout);
     }

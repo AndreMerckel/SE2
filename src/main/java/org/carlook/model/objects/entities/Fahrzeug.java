@@ -12,7 +12,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
     /**
      * setzt den Hersteller
      * @param hersteller
-     * @return
      */
     public Fahrzeug setHersteller(String hersteller) {
         this.hersteller = hersteller;
@@ -22,7 +21,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
     /**
      * setzt die Beschreibung
      * @param beschreibung
-     * @return
      */
     public Fahrzeug setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
@@ -32,7 +30,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
     /**
      * setzt den Kraftstoff
      * @param kraftstoff
-     * @return
      */
     public Fahrzeug setKraftstoff(String kraftstoff) {
         this.kraftstoff = kraftstoff;
@@ -42,7 +39,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
     /**
      * setzt die Lacation des Fahrzeuges
      * @param location
-     * @return
      */
     public Fahrzeug setLocation(String location) {
         this.location = location;
@@ -52,7 +48,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
     /**
      * setzt das Baujahr
      * @param baujahr
-     * @return
      */
     public Fahrzeug setBaujahr(int baujahr) {
         this.baujahr = baujahr;
@@ -61,7 +56,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
 
     /**
      * lierfet den Hersteller
-     * @return
      */
     public String getHersteller() {
         return hersteller;
@@ -69,7 +63,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
 
     /**
      * liefert die Beschreibung
-     * @return
      */
     public String getBeschreibung() {
         return beschreibung;
@@ -77,7 +70,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
 
     /**
      * liefert das Modell
-     * @return
      */
     public String getModell() {
         return modell;
@@ -85,7 +77,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
 
     /**
      * liefert den Kraftstoff
-     * @return
      */
     public String getKraftstoff() {
         return kraftstoff;
@@ -93,7 +84,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
 
     /**
      * liefert die Location
-     * @return
      */
     public String getLocation() {
         return location;
@@ -101,7 +91,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
 
     /**
      * liefert das Baujahr
-     * @return
      */
     public Integer getBaujahr() {
         return baujahr;
@@ -110,7 +99,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
     /**
      * setzt das Modell
      * @param modell
-     * @return
      */
     public Fahrzeug setModell(String modell) {
         this.modell = modell;
@@ -119,7 +107,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
 
     /**
      * liefert die Fahrgestellnummer
-     * @return
      */
     public String getFahrgestellnummer() {
         return fahrgestellnummer;
@@ -128,7 +115,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
     /**
      * setzt die Fahrgestellnummer
      * @param fahrgestellnummer
-     * @return
      */
     public Fahrzeug setFahrgestellnummer(String fahrgestellnummer) {
         this.fahrgestellnummer = fahrgestellnummer;
@@ -137,7 +123,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
 
     /**
      * liefert das Kennzeichen
-     * @return
      */
     public String getKennzeichen() {
         return kennzeichen;
@@ -146,7 +131,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
     /**
      * setzt das Kennzeichen in Abhaengigkeit von einem String
      * @param kennzeichen
-     * @return
      */
     public Fahrzeug setKennzeichen(String kennzeichen) {
         this.kennzeichen = kennzeichen;
@@ -156,7 +140,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
     /**
      * setzt das Kennzeichen in Abhaengigkeit von einem Kennzeichen-Objekt
      * @param kennzeichen
-     * @return
      */
     public Fahrzeug setKennzeichen(Kennzeichen kennzeichen) {
         return setKennzeichen(kennzeichen.toString());
@@ -164,7 +147,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
 
     /**
      * liefert die Vertrieblernummer
-     * @return
      */
     public Integer getVertriebler() {
         return vertriebler;
@@ -173,7 +155,6 @@ public class Fahrzeug implements GridProps<String, Integer> {
     /**
      * setzt den Vertriebler
      * @param vertriebler
-     * @return
      */
     public Fahrzeug setVertriebler(int vertriebler) {
         this.vertriebler = vertriebler;

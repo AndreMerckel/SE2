@@ -33,7 +33,6 @@ public class UserDTO {
     /**
      * setzt den Vornamen des Users
      * @param vorname
-     * @return
      */
     public UserDTO setVorname(String vorname) {
         this.vorname = vorname;
@@ -42,7 +41,6 @@ public class UserDTO {
 
     /**
      * liefert den Nachnamen des Users
-     * @return
      */
     public String getNachname() {
         return nachname;
@@ -51,7 +49,6 @@ public class UserDTO {
     /**
      * setzt den Nachnamen des Users
      * @param nachname
-     * @return
      */
     public UserDTO setNachname(String nachname) {
         this.nachname = nachname;
@@ -60,7 +57,6 @@ public class UserDTO {
 
     /**
      * liefert das Passwort des Users
-     * @return
      */
     public String getPassword() {
         return passsword;
@@ -69,7 +65,6 @@ public class UserDTO {
     /**
      * setzt das Passwort des Users
      * @param passsword
-     * @return
      */
     public UserDTO setPassword(String passsword) {
         this.passsword = passsword;

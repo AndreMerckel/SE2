@@ -11,7 +11,7 @@ import org.carlook.services.util.Parameter;
 public class Footer extends HorizontalLayout {
 
     /**
-     * Standart - Konstruktor
+     * Default-Konstruktor
      */
     public Footer() {
 

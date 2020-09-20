@@ -19,8 +19,6 @@ public class LoginView extends VerticalLayout implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-
-
         User user = (User) UI.getCurrent().getSession().getAttribute(Roles.CURRENT_USER);
 
         if(user == null) {
@@ -29,10 +27,14 @@ public class LoginView extends VerticalLayout implements View {
             UI.getCurrent().getNavigator().navigateTo(Views.USERSEARCHVIEW);
         } else if(UI.getCurrent().getSession().getAttribute(Roles.STATUS) == StatusUser.VERTRIEBLER ){
             UI.getCurrent().getNavigator().navigateTo(Views.SALESVIEW);
-        };
+        }
     }
 
-    public LoginView(){};
+    /**
+     * Default-Konstruktor
+     */
+    public LoginView() {
+    }
 
     public void setUp() {
         addComponent(new Header(false));

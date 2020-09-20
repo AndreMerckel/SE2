@@ -26,6 +26,9 @@ public class UserDAO extends AbstractDAO {
 
     private UserDAO() {}
 
+    /**
+     * Realisierung Singleton-Pattern
+     */
     public static synchronized UserDAO getInstance() {
 
         if (userDAO == null) userDAO = new UserDAO();
@@ -33,6 +36,13 @@ public class UserDAO extends AbstractDAO {
         return userDAO;
     }
 
+    /**
+     * fuegt den User in der DB hinzu
+     * @param userDTO
+     * @param statusUser
+
+     * @throws DatabaseException
+     */
     public UserDTO register(UserDTO userDTO, StatusUser statusUser) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String email, sqlBefehl;
@@ -56,7 +66,6 @@ public class UserDAO extends AbstractDAO {
             preparedStatement.setString(4,userDTO.getNachname());
             preparedStatement.setString(5,email);
 
-
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, throwables);
@@ -67,6 +76,12 @@ public class UserDAO extends AbstractDAO {
         return userDTO;
     }
 
+    /**
+     * liefert den User in Anhqengigkeit zur Zeilennummer aus der DB
+     * @param rnum
+
+     * @throws DatabaseException
+     */
     public UserDTO getUserByRowNum(int rnum) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
@@ -103,6 +118,12 @@ public class UserDAO extends AbstractDAO {
 
     }
 
+    /**
+     * liefert die Vertieblernummer in Abhaengigkeit einer Email
+     * @param email
+
+     * @throws DatabaseException
+     */
     public int getVertrieblerNummer(String email) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
@@ -130,6 +151,12 @@ public class UserDAO extends AbstractDAO {
         return res;
     }
 
+    /**
+     * leifert die Kundennummer in Abhaengigkeit zur Email
+     * @param email
+
+     * @throws DatabaseException
+     */
     public int getKundenNummer(String email) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         String sqlBefehl;
@@ -158,6 +185,14 @@ public class UserDAO extends AbstractDAO {
         return res;
     }
 
+    /**
+     * checkt, ob Passwort korrekt ist
+     * @param email
+     * @param password
+
+     * @throws DatabaseException
+     * @throws NoSuchUserOrPassword
+     */
     public UserDTO isPasswordCorrect(String email, String password) throws DatabaseException, NoSuchUserOrPassword {
         JDBCConnection.getInstance().openConnection();
         ResultSet resultSet = null;
@@ -189,8 +224,12 @@ public class UserDAO extends AbstractDAO {
         return user;
     }
 
+    /**
+     * liefert den Status des Users
+     * @param email
 
-
+     * @throws DatabaseException
+     */
     public StatusUser getStatus(String email) throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
         ResultSet resultSet = null;
@@ -216,33 +255,10 @@ public class UserDAO extends AbstractDAO {
         return (result ? StatusUser.VERTRIEBLER : StatusUser.KUNDE);
     }
 
-    public boolean isRegistered(String email) throws DatabaseException {
-        JDBCConnection.getInstance().openConnection();
-        ResultSet resultSet = null;
-
-        String sqlBefehl = "SELECT * FROM " + table + " WHERE " + DBTables.User.COL_EMAIL + " = ?;";
-
-        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
-        boolean result = false;
-
-        try {
-            preparedStatement.setString(1, email);
-
-            resultSet = preparedStatement.executeQuery();
-
-            assert resultSet != null;
-
-            result = resultSet.next();
-        } catch (SQLException throwables) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
-        } finally {
-            JDBCConnection.getInstance().closeConnection();
-
-        }
-        return result;
-
-    }
-
+    /**
+     * liefert die Anzahl der User
+     * @throws DatabaseException
+     */
     public int size() throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
 
@@ -265,6 +281,10 @@ public class UserDAO extends AbstractDAO {
         return res;
     }
 
+    /**
+     * liefert die Anzahl der Kunden
+     * @throws DatabaseException
+     */
     public int sizeKunde() throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
 
@@ -287,6 +307,10 @@ public class UserDAO extends AbstractDAO {
         return res;
     }
 
+    /**
+     * liefert die Anzahl der Vertriebler
+     * @throws DatabaseException
+     */
     public int sizeVertriebler() throws DatabaseException {
         JDBCConnection.getInstance().openConnection();
 
@@ -301,33 +325,6 @@ public class UserDAO extends AbstractDAO {
 
             resultSet.next();
             res = resultSet.getInt(1);
-        } catch (SQLException throwables) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
-        } finally {
-            JDBCConnection.getInstance().closeConnection();
-        }
-        return res;
-    }
-
-    public String getVertrieblerbyID(int id) throws DatabaseException {
-        JDBCConnection.getInstance().openConnection();
-        String sqlBefehl;
-
-        sqlBefehl = "SELECT " + DBTables.User.TAB + "." + DBTables.User.COL_NACHNAME + " FROM " + table + "," + DBTables.Vertriebler.TAB + " WHERE " + table + "." + DBTables.User.COL_EMAIL + " = " + DBTables.Vertriebler.TAB + "." + DBTables.User.COL_EMAIL +
-                " AND " + DBTables.Vertriebler.TAB + "." + DBTables.Vertriebler.COL_VERTRIEBLERNUMMER + " = ?;";
-        PreparedStatement preparedStatement = getPreparedStatement(sqlBefehl);
-        ResultSet resultSet = null;
-        String res = "";
-        try {
-            preparedStatement.setInt(1,id);
-            resultSet = preparedStatement.executeQuery();
-
-            assert resultSet != null;
-            resultSet.next();
-
-            res = resultSet.getString(DBTables.User.COL_NACHNAME);
-
-            resultSet.close();
         } catch (SQLException throwables) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, sqlBefehl, throwables);
         } finally {

@@ -42,7 +42,6 @@ public class FahrzeugDAO extends AbstractDAO {
 
     /**
      * liefert eine Liste aller in der DB vorhanden Fahrzeugen
-     * @return
      * @throws DatabaseException
      */
     public List<Fahrzeug> getAllFahrzeuge() throws DatabaseException {

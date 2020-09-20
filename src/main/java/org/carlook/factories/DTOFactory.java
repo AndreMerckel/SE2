@@ -17,7 +17,6 @@ public class DTOFactory {
 
     /**
      * erstellt ein neues ReservationDTO Objekt
-     * @return
      */
     public static ReservationDTO createNewReservationDTO() {
         return new ReservationDTO();

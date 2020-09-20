@@ -13,7 +13,6 @@ public class ReservationDTO {
 
     /**
      * liefert ein Kunden Objekt
-     * @return
      */
     public Kunde getKunde() {
         return kunde;
@@ -22,7 +21,6 @@ public class ReservationDTO {
     /**
      * setzt das Kunden-Objekt in den Container
      * @param kunde
-     * @return
      */
     public ReservationDTO setKunde(Kunde kunde) {
         this.kunde = kunde;
@@ -31,7 +29,6 @@ public class ReservationDTO {
 
     /**
      * liefert das Fahrzeug-Objekt
-     * @return
      */
     public Fahrzeug getFahrzeug() {
         return fahrzeug;
@@ -40,7 +37,6 @@ public class ReservationDTO {
     /**
      * setzt das Fahrzeug-Objekt in den Container
      * @param fahrzeug
-     * @return
      */
     public ReservationDTO setFahrzeug(Fahrzeug fahrzeug) {
         this.fahrzeug = fahrzeug;

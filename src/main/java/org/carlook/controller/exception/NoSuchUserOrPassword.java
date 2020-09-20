@@ -8,11 +8,6 @@ public class NoSuchUserOrPassword extends Exception {
     private String reason = null;
 
     /**
-     * gibt den Grund der Exception aus
-     * @return
-     */
-
-    /**
      * Konstruktor
      * @param reason
      */

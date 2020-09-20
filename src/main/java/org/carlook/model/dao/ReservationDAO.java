@@ -32,8 +32,7 @@ public class ReservationDAO extends AbstractDAO {
     }
 
     /**
-     * Realisierung Singleton-Pattern
-     * @return
+     * Realisierung Singleton-Patter
      */
     public static synchronized ReservationDAO getInstance() {
 
@@ -95,7 +94,6 @@ public class ReservationDAO extends AbstractDAO {
     /**
      * iefert eine Liste an ReservaionDTO Objekte in Abhaengigkeit zum Fahrzeug
      * @param kundeDTO
-     * @return
      * @throws DatabaseException
      */
     public List<ReservationDTO> getReservationByKundennummer(KundeDTO kundeDTO) throws DatabaseException {
@@ -123,7 +121,6 @@ public class ReservationDAO extends AbstractDAO {
     /**
      * konvergiert ein ResultSet in einer Liste von Reservation Objekte
      * @param resultSet
-     * @return
      * @throws DatabaseException
      */
     public List<ReservationDTO> fetch(ResultSet resultSet) throws DatabaseException {
@@ -153,7 +150,6 @@ public class ReservationDAO extends AbstractDAO {
     /**
      * liefert diee Kundennummer der Reservierung in Abhaengigkeit des Fahrzeuges
      * @param fahrzeug
-     * @return
      * @throws DatabaseException
      */
     public int getKundennummerByFahrzeug(Fahrzeug fahrzeug) throws DatabaseException {
@@ -189,7 +185,6 @@ public class ReservationDAO extends AbstractDAO {
     /**
      * checkt, Reservierungbereits vorhanden ist
      * @param reservationDTO
-     * @return
      * @throws DatabaseException
      */
     public boolean isReserved(ReservationDTO reservationDTO) throws DatabaseException {
@@ -224,7 +219,6 @@ public class ReservationDAO extends AbstractDAO {
     /**
      * liefert eine Liste von Kennzeichen, die ein Kunde reserviert hat
      * @param kundennummer
-     * @return
      * @throws DatabaseException
      */
     public List<String> getKennzeichenByKundennummer(int kundennummer) throws DatabaseException {

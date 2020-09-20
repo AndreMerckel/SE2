@@ -9,7 +9,6 @@ public class User {
 
     /**
      * liefert die Email-Adresse
-     * @return
      */
     public String getEmail() {
         return email;
@@ -18,7 +17,6 @@ public class User {
     /**
      * setzt die Email-Adresse
      * @param email
-     * @return
      */
     public User setEmail(String email) {
         this.email = email;
@@ -27,7 +25,6 @@ public class User {
 
     /**
      * liefert den Vornamen
-     * @return
      */
     public String getVorname() {
         return vorname;
@@ -36,7 +33,6 @@ public class User {
     /**
      * setzt den Vornamen
      * @param vorname
-     * @return
      */
     public User setVorname(String vorname) {
         this.vorname = vorname;
@@ -45,7 +41,6 @@ public class User {
 
     /**
      * liefert den Nachnamen
-     * @return
      */
     public String getNachname() {
         return nachname;
@@ -54,7 +49,6 @@ public class User {
     /**
      * setzt den Nachnamen
      * @param nachname
-     * @return
      */
     public User setNachname(String nachname) {
         this.nachname = nachname;

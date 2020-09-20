@@ -20,7 +20,6 @@ public class DatabaseException extends Exception {
 
     /**
      * gibt den Grund der Exception zurück
-     * @return
      */
     public String getReason() {
         return reason;

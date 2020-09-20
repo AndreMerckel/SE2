@@ -17,7 +17,6 @@ public class UtilNewUserData {
      * @param data
      * @param obj
      * @param attList
-     * @return
      */
     public static String getFormat(String data, String obj, List<String> attList) {
         String res = "";

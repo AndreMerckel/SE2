@@ -78,6 +78,9 @@ public class Search<T> extends HorizontalLayout {
 
     }
 
+    /**
+     * @param event
+     */
     private void filter(HasValue.ValueChangeEvent event){
         ListDataProvider<Fahrzeug> dataProvider = (ListDataProvider<Fahrzeug>) grid.getDataProvider();
         dataProvider.setFilter((item) -> {

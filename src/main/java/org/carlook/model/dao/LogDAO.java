@@ -23,7 +23,6 @@ public class LogDAO extends AbstractDAO {
 
     /**
      * Realisierung Singleton-Pattern
-     * @return
      */
     public static synchronized LogDAO getInstance() {
         if (logDAO == null)

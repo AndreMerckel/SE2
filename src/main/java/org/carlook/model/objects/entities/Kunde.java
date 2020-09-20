@@ -8,7 +8,6 @@ public class Kunde extends User {
 
     /**
      * liefert die Kundennummer
-     * @return
      */
     public int getKundennummer() {
         return kundennummer;
@@ -17,7 +16,6 @@ public class Kunde extends User {
     /**
      * setzt die Kundennummer
      * @param kundennummer
-     * @return
      */
     public Kunde setKundennummer(int kundennummer) {
         this.kundennummer = kundennummer;

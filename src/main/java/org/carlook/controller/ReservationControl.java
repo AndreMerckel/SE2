@@ -34,7 +34,6 @@ public class ReservationControl {
     /**
      * entfernt die Reservierung von der DB
      * @param reservationDTO
-     * @return
      * @throws DatabaseException
      */
     public static boolean unregister(ReservationDTO reservationDTO) throws DatabaseException {

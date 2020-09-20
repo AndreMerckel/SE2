@@ -135,7 +135,6 @@ public class DBTables {
     /**
      * liefert den Tabellennamen
      * @param name
-     * @return
      */
     private static String getTAB(String name) {
         return SCHEMA + connector + PRAEFIX_TAB + name;

@@ -13,7 +13,6 @@ public class Kennzeichen {
 
     /**
      * liefert das Kennzeichen
-     * @return
      */
     public String getKennzeichen() {
         return kennzeichen;
@@ -22,7 +21,6 @@ public class Kennzeichen {
     /**
      * setzt das Kennzeichen in Abhaengigkeit eines Strings
      * @param kennzeichen
-     * @return
      */
     public Kennzeichen setKennzeichen(String kennzeichen) {
         String praefix = Parameter.KENNZEICHEN;
@@ -37,7 +35,6 @@ public class Kennzeichen {
     /**
      * setzt das Kennzeichen in Abhaengigkeit eines Integers
      * @param kennzeichen
-     * @return
      */
     public Kennzeichen setKennzeichen(int kennzeichen) {
         if (kennzeichen > 9999 || kennzeichen < 1) {

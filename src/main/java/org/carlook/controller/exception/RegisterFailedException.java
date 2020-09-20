@@ -10,7 +10,6 @@ public class RegisterFailedException extends Exception {
     /**
      * Konstruktor
      * @param reason
-     * @return
      */
     public RegisterFailedException setReason(String reason) {
         this.reason = reason;
